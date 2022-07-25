@@ -38,7 +38,7 @@ jobs:
         with:
           mysql root password: ${{ secrets.RootPassword }}
           mysql database: test
-      - name: app testing
-        run: cd app && npm run test
       - name: api testing
         run: cd api && npm run test
+      - name: app testing
+        run: cd app && npm run test

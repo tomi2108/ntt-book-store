@@ -11,7 +11,6 @@ router.get("/", (_, res) => {
 
 router.post("/", (req, res) => {
   const book = req.body;
-
   addBook(book)
     .then((newBook) => res.status(200).json(newBook))
     .catch((err) => res.status(400).json(err.message));

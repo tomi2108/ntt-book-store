@@ -1,14 +1,10 @@
-import { useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
+import TransactionButton from "./TransactionButton.js";
+
+
 
 const BookCard = ({ book, addCart }) => {
-  const [loading, setLoading] = useState(false);
 
-  const handleClick = () => {
-    setLoading(true);
-    addCart(book);
-    setLoading(false);
-  };
   return (
     <Col
       style={{
@@ -40,10 +36,9 @@ const BookCard = ({ book, addCart }) => {
             <Card.Subtitle>By {book.Author.name} </Card.Subtitle>
             <Card.Text>US${book.price}</Card.Text>
           </Row>
-          <Row lg={{ span: 4, offset: 4 }}>
-            <Button disabled={loading} onClick={handleClick}>
-              Add to cart
-            </Button>
+          <Row>
+            {book.copiesInStock > 0? `${book.copiesInStock} Copies in stock`: "Out of stock"}
+            <TransactionButton onClick={() => addCart(book)} defaultText="Add to cart" completedText="Added" errorText="Not added" />
           </Row>
         </Card.Body>
       </Card>

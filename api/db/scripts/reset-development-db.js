@@ -8,7 +8,7 @@ const books = [
     title: "The Great Gatsby",
     authorId: 1,
     price: 4.99,
-    copiesInStock: 500,
+    copiesInStock: 0,
   },
   {
     id: 2,
@@ -69,8 +69,10 @@ const authors = [
 const Book = require("../models/Book.js");
 const Author = require("../models/Author.js");
 const User = require("../models/User.js");
+const sequelize = require("../index.js");
 
 const resetDb = async () => {
+  await sequelize.authenticate();
   await Book.sync({ force: true });
   await Author.sync({ force: true });
   await User.sync({ force: true });
