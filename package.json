@@ -21,6 +21,6 @@
     "husky": "^8.0.1"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix"
+    "*!(build)/*.js": "eslint --cache --fix"
   }
 }

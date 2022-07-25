@@ -4,7 +4,6 @@ import Products from "./components/Products.js";
 
 const App = () => {
   const [cart, setCart] = useState([]);
-
   const addToCart = (book) => {
     const bookInCart = cart.find((item) => item.book.id === book.id);
     if (!bookInCart) {
