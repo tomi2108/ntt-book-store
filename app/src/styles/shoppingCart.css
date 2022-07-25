@@ -1,0 +1,15 @@
+.cart:focus {
+  outline: none !important;
+  outline-offset: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown {
+  background-color: #202124;
+  color: #fff;
+}
+
+.dropdownItem {
+  font-size: small;
+  border-bottom: 3px solid #747474;
+}

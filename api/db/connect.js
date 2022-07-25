@@ -3,8 +3,6 @@ const User = require("./models/User.js");
 const Book = require("./models/Book.js");
 const Author = require("./models/Author.js");
 
-Book.belongsTo(Author, { foreignKey: "authorId" });
-
 const connectToDb = async () => {
   try {
     await sequelize.authenticate();

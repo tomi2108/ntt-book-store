@@ -1,6 +1,8 @@
 const Book = require("../db/models/Book");
 const Author = require("../db/models/Author");
 
+Book.belongsTo(Author, { foreignKey: "authorId" });
+
 const getAllBooks = async () => {
   try {
     return await Book.findAll({ include: Author });

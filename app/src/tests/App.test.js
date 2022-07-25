@@ -4,6 +4,6 @@ import App from "../App.js";
 
 test("App renders content", () => {
   render(<App />);
-  const button = screen.getByText("Products");
+  const button = screen.getByText("LOGO");
   expect(button).toBeDefined();
 });
