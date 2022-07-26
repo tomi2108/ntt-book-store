@@ -1,44 +1,28 @@
 import { Card, Col, Row } from "react-bootstrap";
+import BookCoverPlaceholder from "../static/BookCoverPlaceholder.js";
+import "../styles/bookCard.css";
 import TransactionButton from "./TransactionButton.js";
-
 
 
 const BookCard = ({ book, addCart }) => {
 
+  const outOfStock = book.copiesInStock === 0;
+
   return (
-    <Col
-      style={{
-        margin: 3,
-        width: "20rem",
-        height: "20rem",
-      }}
-      xs={12}
-      sm={6}
-      md={4}
-      lg={3}
-    >
-      <Card
-        style={{
-          height: "100%",
-          backgroundColor: "#202124",
-        }}
-      >
-        <Card.Body
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-          }}
-        >
+    <Col className="card-wrapper" xs={12} sm={6} md={4} lg={3} >
+      <Card className="card-container">
+        <Card.Body className="card-body">
           <Row>
-            <Card.Title>{book.title}</Card.Title>
-            {book.imageUrl && <img src={book.imageUrl} alt={book.title} />}
-            <Card.Subtitle>By {book.Author.name} </Card.Subtitle>
-            <Card.Text>US${book.price}</Card.Text>
+            <Card.Title className="card-title"><strong>{book.title} </strong></Card.Title>
+            {book.imageUrl? <img className="card-image" src={book.imageUrl} alt={book.title} /> : <BookCoverPlaceholder className="card-image" />}
+            <div className="card-subtitle">
+              <Card.Subtitle>By {book.Author.name} </Card.Subtitle>
+              <Card.Text>{outOfStock? <div className="out-of-stock">Out of stock</div> : <div>{book.copiesInStock} in stock</div>}</Card.Text>
+            </div>
           </Row>
           <Row>
-            {book.copiesInStock > 0? `${book.copiesInStock} Copies in stock`: "Out of stock"}
-            <TransactionButton onClick={() => addCart(book)} defaultText="Add to cart" completedText="Added" errorText="Not added" />
+            <div>US<strong>${book.price}</strong></div>
+            <TransactionButton disabled={outOfStock} onClick={() => addCart(book)} defaultText="Add to cart" completedText="Added" errorText="Not added" />
           </Row>
         </Card.Body>
       </Card>

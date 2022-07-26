@@ -27,6 +27,10 @@ const Book = sequelize.define("Book", {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
+  imageUrl: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  }
 });
 
 module.exports = Book;

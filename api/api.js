@@ -8,7 +8,7 @@ const bookRouter = require("./routes/books.js");
 api.use(cors());
 
 if (process.env.NODE_ENV === "development") api.use(morgan("tiny"));
-api.use(express.static("build"));
+if (process.env.NODE_ENV !== "development") api.use(express.static("build"));
 
 api.use(express.json());
 

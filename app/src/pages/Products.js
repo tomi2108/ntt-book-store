@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import BookCard from "../components/BookCard.js";
 import { getBooks } from "../services/books.js";
-import BookCard from "./BookCard.js";
 
 const Products = ({ addToCart }) => {
   const [books, setBooks] = useState(null);
@@ -17,7 +17,7 @@ const Products = ({ addToCart }) => {
       Products
       <Row>
         {books &&
-          books.map((book) => {
+          books.sort((a,b) => a.Author.name.localeCompare(b.Author.name)).map((book) => {
             return <BookCard key={book.id} book={book} addCart={addToCart} />;
           })}
       </Row>

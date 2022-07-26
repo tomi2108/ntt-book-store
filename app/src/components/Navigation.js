@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import ShoppingCartIcon from "../static/ShoppingCartIcon.js";
-import "../styles/shoppingCart.css";
+import CartMenu from "./CartMenu.js";
+
 
 const Navigation = ({ cart }) => {
   return (
@@ -21,17 +22,7 @@ const Navigation = ({ cart }) => {
             id="nav-dropdown-dark-example"
             menuVariant="dark"
           >
-            {cart.map((item) => {
-              return (
-                <NavDropdown.Item key={item.book.id}>
-                  <div className="dropdownItem">
-                    <p>
-                      {item.book.title} x{item.quantity}
-                    </p>
-                  </div>
-                </NavDropdown.Item>
-              );
-            })}
+            <CartMenu cart={cart} />
           </NavDropdown>
         </Navbar.Collapse>
       </Container>

@@ -13,7 +13,7 @@ const BUTTON_STATE = {
 };
 
 
-const TransactionButton = ({ onClick, defaultText, completedText, errorText }) => {
+const TransactionButton = ({ onClick, defaultText, completedText, errorText, disabled }) => {
   const [state, setState] = useState(BUTTON_STATE.ready);
   const [loading, setLoading] = useState(false);
 
@@ -37,7 +37,7 @@ const TransactionButton = ({ onClick, defaultText, completedText, errorText }) =
   };
 
   return (
-    <Button disabled={loading} variant={
+    <Button disabled={loading || disabled} variant={
       state === BUTTON_STATE.completed ? "success" :
         state === BUTTON_STATE.error ? "danger" : "primary"
     } onClick={handleClick}>
