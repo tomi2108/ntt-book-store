@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ShoppingCartIcon from "../static/ShoppingCartIcon.js";
 import CartMenu from "./CartMenu.js";
 
 
-const Navigation = ({ cart,cartActions }) => {
+const Navigation = ({ cart,cartActions,user }) => {
   const [showCart, setShowCart] = useState(false);
 
   return (
@@ -14,15 +15,16 @@ const Navigation = ({ cart,cartActions }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav>
-            <Nav.Link color="secondary" variant="text">
-              Products
+            <Nav.Link as={Link} to="/"  color="secondary" variant="text">
+                Products
             </Nav.Link>
-            <Nav.Link variant="secondary">Search</Nav.Link>
-            <Nav.Link variant="secondary">Sign In</Nav.Link>
+            <Nav.Link as={Link} to="/search" variant="secondary">
+            Search
+            </Nav.Link>
+            <Nav.Link as={Link} to={user?`/profile/${user.username}`:"/login"} variant="secondary">{user? "Profile": "Log in"}</Nav.Link>
           </Nav>
           <NavDropdown
-            show={showCart}
-
+            show={user? showCart : false}
             title={<ShoppingCartIcon onClick={() => setShowCart(!showCart)} />}
             id="nav-dropdown-dark-example"
             menuVariant="dark"

@@ -17,10 +17,10 @@ const styles = {
       justifyContent: "space-between"
     },
     image:{
-      backgroundSize: "cover",
       width: "120px",
       height: "155px",
-      margin: "auto"
+      margin: "auto",
+
     },
     title:{
       height: "45px",
@@ -59,6 +59,18 @@ const styles = {
       marginTop: "1rem"
     }
   },
+  link:{
+    color: "inherit",
+    textDecoration: "none",
+  },
+  bookDetails:{
+    image:{
+      border:"1px solid #656565",
+      width: "350px",
+      height: "550px",
+      margin: "auto"
+    },
+  }
 };
 
 export default styles;

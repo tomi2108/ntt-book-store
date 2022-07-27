@@ -13,7 +13,7 @@ const getAllBooks = async () => {
 
 const getBookById = async (id) => {
   try {
-    return await Book.findByPk(id);
+    return await Book.findByPk(id,{ include: Author });
   } catch (err) {
     throw new Error("Error while getting book by id");
   }

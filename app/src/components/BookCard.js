@@ -1,17 +1,20 @@
 import { Card, Col, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import BookCoverPlaceholder from "../static/BookCoverPlaceholder.js";
 import styles from "../styles/styles.js";
 import TransactionButton from "./TransactionButton.js";
 
-const BookCard = ({ book,addToCart }) => {
+const BookCard = ({ book,addToCart,user }) => {
 
   const outOfStock = book.copiesInStock === 0;
+
+  const navigate = useNavigate();
 
   return (
     <Col style={styles.bookCard.wrapper} xs={12} sm={6} md={4} lg={3} >
       <Card style={styles.bookCard.container}>
         <Card.Body style={styles.bookCard.body}>
-          <Row>
+          <Row style={{ cursor:"pointer" }} onClick={() => navigate(`/book/${book.id}`)}>
             <Card.Title style={styles.bookCard.title}><strong>{book.title} </strong></Card.Title>
             {book.imageUrl? <img style={styles.bookCard.image} src={book.imageUrl} alt={book.title} /> : <BookCoverPlaceholder style={styles.bookCard.image} />}
             <div style={styles.bookCard.subtitle}>
@@ -21,7 +24,7 @@ const BookCard = ({ book,addToCart }) => {
           </Row>
           <Row>
             <div>US<strong>${book.price}</strong></div>
-            <TransactionButton disabled={outOfStock} onClick={() => addToCart(book)} defaultText="Add to cart" completedText="Added" errorText="Not added" />
+            <TransactionButton disabled={user? outOfStock : true } onClick={() => addToCart(book)} defaultText="Add to cart" completedText="Added" errorText="Not added" />
           </Row>
         </Card.Body>
       </Card>
