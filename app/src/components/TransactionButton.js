@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import CrossIcon from "../static/CrossIcon.js";
+import ErrorIcon from "../static/ErrorIcon.js";
 import TickIcon from "../static/TickIcon.js";
 import "../styles/transactionButton.css";
 
@@ -50,7 +50,7 @@ const TransactionButton = ({ onClick, defaultText, completedText, errorText, dis
               : ""
         }
       >
-        {state === BUTTON_STATE.error && <CrossIcon/>}
+        {state === BUTTON_STATE.error && <ErrorIcon color="#fff"/>}
         {
           state === BUTTON_STATE.loading ? "" :
             state === BUTTON_STATE.completed ? completedText :

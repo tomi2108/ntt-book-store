@@ -1,7 +1,8 @@
 
-const ShoppingCartIcon = () => {
+const ShoppingCartIcon = ({ onClick }) => {
   return (
     <svg
+      onClick={onClick}
       style={{
         width: "20px",
         height: "auto",

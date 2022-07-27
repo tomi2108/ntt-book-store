@@ -1,0 +1,9 @@
+#clickable{
+  border: none;
+  background:none;
+  cursor: pointer;
+}
+
+#clickable:hover{
+  opacity: 0.7;
+}

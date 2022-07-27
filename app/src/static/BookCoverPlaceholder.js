@@ -1,7 +1,7 @@
 
-const BookCoverPlaceholder = ({ className }) => {
+const BookCoverPlaceholder = ({ style }) => {
   return (
-    <img src={"https://datos.vigo.org/wp-content/uploads/2018/10/placeholder.jpg"} className={className}></img>
+    <img src={"https://datos.vigo.org/wp-content/uploads/2018/10/placeholder.jpg"} style={style}></img>
   );
 };
 

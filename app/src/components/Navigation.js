@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import ShoppingCartIcon from "../static/ShoppingCartIcon.js";
 import CartMenu from "./CartMenu.js";
 
 
-const Navigation = ({ cart }) => {
+const Navigation = ({ cart,cartActions }) => {
+  const [showCart, setShowCart] = useState(false);
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
@@ -18,11 +21,13 @@ const Navigation = ({ cart }) => {
             <Nav.Link variant="secondary">Sign In</Nav.Link>
           </Nav>
           <NavDropdown
-            title={<ShoppingCartIcon />}
+            show={showCart}
+
+            title={<ShoppingCartIcon onClick={() => setShowCart(!showCart)} />}
             id="nav-dropdown-dark-example"
             menuVariant="dark"
           >
-            <CartMenu cart={cart} />
+            <CartMenu setShowCart={() => setShowCart(true)} cart={cart} cartActions={cartActions}/>
           </NavDropdown>
         </Navbar.Collapse>
       </Container>

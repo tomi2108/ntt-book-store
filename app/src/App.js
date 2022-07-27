@@ -3,13 +3,13 @@ import { useCart } from "./hooks/useCart.js";
 import Products from "./pages/Products.js";
 
 const App = () => {
-  const [cart,{ addToCart }] = useCart();
+  const [cart,cartActions] = useCart();
 
   return (
     <div>
       <main style={{ backgroundColor: "#212529", height: "100%" }}>
-        <Navigation cart={cart} />
-        <Products addToCart={addToCart} />
+        <Navigation cart={cart} cartActions={cartActions} />
+        <Products cartActions={cartActions} />
       </main>
     </div>
   );

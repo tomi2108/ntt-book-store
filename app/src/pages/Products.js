@@ -3,7 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import BookCard from "../components/BookCard.js";
 import { getBooks } from "../services/books.js";
 
-const Products = ({ addToCart }) => {
+const Products = ({ cartActions }) => {
   const [books, setBooks] = useState(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Products = ({ addToCart }) => {
       <Row>
         {books &&
           books.sort((a,b) => a.Author.name.localeCompare(b.Author.name)).map((book) => {
-            return <BookCard key={book.id} book={book} addCart={addToCart} />;
+            return <BookCard key={book.id} book={book} addToCart={cartActions.addToCart} />;
           })}
       </Row>
     </Container>

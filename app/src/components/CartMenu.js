@@ -1,24 +1,18 @@
-import { Button, Container, NavDropdown } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import "../styles/shoppingCart.css";
+import styles from "../styles/styles.js";
+import CartItem from "./CartItem.js";
 
-const CartMenu = ({ cart }) => {
+const CartMenu = ({ cart,cartActions,setShowCart }) => {
+
   return (
-    <Container className="cart-dropdown" >
-      { cart.length>0?
-        cart.map((item) => {
-          return (
-            <NavDropdown.Item key={item.book.id}>
-              <div className="cart-item">
-                <p>
-                  {item.book.title} x{item.quantity}
-                </p>
-              </div>
-            </NavDropdown.Item>
-          );
-        }):
+    <Container style={styles.shoppingCart.menu} >
+      { cart.length > 0 ?
+        cart.map((item) => <CartItem setShowCart={setShowCart} cartActions={cartActions} item={item} key={item.book.id} />)
+        :
         <div>Your cart is empty</div>
       }
-      <Button size="sm" variant="secondary" className="check-out-button" >
+      <Button size="sm" variant="secondary" style={styles.shoppingCart.checkOutButton} >
           View Cart
       </Button>
 
