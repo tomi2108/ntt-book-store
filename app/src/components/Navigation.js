@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "../static/ShoppingCartIcon.js";
 import CartMenu from "./CartMenu.js";
 
 
-const Navigation = ({ cart,cartActions,user }) => {
+const Navigation = ({ cart,cartActions,user, logOut }) => {
   const [showCart, setShowCart] = useState(false);
 
   return (
@@ -23,6 +23,9 @@ const Navigation = ({ cart,cartActions,user }) => {
             </Nav.Link>
             <Nav.Link as={Link} to={user?`/profile/${user.username}`:"/login"} variant="secondary">{user? "Profile": "Log in"}</Nav.Link>
           </Nav>
+          <Nav.Item style={{ color:"white",margin:"0 5px" }}>
+            {user && `Logged in as ${user.username}`}
+          </Nav.Item>
           <NavDropdown
             show={user? showCart : false}
             title={<ShoppingCartIcon onClick={() => setShowCart(!showCart)} />}
@@ -32,6 +35,9 @@ const Navigation = ({ cart,cartActions,user }) => {
             <CartMenu setShowCart={() => setShowCart(true)} cart={cart} cartActions={cartActions}/>
           </NavDropdown>
         </Navbar.Collapse>
+        {user && <Button onClick={logOut} size="sm" variant="secondary" style={{ marginLeft: "auto" }}>
+          Log out
+        </Button>}
       </Container>
     </Navbar>
   );

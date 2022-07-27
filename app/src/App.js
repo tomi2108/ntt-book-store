@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { Navigate, Route, Routes, useMatch } from "react-router-dom";
 import Navigation from "./components/Navigation.js";
 import { useCart } from "./hooks/useCart.js";
+import { useUser } from "./hooks/useUser.js";
 import BookDetails from "./pages/BookDetails.js";
 import Login from "./pages/Login.js";
 import Products from "./pages/Products.js";
@@ -9,17 +11,24 @@ import Search from "./pages/Search.js";
 
 
 const App = () => {
-  const [cart,cartActions] = useCart();
-  const user = true;
-  const id = useMatch("id");
 
+  const [user,{ logIn ,logOut, getUser  }] = useUser();
+
+  useEffect(() => {
+    getUser();
+  }
+  , []);
+
+
+  const [cart,cartActions] = useCart();
+  const id = useMatch("id");
 
   return (
     <div>
-      <Navigation user={user} cart={cart} cartActions={cartActions} />
+      <Navigation user={user} cart={cart} cartActions={cartActions} logOut={logOut} />
       <main style={{ backgroundColor: "#212529", minHeight: "100vh" }}>
         <Routes>
-          <Route path="/login" element={user? <Navigate to="/"/> : <Login />}/>
+          <Route path="/login" element={user? <Navigate to="/"/> : <Login logIn={logIn} />}/>
           <Route path="/search" element={<Search />}/>
           <Route path="/profile/:username" element={<Profile />}/>
           <Route path="/book/:id" element={<BookDetails user={user} addToCart={cartActions.addToCart} id={id} />}/>

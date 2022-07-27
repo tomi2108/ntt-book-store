@@ -10,7 +10,6 @@ const BookDetails = ({ user,addToCart }) => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [outOfStock,setOutOfStock] = useState(false);
-  console.log(outOfStock);
   useEffect(() => {
     getBookById(id).then((bookData) => {
       setBook(bookData);

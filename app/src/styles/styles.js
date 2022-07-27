@@ -70,6 +70,35 @@ const styles = {
       height: "550px",
       margin: "auto"
     },
+  },
+  login:{
+    container:{ display:"flex",
+      flexDirection:"column",
+      width:"100%",
+      color: "white",
+      justifyContent:"center",
+      alignItems:"center"
+    },
+    form:{
+      backgroundColor:"#202124",
+      padding:"30px",
+      borderRadius:"10%",
+      width:"50%",
+      minWidth:"340px"
+    }
+  },
+  notification:(notification) => {
+    return {
+      visibility:notification?"":"hidden",
+      color:"rgb(245, 106, 106)",
+      border:"2px rgb(245, 106, 106) solid",
+      padding:"5px 10px",
+      borderRadius:"5%",
+      margin:"10px"
+    };
+  },
+  form:{
+    input:{ backgroundColor:"#202124",color:"white" }
   }
 };
 
