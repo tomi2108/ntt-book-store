@@ -1,6 +1,6 @@
 const users = [
-  { username: "John", password: "password", booksBoughtIds: [],dateOfBirth: "2000-01-01" },
-  { username: "Mike", password: "secret", booksBoughtIds: [],dateOfBirth: "2001-07-01" },
+  { username: "John", password: "password", booksBoughtIds: [],dateOfBirth: "2000-01-01",cart:[] },
+  { username: "Mike", password: "secret", booksBoughtIds: [],dateOfBirth: "2001-07-01",cart:[] },
 ];
 const books = [
   {

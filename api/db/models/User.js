@@ -25,7 +25,12 @@ const User = sequelize.define("User", {
   dateOfBirth: {
     type: DataTypes.DATE,
     allowNull: false,
+  },
+  cart: {
+    type: DataTypes.JSON,
+    allowNull: true,
   }
+
 });
 
 module.exports = User;

@@ -25,5 +25,14 @@ const createUser = async (user) => {
 
 };
 
+const updateUserCart = async (username,newCart) => {
+  const userUpdated = await User.update({ cart: newCart },{ where: { username } });
+  if(userUpdated){
+    return userUpdated;
+  }else{
+    throw new Error("User not found");
+  }
+};
 
-module.exports = { getUser,createUser };
+
+module.exports = { getUser,createUser,updateUserCart };

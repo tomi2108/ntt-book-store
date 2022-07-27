@@ -13,14 +13,12 @@ import Search from "./pages/Search.js";
 const App = () => {
 
   const [user,{ logIn ,logOut, getUser  }] = useUser();
-
   useEffect(() => {
     getUser();
   }
   , []);
 
-
-  const [cart,cartActions] = useCart();
+  const [cart,cartActions] = useCart(user);
   const id = useMatch("id");
 
   return (

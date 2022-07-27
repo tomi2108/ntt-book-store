@@ -20,3 +20,12 @@ export const createUser = async (user) => {
     throw new Error(err.response.data.message);
   }
 };
+
+export const updateCart = async (user,newCart) => {
+  try {
+    const res = await axios.put(`${url}/${user.username}/cart`,{ newCart });
+    return res.data;
+  } catch (err) {
+    throw new Error(err.response.data.message);
+  }
+};
