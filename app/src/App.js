@@ -6,7 +6,7 @@ import { useUser } from "./hooks/useUser.js";
 import BookDetails from "./pages/BookDetails.js";
 import Login from "./pages/Login.js";
 import Products from "./pages/Products.js";
-import Profile from "./pages/Profile.js";
+import Publish from "./pages/Publish.js";
 import Search from "./pages/Search.js";
 
 
@@ -28,7 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/login" element={user? <Navigate to="/"/> : <Login logIn={logIn} />}/>
           <Route path="/search" element={<Search user={user} addToCart={cartActions.addToCart} />}/>
-          <Route path="/profile/:username" element={<Profile />}/>
+          <Route path="/publish" element={<Publish />}/>
           <Route path="/book/:id" element={<BookDetails user={user} addToCart={cartActions.addToCart} id={id} />}/>
           <Route path="/" element={<Products user={user} cartActions={cartActions} />}/>
         </Routes>

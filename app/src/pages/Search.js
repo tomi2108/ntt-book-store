@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Table } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import BookTableRow from "../components/BookTableRow.js";
 import Clickable from "../components/Clickable.js";
-import TransactionButton from "../components/TransactionButton.js";
 import { useField } from "../hooks/useField.js";
 import { useSort } from "../hooks/useSort.js";
 import { getBooks } from "../services/books.js";
@@ -14,9 +13,6 @@ import styles from "../styles/styles.js";
 const Search = ({ user,addToCart }) => {
   const searchInput = useField("text");
   const { sortFunc, sortByTitle, sortByAuthor, sortByPrice, sortValue,sortOrder } = useSort();
-  const navigate = useNavigate();
-
-
 
   const [books, setBooks] = useState(null);
   const booksToMap = books?.filter((book) => book.title.toLowerCase().includes(searchInput.value.toLowerCase()));
@@ -81,23 +77,7 @@ const Search = ({ user,addToCart }) => {
           .map((book) => {
             const  outOfStock = book.copiesInStock === 0;
             return (
-              <tr
-                style={{ cursor:"pointer" }}
-                onClick={() => navigate(`/book/${book.id}`)}
-                key={book.id}>
-                <td>{book.title}</td>
-                <td>{book.Author.name}</td>
-                <td>US<strong>${book.price}</strong></td>
-                <td style={{ textAlign:"center" }}>
-                  <TransactionButton disabled={user? outOfStock : true }
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      return addToCart(book);
-                    }
-                    } defaultText="+" completedText="" errorText="" />
-                </td>
-
-              </tr>
+              <BookTableRow book={book} key={book.id} addToCart={addToCart} user={user} outOfStock={outOfStock} />
             );
           })
             }

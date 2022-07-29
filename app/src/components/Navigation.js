@@ -21,7 +21,7 @@ const Navigation = ({ cart,cartActions,user, logOut }) => {
             <Nav.Link as={Link} to="/search" variant="secondary">
             Search
             </Nav.Link>
-            <Nav.Link as={Link} to={user?`/profile/${user.username}`:"/login"} variant="secondary">{user? "Profile": "Log in"}</Nav.Link>
+            <Nav.Link as={Link} to={user?"/publish":"/login"} variant="secondary">{user? "Publish": "Log in"}</Nav.Link>
           </Nav>
           <Nav.Item style={{ color:"white",margin:"0 5px" }}>
             {user && `Logged in as ${user.username}`}
