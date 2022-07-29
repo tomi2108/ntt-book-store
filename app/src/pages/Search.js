@@ -81,13 +81,22 @@ const Search = ({ user,addToCart }) => {
           .map((book) => {
             const  outOfStock = book.copiesInStock === 0;
             return (
-              <tr style={{ cursor:"pointer" }} onClick={() => navigate(`/book/${book.id}`)} key={book.id}>
+              <tr
+                style={{ cursor:"pointer" }}
+                onClick={() => navigate(`/book/${book.id}`)}
+                key={book.id}>
                 <td>{book.title}</td>
                 <td>{book.Author.name}</td>
                 <td>US<strong>${book.price}</strong></td>
                 <td style={{ textAlign:"center" }}>
-                  <TransactionButton disabled={user? outOfStock : true } onClick={() => addToCart(book)} defaultText="Add to cart" completedText="Added" errorText="Not added" />
+                  <TransactionButton disabled={user? outOfStock : true }
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      return addToCart(book);
+                    }
+                    } defaultText="+" completedText="" errorText="" />
                 </td>
+
               </tr>
             );
           })

@@ -17,10 +17,10 @@ const TransactionButton = ({ onClick, defaultText, completedText, errorText, dis
   const [state, setState] = useState(BUTTON_STATE.ready);
   const [loading, setLoading] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setLoading(true);
     setState(BUTTON_STATE.loading);
-    onClick().then(() => {
+    onClick(e).then(() => {
       setState(BUTTON_STATE.completed);
       setTimeout(() => {
         setState(BUTTON_STATE.ready);
@@ -40,7 +40,8 @@ const TransactionButton = ({ onClick, defaultText, completedText, errorText, dis
     <Button {...otherProps} disabled={loading || disabled} variant={
       state === BUTTON_STATE.completed ? "success" :
         state === BUTTON_STATE.error ? "danger" : "primary"
-    } onClick={handleClick}>
+    } onClick={handleClick}
+    >
       <span
         className={
           state === BUTTON_STATE.loading

@@ -29,11 +29,11 @@ const LoginForm = ({ logIn,setNotification,sendToRegister }) => {
       <Form onSubmit={handleLogin}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
-          <Form.Control style={styles.form.input} type={usernameInput.type} onChange={usernameInput.onChange} value={usernameInput.value} />
+          <Form.Control style={styles.input} type={usernameInput.type} onChange={usernameInput.onChange} value={usernameInput.value} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Password</Form.Label>
-          <Form.Control style={styles.form.input} type={passwordInput.type} onChange={passwordInput.onChange} value={passwordInput.value} />
+          <Form.Control style={styles.input} type={passwordInput.type} onChange={passwordInput.onChange} value={passwordInput.value} />
         </Form.Group>
 
         <Button style={{ marginTop: "30px" }} type="submit">

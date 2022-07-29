@@ -22,10 +22,10 @@ const createUser = async (user) => {
     const newUser = await User.create(user);
     return newUser;
   }
-
 };
 
 const updateUserCart = async (username,newCart) => {
+  newCart?.forEach((item) => {delete item.book.Author;});
   const userUpdated = await User.update({ cart: newCart },{ where: { username } });
   if(userUpdated){
     return userUpdated;
