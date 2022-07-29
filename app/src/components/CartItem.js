@@ -39,7 +39,7 @@ const CartItem = ({ item,cartActions,setShowCart }) => {
           </Clickable>
           {item.quantity}
           <Clickable onClick={handleDecrease}>
-            <MinusIcon color="rgb(245, 106, 106)"/>
+            <MinusIcon width="20px" height="auto" color="rgb(245, 106, 106)"/>
           </Clickable>
         </div>
       </div>

@@ -1,11 +1,11 @@
 
-const MinusIcon = ({ color }) => (
+const MinusIcon = ({ color,width,height }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 42 42"
     style={{
-      width: "20px",
-      height: "auto",
+      width: width,
+      height: height,
       cursor: "pointer",
       enableBackground: "new 0 0 42 42",
     }}

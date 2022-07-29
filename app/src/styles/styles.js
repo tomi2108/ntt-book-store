@@ -97,9 +97,14 @@ const styles = {
       margin:"10px"
     };
   },
-  form:{
-    input:{ backgroundColor:"#202124",color:"white" }
-  }
+  input:{ backgroundColor:"#202124",color:"white" },
+  search:{ marginBlock:"10%",
+    width:"50%",
+    height:"2.5rem",
+    background:"inherit",
+    color:"white",
+    border:"none",
+    borderBottom: "3px solid #747474", }
 };
 
 export default styles;

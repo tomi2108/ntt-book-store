@@ -42,19 +42,19 @@ const RegisterForm = ({ sendToLogin,setNotification,logIn }) => {
       <Form onSubmit={handleRegister}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
-          <Form.Control style={styles.form.input} type={usernameInput.type} onChange={usernameInput.onChange} value={usernameInput.value} />
+          <Form.Control style={styles.input} type={usernameInput.type} onChange={usernameInput.onChange} value={usernameInput.value} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Date of birth</Form.Label>
-          <Form.Control style={styles.form.input} type={dateOfBirthInput.type} onChange={dateOfBirthInput.onChange} value={dateOfBirthInput.value} />
+          <Form.Control style={styles.input} type={dateOfBirthInput.type} onChange={dateOfBirthInput.onChange} value={dateOfBirthInput.value} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Password</Form.Label>
-          <Form.Control style={styles.form.input} type={passwordInput.type} onChange={passwordInput.onChange} value={passwordInput.value} />
+          <Form.Control style={styles.input} type={passwordInput.type} onChange={passwordInput.onChange} value={passwordInput.value} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Confirm password</Form.Label>
-          <Form.Control style={styles.form.input} type={confirmPasswordInput.type} onChange={confirmPasswordInput.onChange} value={confirmPasswordInput.value} />
+          <Form.Control style={styles.input} type={confirmPasswordInput.type} onChange={confirmPasswordInput.onChange} value={confirmPasswordInput.value} />
         </Form.Group>
         <Button style={{ marginTop: "30px" }} type="submit">
           Register

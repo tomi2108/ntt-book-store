@@ -27,7 +27,7 @@ const App = () => {
       <main style={{ backgroundColor: "#212529", minHeight: "100vh" }}>
         <Routes>
           <Route path="/login" element={user? <Navigate to="/"/> : <Login logIn={logIn} />}/>
-          <Route path="/search" element={<Search />}/>
+          <Route path="/search" element={<Search user={user} addToCart={cartActions.addToCart} />}/>
           <Route path="/profile/:username" element={<Profile />}/>
           <Route path="/book/:id" element={<BookDetails user={user} addToCart={cartActions.addToCart} id={id} />}/>
           <Route path="/" element={<Products user={user} cartActions={cartActions} />}/>
