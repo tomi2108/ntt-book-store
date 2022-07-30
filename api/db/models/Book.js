@@ -7,7 +7,10 @@ const Book = sequelize.define("Book", {
     primaryKey: true,
     autoIncrement: true,
   },
-
+  description: {
+    type: DataTypes.STRING(1000),
+    allowNull: true,
+  },
   title: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -30,7 +33,7 @@ const Book = sequelize.define("Book", {
   imageUrl: {
     type: DataTypes.STRING,
     allowNull: true,
-  }
+  },
 });
 
 module.exports = Book;
