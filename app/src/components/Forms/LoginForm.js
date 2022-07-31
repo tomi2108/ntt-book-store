@@ -1,8 +1,8 @@
+import { useField } from "hooks/useField.js";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useField } from "../hooks/useField.js";
-import { getUser } from "../services/users.js";
-import styles from "../styles/styles.js";
+import { getUser } from "services/users.js";
+import styles from "styles/styles.js";
 
 const LoginForm = ({ logIn,setNotification,sendToRegister }) => {
 

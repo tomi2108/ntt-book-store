@@ -1,8 +1,8 @@
+import TransactionButton from "components/Utils/TransactionButton.js";
 import { Card, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import BookCoverPlaceholder from "../static/BookCoverPlaceholder.js";
-import styles from "../styles/styles.js";
-import TransactionButton from "./TransactionButton.js";
+import BookCoverPlaceholder from "static/BookCoverPlaceholder.js";
+import styles from "styles/styles.js";
 
 const BookCard = ({ book,addToCart,user }) => {
 

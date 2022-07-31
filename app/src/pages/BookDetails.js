@@ -1,11 +1,11 @@
+import BookDescription from "components/Books/BookDescription.js";
+import BookRecommendations from "components/Books/BookRecommendations.js";
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import BookDescription from "../components/BookDescription.js";
-import BookRecommendations from "../components/BookRecommendations.js";
-import { getBookById } from "../services/books.js";
-import BookCoverPlaceholder from "../static/BookCoverPlaceholder.js";
-import styles from "../styles/styles.js";
+import { getBookById } from "services/books.js";
+import BookCoverPlaceholder from "static/BookCoverPlaceholder.js";
+import styles from "styles/styles.js";
 
 const BookDetails = ({ user, addToCart }) => {
   const { id } = useParams();

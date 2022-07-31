@@ -1,8 +1,8 @@
+import { useField } from "hooks/useField.js";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useField } from "../hooks/useField.js";
-import { createUser } from "../services/users.js";
-import styles from "../styles/styles.js";
+import { createUser } from "services/users.js";
+import styles from "styles/styles.js";
 
 const RegisterForm = ({ sendToLogin,setNotification,logIn }) => {
   const usernameInput = useField("text");

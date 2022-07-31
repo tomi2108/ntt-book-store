@@ -1,6 +1,5 @@
-import React from "react";
+import TransactionButton from "components/Utils/TransactionButton.js";
 import { useNavigate } from "react-router-dom";
-import TransactionButton from "./TransactionButton.js";
 
 const BookTableRow = ({ book, addToCart, user, outOfStock }) => {
   const navigate = useNavigate();

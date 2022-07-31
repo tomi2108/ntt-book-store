@@ -1,4 +1,4 @@
-import "../styles/clickable.css";
+import "styles/clickable.css";
 
 const Clickable = ({ onClick,children }) => {
   return (

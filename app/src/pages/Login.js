@@ -1,9 +1,9 @@
+import LoginForm from "components/Forms/LoginForm.js";
+import RegisterForm from "components/Forms/RegisterForm.js";
+import Notification from "components/Utils/Notification.js";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import LoginForm from "../components/LoginForm.js";
-import Notification from "../components/Notification.js";
-import RegisterForm from "../components/RegisterForm.js";
-import styles from "../styles/styles.js";
+import styles from "styles/styles.js";
 
 const Login = ({ logIn }) => {
   const [notification, setNotification] = useState(null);

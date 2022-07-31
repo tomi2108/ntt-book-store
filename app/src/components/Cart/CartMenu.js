@@ -1,8 +1,8 @@
+import CartItem from "components/Cart/CartItem.js";
 import { useEffect, useState } from "react";
 import { Button, Container, NavDropdown } from "react-bootstrap";
-import "../styles/shoppingCart.css";
-import styles from "../styles/styles.js";
-import CartItem from "./CartItem.js";
+import "styles/shoppingCart.css";
+import styles from "styles/styles.js";
 
 const CartMenu = ({ cart,cartActions,setShowCart }) => {
   const [cartTotal,setCartTotal] = useState(0);

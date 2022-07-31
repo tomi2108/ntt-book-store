@@ -1,6 +1,5 @@
-import React from "react";
-import styles from "../styles/styles.js";
-import TransactionButton from "./TransactionButton.js";
+import TransactionButton from "components/Utils/TransactionButton.js";
+import styles from "styles/styles.js";
 
 const BookDescription = ({ book,outOfStock,user,addToCart }) => {
   return (

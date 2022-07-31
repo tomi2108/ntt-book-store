@@ -1,7 +1,7 @@
+import BookTableRow from "components/Books/BookTableRow.js";
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { getBooks } from "../services/books.js";
-import BookTableRow from "./BookTableRow.js";
+import { getBooks } from "services/books.js";
 
 const BookRecommendations = ({ book, addToCart, user }) => {
   const [recommendations, setRecommendations] = useState([]);

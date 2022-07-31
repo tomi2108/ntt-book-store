@@ -1,4 +1,4 @@
-import styles from "../styles/styles.js";
+import styles from "styles/styles.js";
 
 const Notification = ({ notification }) => {
   return (

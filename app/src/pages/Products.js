@@ -1,7 +1,7 @@
+import BookCard from "components/Books/BookCard.js";
 import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
-import BookCard from "../components/BookCard.js";
-import { getBooks } from "../services/books.js";
+import { getBooks } from "services/books.js";
 
 const Products = ({ cartActions,user }) => {
   const [books, setBooks] = useState(null);

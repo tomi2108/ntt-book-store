@@ -1,9 +1,9 @@
+import Clickable from "components/Utils/Clickable.js";
 import { NavDropdown } from "react-bootstrap";
-import ErrorIcon from "../static/ErrorIcon.js";
-import MinusIcon from "../static/MinusIcon.js";
-import PlusIcon from "../static/PlusIcon.js";
-import styles from "../styles/styles.js";
-import Clickable from "./Clickable.js";
+import ErrorIcon from "static/ErrorIcon.js";
+import MinusIcon from "static/MinusIcon.js";
+import PlusIcon from "static/PlusIcon.js";
+import styles from "styles/styles.js";
 
 const CartItem = ({ item,cartActions,setShowCart }) => {
   const totalPrice = (Math.round(item.quantity*item.book.price*100)/100).toFixed(2);

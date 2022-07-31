@@ -1,8 +1,8 @@
+import CartMenu from "components/Cart/CartMenu.js";
 import { useState } from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ShoppingCartIcon from "../static/ShoppingCartIcon.js";
-import CartMenu from "./CartMenu.js";
+import ShoppingCartIcon from "static/ShoppingCartIcon.js";
 
 
 const Navigation = ({ cart,cartActions,user, logOut }) => {
