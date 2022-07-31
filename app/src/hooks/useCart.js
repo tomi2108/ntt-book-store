@@ -15,24 +15,31 @@ export const useCart = (user) => {
 
   const addToCart = async (book) => {
     const { copiesInStock } = await getBookById(book.id);
+
     if (copiesInStock > 0) {
+
       const itemInCart = cart.find((item) => item.book.id === book.id);
       if (!itemInCart) {
+
         const newCart = [...cart, { book, quantity: 1 }];
         setCart(newCart);
         await updateCart(user, newCart);
+
       } else {
+
         const newCart =  cart.map((item) =>
           item.book.id === book.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
+
         setCart(newCart);
         await updateCart(user, newCart);
+
       }
-    }else{
+    }else
       throw new Error("Book out of stock");
-    }};
+  };
 
   const removeFromCart = async (itemToRemove) => {
     const newCart = cart.filter((item) => item.book.id !== itemToRemove.book.id);

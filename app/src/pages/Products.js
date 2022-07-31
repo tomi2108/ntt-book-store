@@ -1,24 +1,26 @@
 import BookCard from "components/Books/BookCard.js";
-import { useEffect, useState } from "react";
+import { useBooks } from "hooks/useBooks.js";
 import { Container, Row } from "react-bootstrap";
-import { getBooks } from "services/books.js";
 
-const Products = ({ cartActions,user }) => {
-  const [books, setBooks] = useState(null);
+const Products = ({ cartActions, user }) => {
+  const [books] = useBooks();
 
-  useEffect(() => {
-    getBooks()
-      .then((books) => setBooks(books))
-      .catch((err) => console.log(err));
-  }, []);
+  const sortByAuthorName = (a, b) => a.Author.name.localeCompare(b.Author.name);
 
   return (
     <Container style={{ color: "white" }}>
       <Row>
         {books &&
-          books.sort((a,b) => a.Author.name.localeCompare(b.Author.name)).map((book) => {
-            return <BookCard user={user} key={book.id} book={book} addToCart={cartActions.addToCart} />;
-          })}
+          books
+            .sort(sortByAuthorName)
+            .map((book) => (
+              <BookCard
+                user={user}
+                key={book.id}
+                book={book}
+                addToCart={cartActions.addToCart}
+              />
+            ))}
       </Row>
     </Container>
   );

@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import { useState } from "react";
 
-export const useUser = () => {
-  const [user,setUser] = useState(null);
+export const useLocalStorage = () => {
+  const [user, setUser] = useState(null);
 
   const logIn = (user) => {
     setUser(user);
@@ -15,12 +15,13 @@ export const useUser = () => {
   };
 
   const getUser = () => {
-    const user = localStorage.getItem("BookstoreUser");
-    if(user){
-      setUser(JSON.parse(user));
+    const userLocal = localStorage.getItem("BookstoreUser");
+    if (userLocal) {
+      setUser(JSON.parse(userLocal));
+    } else {
+      setUser(null);
     }
   };
 
-
-  return [user,{ logIn ,logOut, getUser } ];
+  return [user, { logIn, logOut, getUser }];
 };
