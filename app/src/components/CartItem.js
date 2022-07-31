@@ -6,6 +6,7 @@ import styles from "../styles/styles.js";
 import Clickable from "./Clickable.js";
 
 const CartItem = ({ item,cartActions,setShowCart }) => {
+  const totalPrice = (Math.round(item.quantity*item.book.price*100)/100).toFixed(2);
 
   const handleRemove = () => {
     setShowCart();
@@ -41,6 +42,7 @@ const CartItem = ({ item,cartActions,setShowCart }) => {
           <Clickable onClick={handleDecrease}>
             <MinusIcon width="20px" height="auto" color="rgb(245, 106, 106)"/>
           </Clickable>
+          <span style={{ marginLeft:"3px" }}>US${totalPrice}</span>
         </div>
       </div>
     </NavDropdown.Item>

@@ -5,7 +5,9 @@ import TransactionButton from "./TransactionButton.js";
 const BookDescription = ({ book,outOfStock,user,addToCart }) => {
   return (
     <>
-      {book.description? book.description : <p>No description</p>}
+      <div style={{ marginBlock:"10px" }}>
+        {book.description? book.description : <p>No description</p>}
+      </div>
       <div>US<strong>${book.price}</strong></div>
       <div style={{ margin:"20px 0px" }}>
         {outOfStock? <span style={styles.bookCard.outOfStock}>Out of stock</span> : <span>{book.copiesInStock} in stock</span>}
