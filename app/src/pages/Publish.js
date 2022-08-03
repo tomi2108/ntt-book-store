@@ -1,14 +1,7 @@
 import { Container } from "react-bootstrap";
 
 const Publish = () => {
-
-  return (
-    <Container style={{ color:"white" }}>
-      Publish
-    </Container>
-  );
-
+  return <Container>Publish</Container>;
 };
-
 
 export default Publish;

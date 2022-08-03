@@ -1,15 +1,17 @@
+import { ThemeContext } from "App";
 import BookTableRow from "components/Books/BookTableRow.js";
 import Clickable from "components/Utils/Clickable.js";
 import { useBooks } from "hooks/useBooks.js";
 import { useField } from "hooks/useField.js";
 import { useSort } from "hooks/useSort.js";
+import { useContext } from "react";
 import { Container, Row, Table } from "react-bootstrap";
 import DownIcon from "static/DownIcon.js";
 import MinusIcon from "static/MinusIcon.js";
 import UpIcon from "static/UpIcon.js";
-import styles from "styles/styles.js";
 
 const Search = ({ user, addToCart }) => {
+  const { styles, theme } = useContext(ThemeContext);
   const searchInput = useField("text");
   const sort = useSort();
   const [books] = useBooks();
@@ -21,18 +23,18 @@ const Search = ({ user, addToCart }) => {
   const renderIcon = (value) =>
     sort.sortValue === value ? (
       sort.sortOrder === 1 ? (
-        <UpIcon color="white" />
+        <UpIcon color={styles.iconColor} />
       ) : sort.sortOrder === -1 ? (
-        <DownIcon color="white" />
+        <DownIcon color={styles.iconColor} />
       ) : (
-        <MinusIcon height="10px" width="20px" color="white" />
+        <MinusIcon height="10px" width="20px" color={styles.iconColor} />
       )
     ) : (
-      <MinusIcon height="10px" width="20px" color="white" />
+      <MinusIcon height="10px" width="20px" color={styles.iconColor} />
     );
 
   return (
-    <Container style={{ color: "white" }}>
+    <Container>
       <Row style={{ justifyContent: "center" }}>
         <input
           id="search"
@@ -44,7 +46,7 @@ const Search = ({ user, addToCart }) => {
         />
       </Row>
       <Row>
-        <Table variant="dark" bordered hover>
+        <Table variant={theme} bordered hover>
           <thead>
             <tr>
               <th>

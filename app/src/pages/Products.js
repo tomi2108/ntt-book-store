@@ -8,7 +8,7 @@ const Products = ({ cartActions, user }) => {
   const sortByAuthorName = (a, b) => a.Author.name.localeCompare(b.Author.name);
 
   return (
-    <Container style={{ color: "white" }}>
+    <Container>
       <Row>
         {books &&
           books

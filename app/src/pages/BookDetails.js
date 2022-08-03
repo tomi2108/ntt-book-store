@@ -1,13 +1,14 @@
+import { ThemeContext } from "App";
 import BookDescription from "components/Books/BookDescription.js";
 import BookRecommendations from "components/Books/BookRecommendations.js";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getBookById } from "services/books.js";
 import BookCoverPlaceholder from "static/BookCoverPlaceholder.js";
-import styles from "styles/styles.js";
 
 const BookDetails = ({ user, addToCart }) => {
+  const { styles } = useContext(ThemeContext);
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [outOfStock, setOutOfStock] = useState(false);
@@ -22,7 +23,7 @@ const BookDetails = ({ user, addToCart }) => {
   return (
     <>
       {book ? (
-        <Container style={{ color: "white" }}>
+        <Container>
           <Row>
             <Col>
               <h1>{book.title}</h1>
@@ -54,7 +55,7 @@ const BookDetails = ({ user, addToCart }) => {
           <Row></Row>
         </Container>
       ) : (
-        <div style={{ color: "white" }}>Loading...</div>
+        <div>Loading...</div>
       )}
     </>
   );

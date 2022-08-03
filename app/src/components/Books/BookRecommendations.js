@@ -1,10 +1,12 @@
+import { ThemeContext } from "App";
 import BookTableRow from "components/Books/BookTableRow.js";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { getBooks } from "services/books.js";
 
 const BookRecommendations = ({ book, addToCart, user }) => {
   const [recommendations, setRecommendations] = useState([]);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     getBooks()
@@ -21,7 +23,7 @@ const BookRecommendations = ({ book, addToCart, user }) => {
   return (
     <>
       <h5>Other books by {book.Author.name}</h5>
-      <Table variant="dark" bordered hover>
+      <Table variant={theme} bordered hover>
         <tbody>
           {recommendations &&
             recommendations.map((b) => {

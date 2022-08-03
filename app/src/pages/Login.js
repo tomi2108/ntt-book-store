@@ -1,12 +1,13 @@
+import { ThemeContext } from "App";
 import LoginForm from "components/Forms/LoginForm.js";
 import RegisterForm from "components/Forms/RegisterForm.js";
 import Notification from "components/Utils/Notification.js";
 import { useNotification } from "hooks/useNotification.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Container } from "react-bootstrap";
-import styles from "styles/styles.js";
 
 const Login = ({ logIn }) => {
+  const { styles } = useContext(ThemeContext);
   const [notification, setNotification] = useNotification(null);
   const [registered, setRegistered] = useState(true);
 

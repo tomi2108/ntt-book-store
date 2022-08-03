@@ -1,10 +1,13 @@
+import { ThemeContext } from "App";
 import { useField } from "hooks/useField.js";
+import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "services/users.js";
-import styles from "styles/styles.js";
 
 const RegisterForm = ({ logIn, sendToLogin, setNotification }) => {
+  const { styles } = useContext(ThemeContext);
+
   const usernameInput = useField("text");
   const passwordInput = useField("password");
   const confirmPasswordInput = useField("password");
