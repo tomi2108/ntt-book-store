@@ -1,7 +1,7 @@
 import Navigation from "components/Nav/Navigation.js";
 import { useCart } from "hooks/useCart.js";
-import { useLocalStorage } from "hooks/useLocalStorage.js";
 import { useTheme } from "hooks/useTheme.js";
+import { useUser } from "hooks/useUser.js";
 import BookDetails from "pages/BookDetails.js";
 import Login from "pages/Login.js";
 import Products from "pages/Products.js";
@@ -13,12 +13,12 @@ import { Navigate, Route, Routes, useMatch } from "react-router-dom";
 export const ThemeContext = createContext();
 
 const App = () => {
-  const { theme, styles, toggleTheme } = useTheme();
-
-  const [user, { logIn, logOut, getUser }] = useLocalStorage();
+  const [user, { logIn, logOut, getUser }] = useUser();
   useEffect(() => {
     getUser();
   }, []);
+
+  const { theme, styles, toggleTheme } = useTheme();
 
   const [cart, cartActions] = useCart(user);
   const id = useMatch("id");

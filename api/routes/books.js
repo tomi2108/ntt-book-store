@@ -1,5 +1,10 @@
 const express = require("express");
-const { addBook, getAllBooks, getBookById } = require("../controllers/books");
+const {
+  addBook,
+  getAllBooks,
+  getBookById,
+  addComment,
+} = require("../controllers/books");
 
 const router = express.Router();
 
@@ -21,6 +26,19 @@ router.get("/:id", (req, res) => {
 
   getBookById(id)
     .then((book) => res.json(book))
+    .catch((err) => res.status(400).json(err.message));
+});
+
+router.post("/:id/comment", (req, res) => {
+  const { id } = req.params;
+  const { text, userId } = req.body;
+  const comment = {
+    text,
+    bookId: id,
+    userId,
+  };
+  addComment(comment)
+    .then((newComment) => res.status(200).json(newComment))
     .catch((err) => res.status(400).json(err.message));
 });
 

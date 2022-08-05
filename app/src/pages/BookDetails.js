@@ -52,7 +52,19 @@ const BookDetails = ({ user, addToCart }) => {
               />
             </Col>
           </Row>
-          <Row></Row>
+          <Row>
+            <Col>
+              <h2>Comments</h2>
+              {book.comments.map((comment) => (
+                <div key={comment.id}>
+                  <p>
+                    {comment.User.username} - {comment.createdAt}
+                  </p>
+                  <p>{comment.text}</p>
+                </div>
+              ))}
+            </Col>
+          </Row>
         </Container>
       ) : (
         <div>Loading...</div>

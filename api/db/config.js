@@ -18,7 +18,4 @@ const developmentConfig = {
 };
 
 module.exports =
-  process.env.NODE_ENV === "production"
-    ? productionConfig
-    : developmentConfig;
-
+  process.env.NODE_ENV === "production" ? productionConfig : developmentConfig;
