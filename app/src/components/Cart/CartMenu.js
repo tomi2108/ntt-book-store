@@ -24,30 +24,35 @@ const CartMenu = ({ setShowCart }) => {
   );
 
   return (
-    <Container style={styles.shoppingCart.menu}>
-      {cart.length > 0 ? (
-        cart.length < 6 ? (
-          cart.map((item) => renderCartItem(item))
-        ) : (
-          <>
-            {cart.slice(0, 5).map((item) => renderCartItem(item))}
-            <NavDropdown.Item>...</NavDropdown.Item>
-          </>
-        )
-      ) : (
-        <div>Your cart is empty</div>
-      )}
-      <Container>
-        <div>{cart.length > 0 ? <span>Total: US${cartTotal}</span> : null}</div>
-      </Container>
-      <Button
-        size="sm"
-        variant="secondary"
-        style={styles.shoppingCart.checkOutButton}
-      >
+    <>
+      {cart && (
+        <Container style={styles.shoppingCart.menu}>
+          {cart.length > 0 ? (
+            cart.length < 6 ? (
+              cart.map((item) => renderCartItem(item))
+            ) : (
+              <>
+                {cart.slice(0, 5).map((item) => renderCartItem(item))}
+                <NavDropdown.Item>...</NavDropdown.Item>
+              </>
+            )
+          ) : (
+            <div>Your cart is empty</div>
+          )}
+          <Container>
+            <div>{cart.length > 0 ? <span>Total: US${cartTotal}</span> : null}</div>
+          </Container>
+          <Button
+            size="sm"
+            variant="secondary"
+            style={styles.shoppingCart.checkOutButton}
+          >
         View Cart
-      </Button>
-    </Container>
+          </Button>
+        </Container>
+      )
+      }
+    </>
   );
 };
 

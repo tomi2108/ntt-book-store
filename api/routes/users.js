@@ -40,9 +40,9 @@ router.put("/:username/cart", (req, res) => {
 router.get("/:username/cart", (req, res) => {
   const { username } = req.params;
   getCart(username)
-    .then((user) => {
-      user
-        ? res.json(user)
+    .then((cart) => {
+      cart
+        ? res.json(cart)
         : res.status(400).json({ message: "Error updating cart" });
     })
     .catch((err) => {

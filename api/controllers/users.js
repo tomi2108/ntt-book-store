@@ -23,7 +23,7 @@ const createUser = async (user) => {
     throw new Error("User already registered");
   } else {
     const encryptedPassword = await bcrypt.hash(user.password, 10);
-    const newUser = await User.create({ ...user, password: encryptedPassword });
+    const newUser = await User.create({ ...user, password: encryptedPassword,cart:[] });
     return newUser;
   }
 };
