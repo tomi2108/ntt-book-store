@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node index.js",
+    "start": "cross-env NODE_ENV=production node db/scripts/reset-development-db.js && cross-env NODE_ENV=production node index.js",
     "test": "npm run resetDevDb && cross-env NODE_ENV=test jest --verbose",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build": "rm -r build && cd ../app && npm run build && cp -r build ../api && rm -r build",
@@ -20,6 +20,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.21.3"
   },

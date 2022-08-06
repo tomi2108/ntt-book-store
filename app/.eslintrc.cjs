@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: "module",
   },
-  plugins: ["react", "jest-dom"],
+  plugins: ["react"],
   rules: {
     indent: ["error", 2],
     quotes: ["error", "double"],

@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const productionConfig = {
   dialect: "mysql",
   database: process.env.MYSQL_PRODUCTION_DATABASE,
