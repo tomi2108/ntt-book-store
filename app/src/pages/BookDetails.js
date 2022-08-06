@@ -58,7 +58,7 @@ const BookDetails = () => {
           </Row>
         </Container>
       ) : (
-        <div>Loading...</div>
+        <Container>Loading...</Container>
       )}
     </>
   );

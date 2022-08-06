@@ -18,10 +18,6 @@ const User = sequelize.define("User", {
     allowNull: false,
   },
 
-  booksBoughtIds: {
-    type: DataTypes.JSON,
-    allowNull: true,
-  },
   dateOfBirth: {
     type: DataTypes.DATE,
     allowNull: false,

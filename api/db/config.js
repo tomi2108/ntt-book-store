@@ -6,7 +6,7 @@ const productionConfig = {
   username: process.env.MYSQL_PRODUCTION_USER,
   password: process.env.MYSQL_PRODUCTION_PASSWORD,
   host: process.env.MYSQL_PRODUCTION_HOST,
-  logging: false,
+  logging: console.log,
 };
 
 const developmentConfig = {
