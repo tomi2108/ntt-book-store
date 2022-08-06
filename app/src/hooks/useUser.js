@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import { useState } from "react";
+import { getCart } from "services/users.js";
 
 export const useUser = () => {
   const [user, setUser] = useState(null);
@@ -14,10 +15,12 @@ export const useUser = () => {
     localStorage.removeItem("BookstoreUser");
   };
 
-  const getUser = () => {
+  const getUser = async () => {
     const userLocal = localStorage.getItem("BookstoreUser");
-    if (userLocal) {
-      setUser(JSON.parse(userLocal));
+    const user = userLocal ? JSON.parse(userLocal) : null;
+    if (user) {
+      const cart = await getCart(user);
+      setUser({ ...user, cart });
     } else {
       setUser(null);
     }

@@ -1,5 +1,10 @@
 const express = require("express");
-const { getUser, createUser, updateUserCart } = require("../controllers/users");
+const {
+  getUser,
+  createUser,
+  updateUserCart,
+  getCart,
+} = require("../controllers/users");
 
 const router = express.Router();
 
@@ -22,6 +27,19 @@ router.put("/:username/cart", (req, res) => {
   const { username } = req.params;
   const { newCart } = req.body;
   updateUserCart(username, newCart)
+    .then((user) => {
+      user
+        ? res.json(user)
+        : res.status(400).json({ message: "Error updating cart" });
+    })
+    .catch((err) => {
+      res.status(404).json({ message: err.message });
+    });
+});
+
+router.get("/:username/cart", (req, res) => {
+  const { username } = req.params;
+  getCart(username)
     .then((user) => {
       user
         ? res.json(user)

@@ -39,3 +39,5 @@ Se corren dentro de las carpetas app y api con el comando:
 ## Info
 
 La aplicación está pensada para ser empaquetada desde la api que luego usa la app como interfaz.
+
+Url app deployada : https://ntt-bookstore.herokuapp.com/

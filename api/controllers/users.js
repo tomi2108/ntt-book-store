@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const getUser = async (username, password) => {
   const user = await User.findOne({ where: { username } });
   if (user) {
-    console.log(user.password, password);
     if (await bcrypt.compare(password, user.password)) {
       delete user.dataValues.password;
       return user;
@@ -32,6 +31,7 @@ const createUser = async (user) => {
 const updateUserCart = async (username, newCart) => {
   newCart?.forEach((item) => {
     delete item.book.Author;
+    delete item.book.description;
   });
   const userUpdated = await User.update(
     { cart: newCart },
@@ -44,4 +44,13 @@ const updateUserCart = async (username, newCart) => {
   }
 };
 
-module.exports = { getUser, createUser, updateUserCart };
+const getCart = async (username) => {
+  const user = await User.findOne({ where: { username } });
+  if (user) {
+    return user.cart;
+  } else {
+    throw new Error("User not found");
+  }
+};
+
+module.exports = { getUser, createUser, updateUserCart, getCart };

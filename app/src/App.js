@@ -24,7 +24,6 @@ const App = () => {
   const [cart, cartActions] = useCart(user);
 
   const id = useMatch("id");
-
   return (
     <AppContext.Provider
       value={{
