@@ -1,7 +1,11 @@
+import { AppContext } from "App";
+import { useContext } from "react";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const NavLinks = ({ user }) => {
+const NavLinks = () => {
+  const { user } = useContext(AppContext);
+
   return (
     <Nav>
       <Nav.Link as={Link} to="/">

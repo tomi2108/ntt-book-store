@@ -1,4 +1,4 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import CartMenu from "components/Cart/CartMenu.js";
 import NavLinks from "components/Nav/NavLinks.js";
 import Clickable from "components/Utils/Clickable.js";
@@ -8,8 +8,9 @@ import MoonIcon from "static/MoonIcon.js";
 import ShoppingCartIcon from "static/ShoppingCartIcon.js";
 import SunIcon from "static/SunIcon.js";
 
-const Navigation = ({ cart, cartActions, user, logOut }) => {
-  const { theme, styles, toggleTheme } = useContext(ThemeContext);
+const Navigation = () => {
+  const { theme, styles, toggleTheme, user, userActions } =
+    useContext(AppContext);
   const [showCart, setShowCart] = useState(false);
 
   return (
@@ -18,7 +19,7 @@ const Navigation = ({ cart, cartActions, user, logOut }) => {
         <Navbar.Brand>LOGO</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
-          <NavLinks user={user} />
+          <NavLinks />
           <Nav.Item style={styles.nav.item}>
             {user && `Logged in as ${user.username}`}
           </Nav.Item>
@@ -33,16 +34,12 @@ const Navigation = ({ cart, cartActions, user, logOut }) => {
             id="nav-dropdown-dark-example"
             menuVariant={theme}
           >
-            <CartMenu
-              setShowCart={() => setShowCart(true)}
-              cart={cart}
-              cartActions={cartActions}
-            />
+            <CartMenu setShowCart={() => setShowCart(true)} />
           </NavDropdown>
         </Navbar.Collapse>
         {user && (
           <Button
-            onClick={logOut}
+            onClick={userActions.logOut}
             size="sm"
             variant="secondary"
             style={{ marginLeft: "auto" }}

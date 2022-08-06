@@ -1,8 +1,8 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import { useContext } from "react";
 
 const Notification = ({ notification }) => {
-  const { styles } = useContext(ThemeContext);
+  const { styles } = useContext(AppContext);
   return (
     <span style={styles.notification(notification)}>
       {notification || "placeholder"}

@@ -1,12 +1,12 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import { useField } from "hooks/useField.js";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { getUser } from "services/users.js";
 
-const LoginForm = ({ logIn, setNotification, sendToRegister }) => {
-  const { styles } = useContext(ThemeContext);
+const LoginForm = ({ setNotification, sendToRegister }) => {
+  const { styles, userActions } = useContext(AppContext);
 
   const usernameInput = useField("text");
   const passwordInput = useField("password");
@@ -20,7 +20,7 @@ const LoginForm = ({ logIn, setNotification, sendToRegister }) => {
 
     getUser(usernameInput.value, passwordInput.value)
       .then((user) => {
-        logIn(user);
+        userActions.logIn(user);
         navigate("/");
       })
       .catch((error) => {

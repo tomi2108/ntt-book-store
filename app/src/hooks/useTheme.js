@@ -4,7 +4,7 @@ import { styledtheme } from "styles/styles.js";
 
 export const useTheme = () => {
   const [theme, setTheme] = useState("dark");
-  const [styles, setStyle] = useState(styledtheme("dark"));
+  const [styles, setStyle] = useState(styledtheme(theme));
 
   useEffect(() => {
     localStorage.getItem("BookstoreTheme")

@@ -1,4 +1,4 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import BookTableRow from "components/Books/BookTableRow.js";
 import Clickable from "components/Utils/Clickable.js";
 import { useBooks } from "hooks/useBooks.js";
@@ -10,8 +10,8 @@ import DownIcon from "static/DownIcon.js";
 import MinusIcon from "static/MinusIcon.js";
 import UpIcon from "static/UpIcon.js";
 
-const Search = ({ user, addToCart }) => {
-  const { styles, theme } = useContext(ThemeContext);
+const Search = () => {
+  const { styles, theme } = useContext(AppContext);
   const searchInput = useField("text");
   const sort = useSort();
   const [books] = useBooks();
@@ -78,8 +78,6 @@ const Search = ({ user, addToCart }) => {
                   <BookTableRow
                     book={book}
                     key={book.id}
-                    addToCart={addToCart}
-                    user={user}
                     outOfStock={outOfStock}
                   />
                 );

@@ -1,8 +1,13 @@
+import { AppContext } from "App";
 import TransactionButton from "components/Utils/TransactionButton.js";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-const BookTableRow = ({ book, addToCart, user, outOfStock }) => {
+const BookTableRow = ({ book, outOfStock }) => {
+  const { user, cartActions } = useContext(AppContext);
+
   const navigate = useNavigate();
+
   return (
     <tr
       style={{ cursor: "pointer" }}
@@ -19,7 +24,7 @@ const BookTableRow = ({ book, addToCart, user, outOfStock }) => {
           disabled={user ? outOfStock : true}
           onClick={(e) => {
             e.stopPropagation();
-            return addToCart(book);
+            return cartActions.addToCart(book);
           }}
           defaultText="+"
           completedText=""

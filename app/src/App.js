@@ -10,57 +10,49 @@ import Search from "pages/Search.js";
 import { createContext, useEffect } from "react";
 import { Navigate, Route, Routes, useMatch } from "react-router-dom";
 
-export const ThemeContext = createContext();
+export const AppContext = createContext();
 
 const App = () => {
-  const [user, { logIn, logOut, getUser }] = useUser();
+  const [user, userActions] = useUser();
+
   useEffect(() => {
-    getUser();
+    userActions.getUser();
   }, []);
 
   const { theme, styles, toggleTheme } = useTheme();
 
   const [cart, cartActions] = useCart(user);
+
   const id = useMatch("id");
 
   return (
-    <ThemeContext.Provider value={{ theme, styles, toggleTheme }}>
-      <div className="App" id={theme}>
-        <Navigation
-          user={user}
-          cart={cart}
-          cartActions={cartActions}
-          logOut={logOut}
-        />
+    <AppContext.Provider
+      value={{
+        theme,
+        styles,
+        toggleTheme,
+        user,
+        userActions,
+        cart,
+        cartActions,
+      }}
+    >
+      <div className="App">
+        <Navigation />
         <main style={styles.main}>
           <Routes>
             <Route
               path="/login"
-              element={user ? <Navigate to="/" /> : <Login logIn={logIn} />}
+              element={user ? <Navigate to="/" /> : <Login />}
             />
-            <Route
-              path="/search"
-              element={<Search user={user} addToCart={cartActions.addToCart} />}
-            />
+            <Route path="/search" element={<Search />} />
             <Route path="/publish" element={<Publish />} />
-            <Route
-              path="/book/:id"
-              element={
-                <BookDetails
-                  user={user}
-                  addToCart={cartActions.addToCart}
-                  id={id}
-                />
-              }
-            />
-            <Route
-              path="/"
-              element={<Products user={user} cartActions={cartActions} />}
-            />
+            <Route path="/book/:id" element={<BookDetails id={id} />} />
+            <Route path="/" element={<Products />} />
           </Routes>
         </main>
       </div>
-    </ThemeContext.Provider>
+    </AppContext.Provider>
   );
 };
 
