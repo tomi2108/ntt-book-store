@@ -6,6 +6,7 @@ const getUser = async (username, password) => {
   if (user) {
     console.log(user.password, password);
     if (await bcrypt.compare(password, user.password)) {
+      delete user.dataValues.password;
       return user;
     } else {
       return null;

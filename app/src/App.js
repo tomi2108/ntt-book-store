@@ -1,7 +1,7 @@
 import Navigation from "components/Nav/Navigation.js";
 import { useCart } from "hooks/useCart.js";
-import { useLocalStorage } from "hooks/useLocalStorage.js";
 import { useTheme } from "hooks/useTheme.js";
+import { useUser } from "hooks/useUser.js";
 import BookDetails from "pages/BookDetails.js";
 import Login from "pages/Login.js";
 import Products from "pages/Products.js";
@@ -13,13 +13,13 @@ import { Navigate, Route, Routes, useMatch } from "react-router-dom";
 export const AppContext = createContext();
 
 const App = () => {
-  const [user, userActions] = useLocalStorage();
-
-  const { theme, styles, toggleTheme } = useTheme();
+  const [user, userActions] = useUser();
 
   useEffect(() => {
     userActions.getUser();
   }, []);
+
+  const { theme, styles, toggleTheme } = useTheme();
 
   const [cart, cartActions] = useCart(user);
 
