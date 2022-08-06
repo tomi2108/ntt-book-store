@@ -18,5 +18,6 @@ api.use(express.json());
 
 api.use("/api/books", bookRouter);
 api.use("/api/users", userRouter);
+api.get("/health", (req, res) => res.send("OK"));
 
 module.exports = api;

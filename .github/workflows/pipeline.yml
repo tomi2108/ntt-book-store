@@ -22,23 +22,36 @@ jobs:
         run: cd api && npm run eslint && cd ../app && npm run eslint
       - name: build
         run: cd api && npm run build
-  tests:
+  test_and_deploy:
     runs-on: ubuntu-20.04
     env:
       MYSQL_DEVELOPMENT_USER: root
-      MYSQL_DEVELOPMENT_PASSWORD: ${{ secrets.RootPassword }}
-      MYSQL_DEVELOPMENT_HOST: localhost
+      MYSQL_DEVELOPMENT_PASSWORD: ${{ secrets.ROOTPASSWORD }}
+      MYSQL_DEVELOPMENT_HOST: 127.0.0.1
       MYSQL_DEVELOPMENT_DATABASE: test
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
-      - name: npm install
-        run: cd api && npm install && cd ../app && npm install
-      - uses: mirromutth/mysql-action@v1.1
         with:
-          mysql root password: ${{ secrets.RootPassword }}
-          mysql database: test
+          node-version: "16"
+      - name: npm install
+        run: npm run prepare
+      - uses: shogo82148/actions-setup-mysql@v1
+        with:
+          mysql-version: '8.0'
+          root-password: ${{ secrets.ROOTPASSWORD }}
+      - name: Create Db
+        run: mysql -u${{ env.MYSQL_DEVELOPMENT_USER }} -p${{ secrets.ROOTPASSWORD }} -h${{ env.MYSQL_DEVELOPMENT_HOST }} -e 'CREATE DATABASE IF NOT EXISTS ${{ env.MYSQL_DEVELOPMENT_DATABASE }};'
       - name: api testing
         run: cd api && npm run test
       - name: app testing
         run: cd app && npm run test
+      - name: Heroku deploy
+        if: ${{ github.event_name == 'push' }}
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP }}
+          heroku_email: ${{ secrets.HEROKU_API_EMAIL }}
+          healthcheck: "https://${{secrets.HEROKU_APP}}.herokuapp.com/health"
+          rollbackonhealthcheckfailed: true

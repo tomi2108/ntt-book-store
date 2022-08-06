@@ -277,9 +277,12 @@ const hashPasswords = async () => {
   });
 };
 
+
+
 async function resetDb() {
   await hashPasswords();
   await sequelize.authenticate();
+  console.log("syncing db...");
   await Book.sync({ force: true });
   await Author.sync({ force: true });
   await User.sync({ force: true });
