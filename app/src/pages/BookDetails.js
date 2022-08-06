@@ -1,4 +1,4 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import BookDescription from "components/Books/BookDescription.js";
 import BookRecommendations from "components/Books/BookRecommendations.js";
 import { useContext, useEffect, useState } from "react";
@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 import { getBookById } from "services/books.js";
 import BookCoverPlaceholder from "static/BookCoverPlaceholder.js";
 
-const BookDetails = ({ user, addToCart }) => {
-  const { styles } = useContext(ThemeContext);
+const BookDetails = () => {
+  const { styles } = useContext(AppContext);
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [outOfStock, setOutOfStock] = useState(false);
@@ -39,17 +39,8 @@ const BookDetails = ({ user, addToCart }) => {
               )}
             </Col>
             <Col>
-              <BookDescription
-                user={user}
-                book={book}
-                outOfStock={outOfStock}
-                addToCart={addToCart}
-              />
-              <BookRecommendations
-                user={user}
-                book={book}
-                addToCart={addToCart}
-              />
+              <BookDescription book={book} outOfStock={outOfStock} />
+              <BookRecommendations book={book} />
             </Col>
           </Row>
           <Row></Row>

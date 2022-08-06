@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { styledtheme } from "styles/styles.js";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState("light");
-  const [styles, setStyle] = useState(styledtheme("light"));
+  const [theme, setTheme] = useState("dark");
+  const [styles, setStyle] = useState(styledtheme(theme));
 
   useEffect(() => setStyle(styledtheme(theme)), [theme]);
 

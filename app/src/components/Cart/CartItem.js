@@ -1,4 +1,4 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import Clickable from "components/Utils/Clickable.js";
 import { useContext } from "react";
 import { NavDropdown } from "react-bootstrap";
@@ -6,8 +6,8 @@ import ErrorIcon from "static/ErrorIcon.js";
 import MinusIcon from "static/MinusIcon.js";
 import PlusIcon from "static/PlusIcon.js";
 
-const CartItem = ({ item, cartActions, setShowCart }) => {
-  const { styles } = useContext(ThemeContext);
+const CartItem = ({ item, setShowCart }) => {
+  const { styles, cartActions } = useContext(AppContext);
 
   const totalPrice = (
     Math.round(item.quantity * item.book.price * 100) / 100

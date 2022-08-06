@@ -1,12 +1,12 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import TransactionButton from "components/Utils/TransactionButton.js";
 import { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import BookCoverPlaceholder from "static/BookCoverPlaceholder.js";
 
-const BookCard = ({ book, addToCart, user }) => {
-  const { styles } = useContext(ThemeContext);
+const BookCard = ({ book }) => {
+  const { styles, user, cartActions } = useContext(AppContext);
 
   const outOfStock = book.copiesInStock === 0;
 
@@ -49,7 +49,7 @@ const BookCard = ({ book, addToCart, user }) => {
             </div>
             <TransactionButton
               disabled={user ? outOfStock : true}
-              onClick={() => addToCart(book)}
+              onClick={() => cartActions.addToCart(book)}
               defaultText="Add to cart"
               completedText="Added"
               errorText="Not added"

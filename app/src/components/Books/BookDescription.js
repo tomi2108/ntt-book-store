@@ -1,9 +1,9 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import TransactionButton from "components/Utils/TransactionButton.js";
 import { useContext } from "react";
 
-const BookDescription = ({ book, outOfStock, user, addToCart }) => {
-  const { styles } = useContext(ThemeContext);
+const BookDescription = ({ book, outOfStock }) => {
+  const { styles, user, cartActions } = useContext(AppContext);
 
   return (
     <>
@@ -22,7 +22,7 @@ const BookDescription = ({ book, outOfStock, user, addToCart }) => {
       </div>
       <TransactionButton
         disabled={user ? outOfStock : true}
-        onClick={() => addToCart(book)}
+        onClick={() => cartActions.addToCart(book)}
         defaultText="Add to cart"
         completedText="Added"
         errorText="Not added"

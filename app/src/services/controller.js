@@ -1,6 +1,4 @@
-let host = "";
-if (process.env.NODE_ENV === "development") {
-  host = "http://localhost:3001";
-}
+const host =
+  process.env.NODE_ENV === "development" ? "http://localhost:3001" : "";
 
 export default host;

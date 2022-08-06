@@ -1,4 +1,4 @@
-import { ThemeContext } from "App";
+import { AppContext } from "App";
 import LoginForm from "components/Forms/LoginForm.js";
 import RegisterForm from "components/Forms/RegisterForm.js";
 import Notification from "components/Utils/Notification.js";
@@ -6,8 +6,8 @@ import { useNotification } from "hooks/useNotification.js";
 import { useContext, useState } from "react";
 import { Container } from "react-bootstrap";
 
-const Login = ({ logIn }) => {
-  const { styles } = useContext(ThemeContext);
+const Login = () => {
+  const { styles } = useContext(AppContext);
   const [notification, setNotification] = useNotification(null);
   const [registered, setRegistered] = useState(true);
 
@@ -18,14 +18,12 @@ const Login = ({ logIn }) => {
         {registered ? (
           <LoginForm
             sendToRegister={() => setRegistered(false)}
-            logIn={logIn}
             setNotification={setNotification}
           />
         ) : (
           <RegisterForm
             sendToLogin={() => setRegistered(true)}
             setNotification={setNotification}
-            logIn={logIn}
           />
         )}
       </div>

@@ -2,7 +2,7 @@ import BookCard from "components/Books/BookCard.js";
 import { useBooks } from "hooks/useBooks.js";
 import { Container, Row } from "react-bootstrap";
 
-const Products = ({ cartActions, user }) => {
+const Products = () => {
   const [books] = useBooks();
 
   const sortByAuthorName = (a, b) => a.Author.name.localeCompare(b.Author.name);
@@ -13,14 +13,7 @@ const Products = ({ cartActions, user }) => {
         {books &&
           books
             .sort(sortByAuthorName)
-            .map((book) => (
-              <BookCard
-                user={user}
-                key={book.id}
-                book={book}
-                addToCart={cartActions.addToCart}
-              />
-            ))}
+            .map((book) => <BookCard key={book.id} book={book} />)}
       </Row>
     </Container>
   );
