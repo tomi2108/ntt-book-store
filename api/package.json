@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "initializeProdDb": "cross-env NODE_ENV=production node db/scripts/reset-development-db.js",
-    "start": "cross-env NODE_ENV=production node index.js",
+    "start": "npm run initializeProdDb && cross-env NODE_ENV=production node index.js",
     "test": "npm run resetDevDb && cross-env NODE_ENV=test jest --verbose",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build": "rm -r build && cd ../app && npm run build && cp -r build ../api && rm -r build",

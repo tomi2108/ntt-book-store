@@ -56,7 +56,7 @@ jobs:
           healthcheck: "https://${{secrets.HEROKU_APP}}.herokuapp.com/health"
           rollbackonhealthcheckfailed: true
   tag_release:
-    if: ${{ github.event_name != 'pull_request' && !contains(github.event.head_commit.message,'#skip') }}
+    if: ${{ github.event_name != 'pull_request' && contains(github.event.head_commit.message,'#tag') }}
     needs: [test_and_deploy]
     runs-on: ubuntu-20.04
     steps:
