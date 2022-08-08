@@ -2,11 +2,11 @@ require("dotenv").config();
 
 const productionConfig = {
   dialect: "mysql",
-  port: process.env.MYSQL_PRODUCTION_PORT,
-  database: process.env.MYSQL_PRODUCTION_DATABASE,
-  username: process.env.MYSQL_PRODUCTION_USER,
-  password: process.env.MYSQL_PRODUCTION_PASSWORD,
-  host: process.env.MYSQL_PRODUCTION_HOST,
+  port: process.env.MYSQLPORT,
+  database: process.env.MYSQLDATABASE,
+  username: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  host: process.env.MYSQLHOST,
   logging: console.log,
 };
 
