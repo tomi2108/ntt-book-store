@@ -1,12 +1,12 @@
 require("dotenv").config();
 
-/* const productionConfig = {
+const productionConfig = {
   dialect: "mysql",
-  port: process.env.MYSQLPORT,
-  database: process.env.MYSQLDATABASE,
-  username: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  host: process.env.MYSQLHOST,
+  port: process.env.MYSQL_PRODUCTION_PORT,
+  database: process.env.MYSQL_PRODUCTION_DATABASE,
+  username: process.env.MYSQL_PRODUCTION_USER,
+  password: process.env.MYSQL_PRODUCTION_PASSWORD,
+  host: process.env.MYSQL_PRODUCTION_HOST,
   logging: console.log,
 };
 
@@ -18,10 +18,7 @@ const developmentConfig = {
   password: process.env.MYSQL_DEVELOPMENT_PASSWORD,
   host: process.env.MYSQL_DEVELOPMENT_HOST,
   logging: console.log,
-}; */
-
-const devUrl = process.env.DATABASE_URL;
-const prodUrl = process.env.MYSQL_URL;
+};
 
 module.exports =
-  process.env.NODE_ENV === "production" ? prodUrl : devUrl;
+  process.env.NODE_ENV === "production" ? productionConfig : developmentConfig;
