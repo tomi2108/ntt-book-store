@@ -1,10 +1,10 @@
 import { AppContext } from "App";
-import CartItem from "components/Cart/CartItem.js";
+import CartItem from "components/Cart/CartItem";
 import { useContext, useEffect, useState } from "react";
 import { Button, Container, NavDropdown } from "react-bootstrap";
 import "styles/shoppingCart.css";
 
-const CartMenu = ({ setShowCart }) => {
+const CartMenu = () => {
   const { styles, cart } = useContext(AppContext);
 
   const [cartTotal, setCartTotal] = useState(0);
@@ -20,7 +20,7 @@ const CartMenu = ({ setShowCart }) => {
   }, [cart]);
 
   const renderCartItem = (item) => (
-    <CartItem setShowCart={setShowCart} item={item} key={item.book.id} />
+    <CartItem item={item} key={item.book.id} />
   );
 
   return (

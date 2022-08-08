@@ -1,4 +1,6 @@
 import { AppContext } from "App";
+import FormFooter from "components/Forms/FormFooter";
+import FormGroup from "components/Forms/FormGroup";
 import { useField } from "hooks/useField.js";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
@@ -6,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getUser } from "services/users.js";
 
 const LoginForm = ({ setNotification, sendToRegister }) => {
-  const { styles, userActions } = useContext(AppContext);
+  const { userActions } = useContext(AppContext);
 
   const usernameInput = useField("text");
   const passwordInput = useField("password");
@@ -32,36 +34,19 @@ const LoginForm = ({ setNotification, sendToRegister }) => {
   return (
     <>
       <Form onSubmit={handleLogin}>
-        <Form.Group>
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            style={styles.input}
-            type={usernameInput.type}
-            onChange={usernameInput.onChange}
-            value={usernameInput.value}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            style={styles.input}
-            type={passwordInput.type}
-            onChange={passwordInput.onChange}
-            value={passwordInput.value}
-          />
-        </Form.Group>
-
+        <FormGroup
+          label="Username"
+          {...usernameInput}
+        />
+        <FormGroup
+          label="Password"
+          {...passwordInput}
+        />
         <Button style={{ marginTop: "30px" }} type="submit">
           Log In
         </Button>
       </Form>
-      <p>
-        {" "}
-        {"Don't have an accout?"}
-        <Button onClick={sendToRegister} variant="link">
-          Register
-        </Button>
-      </p>
+      <FormFooter onClick={sendToRegister} text="Don't have an account?" linkText="Register"/>
     </>
   );
 };

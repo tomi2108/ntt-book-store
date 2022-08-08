@@ -1,14 +1,15 @@
 import { AppContext } from "App";
-import TransactionButton from "components/Utils/TransactionButton.js";
+import TransactionButton from "components/Utils/TransactionButton";
 import { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import BookCoverPlaceholder from "static/BookCoverPlaceholder.js";
+import BookCoverPlaceholder from "static/BookCoverPlaceholder";
 
 const BookCard = ({ book }) => {
   const { styles, user, cartActions } = useContext(AppContext);
 
   const outOfStock = book.copiesInStock === 0;
+
 
   const navigate = useNavigate();
 

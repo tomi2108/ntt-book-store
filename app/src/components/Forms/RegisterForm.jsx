@@ -1,4 +1,6 @@
 import { AppContext } from "App";
+import FormFooter from "components/Forms/FormFooter";
+import FormGroup from "components/Forms/FormGroup";
 import { useField } from "hooks/useField.js";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
@@ -6,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { createUser } from "services/users.js";
 
 const RegisterForm = ({ sendToLogin, setNotification }) => {
-  const { styles, userActions } = useContext(AppContext);
+  const { userActions } = useContext(AppContext);
 
   const usernameInput = useField("text");
   const passwordInput = useField("password");
@@ -48,53 +50,27 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
   return (
     <>
       <Form onSubmit={handleRegister}>
-        <Form.Group>
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            style={styles.input}
-            type={usernameInput.type}
-            onChange={usernameInput.onChange}
-            value={usernameInput.value}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Date of birth</Form.Label>
-          <Form.Control
-            style={styles.input}
-            type={dateOfBirthInput.type}
-            onChange={dateOfBirthInput.onChange}
-            value={dateOfBirthInput.value}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            style={styles.input}
-            type={passwordInput.type}
-            onChange={passwordInput.onChange}
-            value={passwordInput.value}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Confirm password</Form.Label>
-          <Form.Control
-            style={styles.input}
-            type={confirmPasswordInput.type}
-            onChange={confirmPasswordInput.onChange}
-            value={confirmPasswordInput.value}
-          />
-        </Form.Group>
+        <FormGroup
+          label="Username"
+          {...usernameInput}
+        />
+        <FormGroup
+          label="Date of birth"
+          {...dateOfBirthInput}
+        />
+        <FormGroup
+          label="Password"
+          {...passwordInput}
+        />
+        <FormGroup
+          label="Confirm password"
+          {...confirmPasswordInput}
+        />
         <Button style={{ marginTop: "30px" }} type="submit">
           Register
         </Button>
       </Form>
-      <p>
-        {" "}
-        {"Already have an accout?"}
-        <Button onClick={sendToLogin} variant="link">
-          Log in
-        </Button>
-      </p>
+      <FormFooter onClick={sendToLogin} text="Already have an account?" linkText="Login"/>
     </>
   );
 };

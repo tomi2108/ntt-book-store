@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import ErrorIcon from "static/ErrorIcon.js";
-import TickIcon from "static/TickIcon.js";
+import ErrorIcon from "static/ErrorIcon";
+import TickIcon from "static/TickIcon";
 import "styles/transactionButton.css";
 
 

@@ -1,4 +1,4 @@
-import BookCard from "components/Books/BookCard.js";
+import BookCard from "components/Books/BookCard";
 import { useBooks } from "hooks/useBooks.js";
 import { Container, Row } from "react-bootstrap";
 

@@ -1,12 +1,12 @@
-import Navigation from "components/Nav/Navigation.js";
+import Navigation from "components/Nav/Navigation";
 import { useCart } from "hooks/useCart.js";
 import { useTheme } from "hooks/useTheme.js";
 import { useUser } from "hooks/useUser.js";
-import BookDetails from "pages/BookDetails.js";
-import Login from "pages/Login.js";
-import Products from "pages/Products.js";
-import Publish from "pages/Publish.js";
-import Search from "pages/Search.js";
+import BookDetails from "pages/BookDetails";
+import Login from "pages/Login";
+import Products from "pages/Products";
+import Publish from "pages/Publish";
+import Search from "pages/Search";
 import { createContext, useEffect } from "react";
 import { Navigate, Route, Routes, useMatch } from "react-router-dom";
 

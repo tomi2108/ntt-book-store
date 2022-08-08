@@ -23,6 +23,7 @@
     "husky": "^8.0.1"
   },
   "lint-staged": {
-    "**/!(js)/*.js": "eslint --cache --fix"
+    "**/!(js)/*.js": "eslint --cache --fix",
+    "**/!(js)/*.jsx": "eslint --cache --fix"
   }
 }

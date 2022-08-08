@@ -1,24 +1,18 @@
 import { AppContext } from "App";
-import BookDescription from "components/Books/BookDescription.js";
-import BookRecommendations from "components/Books/BookRecommendations.js";
-import { useContext, useEffect, useState } from "react";
+import BookDescription from "components/Books/BookDescription";
+import BookRecommendations from "components/Books/BookRecommendations";
+import { useBookById } from "hooks/useBookById.js";
+import { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { getBookById } from "services/books.js";
-import BookCoverPlaceholder from "static/BookCoverPlaceholder.js";
+import BookCoverPlaceholder from "static/BookCoverPlaceholder";
 
 const BookDetails = () => {
   const { styles } = useContext(AppContext);
   const { id } = useParams();
-  const [book, setBook] = useState(null);
-  const [outOfStock, setOutOfStock] = useState(false);
 
-  useEffect(() => {
-    getBookById(id).then((bookData) => {
-      setBook(bookData);
-      setOutOfStock(bookData.copiesInStock === 0);
-    });
-  }, [id]);
+  const { book,outOfStock,recommendations }= useBookById(id);
+
 
   return (
     <>
@@ -40,7 +34,7 @@ const BookDetails = () => {
             </Col>
             <Col>
               <BookDescription book={book} outOfStock={outOfStock} />
-              <BookRecommendations book={book} />
+              <BookRecommendations authorName={book.Author.name} recommendations={recommendations} />
             </Col>
           </Row>
           <Row>

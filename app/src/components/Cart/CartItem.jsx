@@ -1,35 +1,37 @@
 import { AppContext } from "App";
-import Clickable from "components/Utils/Clickable.js";
+import Clickable from "components/Utils/Clickable";
 import { useContext } from "react";
 import { NavDropdown } from "react-bootstrap";
-import ErrorIcon from "static/ErrorIcon.js";
-import MinusIcon from "static/MinusIcon.js";
-import PlusIcon from "static/PlusIcon.js";
+import { useNavigate } from "react-router-dom";
+import ErrorIcon from "static/ErrorIcon";
+import MinusIcon from "static/MinusIcon";
+import PlusIcon from "static/PlusIcon";
 
-const CartItem = ({ item, setShowCart }) => {
+const CartItem = ({ item }) => {
   const { styles, cartActions } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const totalPrice = (
     Math.round(item.quantity * item.book.price * 100) / 100
   ).toFixed(2);
 
-  const handleRemove = () => {
-    setShowCart();
+  const handleRemove = (e) => {
+    e.stopPropagation();
     cartActions.removeFromCart(item);
   };
 
-  const handleIncrease = () => {
-    setShowCart();
+  const handleIncrease = (e) => {
+    e.stopPropagation();
     cartActions.addToCart(item.book);
   };
 
-  const handleDecrease = () => {
-    setShowCart();
+  const handleDecrease = (e) => {
+    e.stopPropagation();
     cartActions.removeOneFromCart(item);
   };
 
   return (
-    <NavDropdown.Item onClick={setShowCart} key={item.book.id}>
+    <NavDropdown.Item onClick={() => navigate(`/book/${item.book.id}`)} key={item.book.id}>
       <div style={styles.shoppingCart.item}>
         <div>
           <Clickable onClick={handleRemove}>

@@ -1,14 +1,14 @@
 import { AppContext } from "App";
-import BookTableRow from "components/Books/BookTableRow.js";
-import Clickable from "components/Utils/Clickable.js";
+import BookTableRow from "components/Books/BookTableRow";
+import Clickable from "components/Utils/Clickable";
 import { useBooks } from "hooks/useBooks.js";
 import { useField } from "hooks/useField.js";
 import { useSort } from "hooks/useSort.js";
 import { useContext } from "react";
 import { Container, Row, Table } from "react-bootstrap";
-import DownIcon from "static/DownIcon.js";
-import MinusIcon from "static/MinusIcon.js";
-import UpIcon from "static/UpIcon.js";
+import DownIcon from "static/DownIcon";
+import MinusIcon from "static/MinusIcon";
+import UpIcon from "static/UpIcon";
 
 const Search = () => {
   const { styles, theme } = useContext(AppContext);

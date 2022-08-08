@@ -1,7 +1,7 @@
 import { AppContext } from "App";
-import LoginForm from "components/Forms/LoginForm.js";
-import RegisterForm from "components/Forms/RegisterForm.js";
-import Notification from "components/Utils/Notification.js";
+import LoginForm from "components/Forms/LoginForm";
+import RegisterForm from "components/Forms/RegisterForm";
+import Notification from "components/Utils/Notification";
 import { useNotification } from "hooks/useNotification.js";
 import { useContext, useState } from "react";
 import { Container } from "react-bootstrap";

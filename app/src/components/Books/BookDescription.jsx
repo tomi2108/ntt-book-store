@@ -1,5 +1,5 @@
 import { AppContext } from "App";
-import TransactionButton from "components/Utils/TransactionButton.js";
+import TransactionButton from "components/Utils/TransactionButton";
 import { useContext } from "react";
 
 const BookDescription = ({ book, outOfStock }) => {

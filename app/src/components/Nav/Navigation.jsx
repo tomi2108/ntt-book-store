@@ -1,12 +1,12 @@
 import { AppContext } from "App";
-import CartMenu from "components/Cart/CartMenu.js";
-import NavLinks from "components/Nav/NavLinks.js";
-import Clickable from "components/Utils/Clickable.js";
+import CartMenu from "components/Cart/CartMenu";
+import NavLinks from "components/Nav/NavLinks";
+import Clickable from "components/Utils/Clickable";
 import { useContext, useState } from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import MoonIcon from "static/MoonIcon.js";
-import ShoppingCartIcon from "static/ShoppingCartIcon.js";
-import SunIcon from "static/SunIcon.js";
+import MoonIcon from "static/MoonIcon";
+import ShoppingCartIcon from "static/ShoppingCartIcon";
+import SunIcon from "static/SunIcon";
 
 const Navigation = () => {
   const { theme, styles, toggleTheme, user, userActions } =
@@ -31,10 +31,9 @@ const Navigation = () => {
                 onClick={() => setShowCart(!showCart)}
               />
             }
-            id="nav-dropdown-dark-example"
             menuVariant={theme}
           >
-            <CartMenu setShowCart={() => setShowCart(true)} />
+            <CartMenu />
           </NavDropdown>
         </Navbar.Collapse>
         {user && (
