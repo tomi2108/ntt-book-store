@@ -34,7 +34,7 @@ router.post("/:id/comment", (req, res) => {
   const { text, userId } = req.body;
   const comment = {
     text,
-    bookId: id,
+    bookId: +id,
     userId,
   };
   addComment(comment)

@@ -2,7 +2,7 @@ import { AppContext } from "App";
 import { useContext } from "react";
 import { Form } from "react-bootstrap";
 
-const FormGroup = ({ label,type,onChange,value }) => {
+const FormGroup = ({ label,type,onChange,value,name,...otherProps }) => {
   const { styles } = useContext(AppContext);
 
   return (
@@ -13,6 +13,8 @@ const FormGroup = ({ label,type,onChange,value }) => {
         type={type}
         onChange={onChange}
         value={value}
+        name={name}
+        {...otherProps}
       />
     </Form.Group>
   );

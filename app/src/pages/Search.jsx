@@ -2,7 +2,7 @@ import { AppContext } from "App";
 import BookTableRow from "components/Books/BookTableRow";
 import Clickable from "components/Utils/Clickable";
 import { useBooks } from "hooks/useBooks.js";
-import { useField } from "hooks/useField.js";
+import { useFields } from "hooks/useFields.js";
 import { useSort } from "hooks/useSort.js";
 import { useContext } from "react";
 import { Container, Row, Table } from "react-bootstrap";
@@ -12,12 +12,12 @@ import UpIcon from "static/UpIcon";
 
 const Search = () => {
   const { styles, theme } = useContext(AppContext);
-  const searchInput = useField("text");
   const sort = useSort();
   const [books] = useBooks();
+  const { values,onChange } = useFields({ searchField: "" });
 
   const booksFiltered = books?.filter((book) =>
-    book.title.toLowerCase().includes(searchInput.value.toLowerCase())
+    book.title.toLowerCase().includes(values.searchField.toLowerCase())
   );
 
   const renderIcon = (value) =>
@@ -40,9 +40,10 @@ const Search = () => {
           id="search"
           style={styles.search}
           placeholder="🔍 Search..."
-          type={searchInput.type}
-          onChange={searchInput.onChange}
-          value={searchInput.value}
+          type="text"
+          onChange={onChange}
+          name="searchField"
+          value={values.searchField}
         />
       </Row>
       <Row>

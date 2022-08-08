@@ -1,7 +1,7 @@
 import { AppContext } from "App";
 import FormFooter from "components/Forms/FormFooter";
 import FormGroup from "components/Forms/FormGroup";
-import { useField } from "hooks/useField.js";
+import { useFields } from "hooks/useFields.js";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -10,31 +10,28 @@ import { createUser } from "services/users.js";
 const RegisterForm = ({ sendToLogin, setNotification }) => {
   const { userActions } = useContext(AppContext);
 
-  const usernameInput = useField("text");
-  const passwordInput = useField("password");
-  const confirmPasswordInput = useField("password");
-  const dateOfBirthInput = useField("date");
+  const { values, onChange } = useFields({ username: "", password: "",confirmPassword:"",dateOfBirth:"" });
 
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const age =
-      new Date().getFullYear() - new Date(dateOfBirthInput.value).getFullYear();
 
-    if (!usernameInput.value) return setNotification("Enter username");
-    if (!passwordInput.value) return setNotification("Enter password");
-    if (!confirmPasswordInput.value)
-      return setNotification("Enter confirm password");
-    if (!dateOfBirthInput.value) return setNotification("Enter date of birth");
-    if (passwordInput.value !== confirmPasswordInput.value)
-      return setNotification("Passwords do not match");
+    if (!values.username) return setNotification("Enter username");
+    if (!values.password) return setNotification("Enter password");
+    if (!values.confirmPassword) return setNotification("Enter confirm password");
+    if (!values.dateOfBirth) return setNotification("Enter date of birth");
+
+    if (values.password !== values.confirmPassword) return setNotification("Passwords do not match");
+
+    const age = new Date().getFullYear() - new Date(values.dateOfBirth).getFullYear();
     if (age < 18) return setNotification("You must be 18 or older to register");
 
+
     const userToCreate = {
-      username: usernameInput.value,
-      password: passwordInput.value,
-      dateOfBirth: dateOfBirthInput.value,
+      username: values.username,
+      password: values.password,
+      dateOfBirth: values.dateOfBirth,
     };
 
     createUser(userToCreate)
@@ -47,24 +44,37 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
         setNotification(message);
       });
   };
+
   return (
     <>
       <Form onSubmit={handleRegister}>
         <FormGroup
           label="Username"
-          {...usernameInput}
+          type="text"
+          name="username"
+          value={values.username}
+          onChange={onChange}
         />
         <FormGroup
           label="Date of birth"
-          {...dateOfBirthInput}
+          type="date"
+          name="dateOfBirth"
+          value={values.dateOfBirth}
+          onChange={onChange}
         />
         <FormGroup
           label="Password"
-          {...passwordInput}
+          type="password"
+          name="password"
+          value={values.password}
+          onChange={onChange}
         />
         <FormGroup
           label="Confirm password"
-          {...confirmPasswordInput}
+          type="password"
+          name="confirmPassword"
+          value={values.confirmPassword}
+          onChange={onChange}
         />
         <Button style={{ marginTop: "30px" }} type="submit">
           Register

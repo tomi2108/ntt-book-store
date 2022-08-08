@@ -1,7 +1,7 @@
 import { AppContext } from "App";
 import FormFooter from "components/Forms/FormFooter";
 import FormGroup from "components/Forms/FormGroup";
-import { useField } from "hooks/useField.js";
+import { useFields } from "hooks/useFields.js";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -10,17 +10,18 @@ import { getUser } from "services/users.js";
 const LoginForm = ({ setNotification, sendToRegister }) => {
   const { userActions } = useContext(AppContext);
 
-  const usernameInput = useField("text");
-  const passwordInput = useField("password");
+  const { values, onChange } = useFields({ username:"",password:"" });
+
 
   const navigate = useNavigate();
 
   const handleLogin = (evt) => {
     evt.preventDefault();
-    if (!usernameInput.value) return setNotification("Enter username");
-    if (!passwordInput.value) return setNotification("Enter password");
 
-    getUser(usernameInput.value, passwordInput.value)
+    if (!values.username) return setNotification("Enter username");
+    if (!values.password) return setNotification("Enter password");
+
+    getUser(values.username, values.password)
       .then((user) => {
         userActions.logIn(user);
         navigate("/");
@@ -36,11 +37,17 @@ const LoginForm = ({ setNotification, sendToRegister }) => {
       <Form onSubmit={handleLogin}>
         <FormGroup
           label="Username"
-          {...usernameInput}
+          type="text"
+          name="username"
+          value={values.username}
+          onChange={onChange}
         />
         <FormGroup
           label="Password"
-          {...passwordInput}
+          type="password"
+          name="password"
+          value={values.password}
+          onChange={onChange}
         />
         <Button style={{ marginTop: "30px" }} type="submit">
           Log In

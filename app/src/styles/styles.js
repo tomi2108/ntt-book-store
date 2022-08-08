@@ -1,3 +1,4 @@
+
 const DARK_COLORS = {
   background: {
     primary: "#212529",
@@ -128,7 +129,7 @@ export const styledtheme = (theme) => {
       form: {
         backgroundColor: COLORS.background.secondary,
         padding: "30px",
-        borderRadius: "10%",
+        borderRadius: "3%",
         width: "50%",
         minWidth: "340px",
       },
@@ -157,5 +158,23 @@ export const styledtheme = (theme) => {
       border: "none",
       borderBottom: `3px solid ${COLORS.details.primary}`,
     },
+    comment:{
+      container:{
+        backgroundColor: COLORS.background.secondary,
+        borderRadius:"10px",
+        padding:"5px",
+        marginBlock:"5px",
+        borderBottom:`1px solid ${COLORS.details.secondary}`,
+        display:"flex",
+        flexDirection:"column",
+        alignItems:"flex-start",
+        justifyContent:"flex-start"
+      }
+    },
+    modal:{
+      header:{ backgroundColor:COLORS.background.primary,borderBottom:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary },
+      body:{ backgroundColor:COLORS.background.primary, color:COLORS.text.primary },
+      footer:{ backgroundColor:COLORS.background.primary,borderTop:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary }
+    }
   };
 };

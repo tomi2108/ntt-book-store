@@ -1,4 +1,5 @@
 import { AppContext } from "App";
+import BookComments from "components/Books/BookComments";
 import BookDescription from "components/Books/BookDescription";
 import BookRecommendations from "components/Books/BookRecommendations";
 import { useBookById } from "hooks/useBookById.js";
@@ -39,15 +40,7 @@ const BookDetails = () => {
           </Row>
           <Row>
             <Col>
-              <h2>Comments</h2>
-              {book.comments.map((comment) => (
-                <div key={comment.id}>
-                  <p>
-                    {comment.User.username} - {comment.createdAt}
-                  </p>
-                  <p>{comment.text}</p>
-                </div>
-              ))}
+              <BookComments bookComments={book.comments} bookId={book.id}/>
             </Col>
           </Row>
         </Container>
