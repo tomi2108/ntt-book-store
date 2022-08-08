@@ -30,7 +30,7 @@ const BookComments = ({ bookComments,bookId }) => {
     }
     hideModal();
     reset();
-    return addComment(values.text, user.id,bookId).then(comment => setComments([...comments,{ ...comment,User:user }]));
+    return addComment(values.text, user.id,bookId).then(comment => setComments([...comments,{ ...comment,User:{ username:user.username } }]));
   };
 
   const sortByDate = (a,b) => {
@@ -39,7 +39,6 @@ const BookComments = ({ bookComments,bookId }) => {
 
   return (
     <>
-      <h4 style={{ marginTop:"20px" }}>Comments</h4>
       <Button style={{ marginBlock:"10px" }} disabled={!user} onClick={showModal} >
           Add Comment
       </Button>

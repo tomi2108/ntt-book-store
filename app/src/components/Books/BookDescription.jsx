@@ -7,7 +7,7 @@ const BookDescription = ({ book, outOfStock }) => {
 
   return (
     <>
-      <div style={{ marginBlock: "10px" }}>
+      <div style={ { lineHeight: "2rem" , marginBlock: "10px" }}>
         {book.description ? book.description : <p>No description</p>}
       </div>
       <div>

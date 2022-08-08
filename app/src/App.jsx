@@ -9,6 +9,8 @@ import Publish from "pages/Publish";
 import Search from "pages/Search";
 import { createContext, useEffect } from "react";
 import { Navigate, Route, Routes, useMatch } from "react-router-dom";
+import "styles/App.css";
+
 
 export const AppContext = createContext();
 

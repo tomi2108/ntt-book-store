@@ -49,6 +49,7 @@ const BookCard = ({ book }) => {
               US<strong>${book.price}</strong>
             </div>
             <TransactionButton
+              style={{ borderRadius:"3rem", }}
               disabled={user ? outOfStock : true}
               onClick={() => cartActions.addToCart(book)}
               defaultText="Add to cart"

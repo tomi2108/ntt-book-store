@@ -22,7 +22,7 @@ const BookDetails = () => {
           <Row>
             <Col>
               <h1>{book.title}</h1>
-              <h3>By {book.Author.name}</h3>
+              <h4 style={styles.bookDetails.subtitle}>By {book.Author.name}</h4>
               {book.imageUrl ? (
                 <img
                   style={styles.bookDetails.image}

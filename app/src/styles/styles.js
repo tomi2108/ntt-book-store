@@ -2,7 +2,7 @@
 const DARK_COLORS = {
   background: {
     primary: "#212529",
-    secondary: "#202124",
+    secondary: "rgb(17 24 39)",
   },
   text: {
     primary: "#fff",
@@ -80,6 +80,9 @@ export const styledtheme = (theme) => {
         color: COLORS.text.red,
       },
     },
+
+
+
     shoppingCart: {
       dropdown: {
         backgroundColor: COLORS.background.secondary,
@@ -116,6 +119,9 @@ export const styledtheme = (theme) => {
         height: "550px",
         margin: "auto",
       },
+      subtitle:{
+        color: COLORS.text.secondary,
+      }
     },
     login: {
       container: {
