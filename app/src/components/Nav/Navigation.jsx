@@ -13,21 +13,20 @@ const Navigation = () => {
     useContext(AppContext);
   const [showCart, setShowCart] = useState(false);
 
+  const shoppingCartColor = theme === "dark" ? "#fff" : "#000";
+
   return (
-    <Navbar bg={theme} variant={theme} expand="lg">
-      <Container>
+    <Navbar  bg={theme} variant={theme} expand="lg">
+      <Container style={styles.nav.navbar}>
         <Navbar.Brand>LOGO</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse>
+        <Navbar.Collapse >
           <NavLinks />
-          <Nav.Item style={styles.nav.item}>
-            {user && `Logged in as ${user.username}`}
-          </Nav.Item>
           <NavDropdown
             show={user ? showCart : false}
             title={
               <ShoppingCartIcon
-                color={theme === "dark" ? "#fff" : "#000"}
+                color={shoppingCartColor}
                 onClick={() => setShowCart(!showCart)}
               />
             }
@@ -35,6 +34,9 @@ const Navigation = () => {
           >
             <CartMenu />
           </NavDropdown>
+          <Nav.Item style={styles.nav.loggedUser}>
+            {user && `Logged in as ${user.username}`}
+          </Nav.Item>
         </Navbar.Collapse>
         {user && (
           <Button

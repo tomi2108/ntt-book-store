@@ -2,7 +2,7 @@
 const DARK_COLORS = {
   background: {
     primary: "#212529",
-    secondary: "rgb(17 24 39)",
+    secondary: "#303134",
   },
   text: {
     primary: "#fff",
@@ -36,9 +36,17 @@ export const styledtheme = (theme) => {
   return {
     iconColor: COLORS.text.primary,
     nav: {
-      item: {
+      navbar:{
+        marginBlock: "10px",
+      },
+      links: {
+        justifyContent: "space-evenly",
+        width: "25%",
+      },
+      loggedUser: {
         color: COLORS.text.primary,
-        margin: "0 5px",
+        marginLeft: "auto",
+        marginRight: "15px",
       },
     },
     main: {
@@ -55,7 +63,8 @@ export const styledtheme = (theme) => {
       },
       container: {
         height: "100%",
-        backgroundColor: COLORS.background.secondary,
+        backgroundColor: COLORS.background.primary,
+        border: `1px solid ${COLORS.details.primary}`,
       },
       body: {
         display: "flex",
@@ -63,26 +72,20 @@ export const styledtheme = (theme) => {
         justifyContent: "space-between",
       },
       image: {
-        width: "120px",
-        height: "155px",
+        borderRadius: "10px",
+        width: "150px",
+        height: "210px",
         margin: "auto",
+        marginBottom: "1rem",
       },
       title: {
         height: "45px",
         marginBottom: "15px",
       },
-      subtitle: {
-        color: COLORS.text.secondary,
-        textAlign: "right",
-        marginTop: "0.5rem",
-      },
       outOfStock: {
         color: COLORS.text.red,
       },
     },
-
-
-
     shoppingCart: {
       dropdown: {
         backgroundColor: COLORS.background.secondary,
@@ -166,21 +169,33 @@ export const styledtheme = (theme) => {
     },
     comment:{
       container:{
+
         backgroundColor: COLORS.background.secondary,
         borderRadius:"10px",
-        padding:"5px",
+        padding:"10px",
         marginBlock:"5px",
-        borderBottom:`1px solid ${COLORS.details.secondary}`,
         display:"flex",
         flexDirection:"column",
         alignItems:"flex-start",
         justifyContent:"flex-start"
-      }
+      },
+      author:{
+        color: COLORS.text.secondary,
+        textAlign: "right",
+        marginTop: "0.5rem",
+        position:"relative",
+        width:"100%"
+      },
     },
     modal:{
       header:{ backgroundColor:COLORS.background.primary,borderBottom:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary },
       body:{ backgroundColor:COLORS.background.primary, color:COLORS.text.primary },
       footer:{ backgroundColor:COLORS.background.primary,borderTop:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary }
+    },
+    recommendations:{
+      heading:{
+        marginBlock:"1rem",
+      }
     }
   };
 };

@@ -1,12 +1,12 @@
 import { AppContext } from "App";
-import TransactionButton from "components/Utils/TransactionButton";
 import { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import BookCoverPlaceholder from "static/BookCoverPlaceholder";
+import "styles/BookCard.css";
 
 const BookCard = ({ book }) => {
-  const { styles, user, cartActions } = useContext(AppContext);
+  const { styles } = useContext(AppContext);
 
   const outOfStock = book.copiesInStock === 0;
 
@@ -14,8 +14,8 @@ const BookCard = ({ book }) => {
   const navigate = useNavigate();
 
   return (
-    <Col style={styles.bookCard.wrapper} xs={12} sm={6} md={4} lg={3}>
-      <Card style={styles.bookCard.container}>
+    <Col  style={styles.bookCard.wrapper} xs={12} sm={6} md={4} lg={3}>
+      <Card className="book-card" style={styles.bookCard.container}>
         <Card.Body style={styles.bookCard.body}>
           <Row
             style={{ cursor: "pointer" }}
@@ -34,7 +34,6 @@ const BookCard = ({ book }) => {
               <BookCoverPlaceholder style={styles.bookCard.image} />
             )}
             <div style={styles.bookCard.subtitle}>
-              <Card.Subtitle>By {book.Author.name} </Card.Subtitle>
               <Card.Text>
                 {outOfStock ? (
                   <span style={styles.bookCard.outOfStock}>Out of stock</span>
@@ -48,14 +47,6 @@ const BookCard = ({ book }) => {
             <div>
               US<strong>${book.price}</strong>
             </div>
-            <TransactionButton
-              style={{ borderRadius:"3rem", }}
-              disabled={user ? outOfStock : true}
-              onClick={() => cartActions.addToCart(book)}
-              defaultText="Add to cart"
-              completedText="Added"
-              errorText="Not added"
-            />
           </Row>
         </Card.Body>
       </Card>

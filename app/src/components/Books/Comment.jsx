@@ -16,10 +16,10 @@ const Comment = ({ comment }) => {
 
   return (
     <div style={styles.comment.container}>
-      <p style={styles.bookCard.subtitle}>
-        <strong>{comment.User.username} </strong> - {formatedDateWithHour}
-      </p>
       <p>{comment.text}</p>
+      <div style={styles.comment.author}>
+        <strong>{comment.User.username}</strong> - <span style={{ alignSelf:"flex-end" }}> {formatedDateWithHour} </span>
+      </div>
     </div>
   );
 };
