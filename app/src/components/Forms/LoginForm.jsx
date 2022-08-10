@@ -10,8 +10,7 @@ import { getUser } from "services/users.js";
 const LoginForm = ({ setNotification, sendToRegister }) => {
   const { userActions } = useContext(AppContext);
 
-  const { values, onChange } = useFields({ username:"",password:"" });
-
+  const { values, onChange } = useFields({ username: "", password: "" });
 
   const navigate = useNavigate();
 
@@ -53,7 +52,11 @@ const LoginForm = ({ setNotification, sendToRegister }) => {
           Log In
         </Button>
       </Form>
-      <FormFooter onClick={sendToRegister} text="Don't have an account?" linkText="Register"/>
+      <FormFooter
+        onClick={sendToRegister}
+        text="Don't have an account?"
+        linkText="Register"
+      />
     </>
   );
 };

@@ -7,11 +7,11 @@ const BookDescription = ({ book, outOfStock }) => {
 
   return (
     <>
-      <div style={ { lineHeight: "2rem" , marginBlock: "10px" }}>
+      <div style={{ lineHeight: "2rem", marginBlock: "10px" }}>
         {book.description ? book.description : <p>No description</p>}
       </div>
-      <div style={{ marginBlock:"10px", fontSize:"3rem" }}>
-          US<strong>${book.price}</strong>
+      <div style={{ marginBlock: "10px", fontSize: "3rem" }}>
+        US<strong>${book.price}</strong>
       </div>
       <TransactionButton
         disabled={user ? outOfStock : true}

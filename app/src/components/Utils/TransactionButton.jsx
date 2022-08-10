@@ -4,7 +4,6 @@ import ErrorIcon from "static/ErrorIcon";
 import TickIcon from "static/TickIcon";
 import "styles/TransactionButton.css";
 
-
 const BUTTON_STATE = {
   loading: 0,
   ready: 1,
@@ -12,21 +11,28 @@ const BUTTON_STATE = {
   completed: 3,
 };
 
-
-const TransactionButton = ({ onClick, defaultText, completedText, errorText, disabled,...otherProps }) => {
+const TransactionButton = ({
+  onClick,
+  defaultText,
+  completedText,
+  errorText,
+  disabled,
+  ...otherProps
+}) => {
   const [state, setState] = useState(BUTTON_STATE.ready);
   const [loading, setLoading] = useState(false);
 
   const handleClick = (e) => {
     setLoading(true);
     setState(BUTTON_STATE.loading);
-    onClick(e).then(() => {
-      setState(BUTTON_STATE.completed);
-      setTimeout(() => {
-        setState(BUTTON_STATE.ready);
-        setLoading(false);
-      }, 2000);
-    })
+    onClick(e)
+      .then(() => {
+        setState(BUTTON_STATE.completed);
+        setTimeout(() => {
+          setState(BUTTON_STATE.ready);
+          setLoading(false);
+        }, 2000);
+      })
       .catch(() => {
         setState(BUTTON_STATE.error);
         setTimeout(() => {
@@ -37,10 +43,17 @@ const TransactionButton = ({ onClick, defaultText, completedText, errorText, dis
   };
 
   return (
-    <Button {...otherProps} disabled={loading || disabled} variant={
-      state === BUTTON_STATE.completed ? "success" :
-        state === BUTTON_STATE.error ? "danger" : "primary"
-    } onClick={handleClick}
+    <Button
+      {...otherProps}
+      disabled={loading || disabled}
+      variant={
+        state === BUTTON_STATE.completed
+          ? "success"
+          : state === BUTTON_STATE.error
+            ? "danger"
+            : "primary"
+      }
+      onClick={handleClick}
     >
       <span
         className={
@@ -51,14 +64,16 @@ const TransactionButton = ({ onClick, defaultText, completedText, errorText, dis
               : ""
         }
       >
-        {state === BUTTON_STATE.error && <ErrorIcon color="#fff"/>}
-        {
-          state === BUTTON_STATE.loading ? "" :
-            state === BUTTON_STATE.completed ? completedText :
-              state === BUTTON_STATE.error ? errorText : defaultText
-        }
+        {state === BUTTON_STATE.error && <ErrorIcon color="#fff" />}
+        {state === BUTTON_STATE.loading
+          ? ""
+          : state === BUTTON_STATE.completed
+            ? completedText
+            : state === BUTTON_STATE.error
+              ? errorText
+              : defaultText}
       </span>
-      {state === BUTTON_STATE.completed && <TickIcon/>}
+      {state === BUTTON_STATE.completed && <TickIcon />}
     </Button>
   );
 };

@@ -2,7 +2,7 @@ import { AppContext } from "App";
 import { useContext } from "react";
 import { Form } from "react-bootstrap";
 
-const FormGroup = ({ label,type,onChange,value,name,...otherProps }) => {
+const FormGroup = ({ label, type, onChange, value, name, ...otherProps }) => {
   const { styles } = useContext(AppContext);
 
   return (

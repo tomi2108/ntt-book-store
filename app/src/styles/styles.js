@@ -1,7 +1,7 @@
 
 const DARK_COLORS = {
   background: {
-    primary: "#212529",
+    primary: "rgb(36, 39, 43)",
     secondary: "#303134",
   },
   text: {
@@ -17,7 +17,7 @@ const DARK_COLORS = {
 
 const LIGHT_COLORS = {
   background: {
-    primary: "#fff",
+    primary: "#FCFCFC",
     secondary: "#ddd",
   },
   text: {
@@ -38,6 +38,7 @@ export const styledtheme = (theme) => {
     nav: {
       navbar:{
         marginBlock: "10px",
+        position: "relative",
       },
       links: {
         justifyContent: "space-evenly",
@@ -181,8 +182,9 @@ export const styledtheme = (theme) => {
       },
       author:{
         color: COLORS.text.secondary,
-        textAlign: "right",
-        marginTop: "0.5rem",
+        left: 0,
+
+        marginBlock: "0.5rem",
         position:"relative",
         width:"100%"
       },

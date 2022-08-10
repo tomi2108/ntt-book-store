@@ -17,11 +17,11 @@ const Navigation = () => {
   const shoppingCartColor = theme === "dark" ? "#fff" : "#000";
 
   return (
-    <Navbar  bg={theme} variant={theme} expand="lg">
+    <Navbar bg={theme} variant={theme} expand="lg">
       <Container style={styles.nav.navbar}>
         <Navbar.Brand>LOGO</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse >
+        <Navbar.Collapse>
           <NavLinks />
           <NavDropdown
             show={user ? showCart : false}
@@ -45,9 +45,9 @@ const Navigation = () => {
               onClick={userActions.logOut}
               size="sm"
               variant="secondary"
-              style={{ marginLeft: "auto" }}
+              style={{ marginRight: "auto", }}
             >
-            Log out
+              Log out
             </Button>
           )}
         </Navbar.Collapse>
@@ -55,9 +55,10 @@ const Navigation = () => {
           {theme === "dark" ? (
             <SunIcon color="white" />
           ) : (
-            <MoonIcon  color="black" />
+            <MoonIcon color="black" />
           )}
         </Clickable>
+        <div className="theme-toggle-shadow"></div>
       </Container>
     </Navbar>
   );

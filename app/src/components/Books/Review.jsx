@@ -5,24 +5,26 @@ import { useContext } from "react";
 const Review = ({ review }) => {
   const { styles } = useContext(AppContext);
 
-  const formatedDateWithHour = new Date(review.createdAt).toLocaleString("en-US", {
-    day: "numeric",
-    month: "short",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-    timeZone: "America/Sao_Paulo",
-  });
-
-  console.log(review);
-
+  const formatedDateWithHour = new Date(review.createdAt).toLocaleString(
+    "en-US",
+    {
+      day: "numeric",
+      month: "short",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+      timeZone: "America/Sao_Paulo",
+    }
+  );
 
   return (
     <div style={styles.review.container}>
-      <p>{review.text}</p>
-      <Rating value={review.rating} readOnly />
       <div style={styles.review.author}>
-        <strong>{review.User.username}</strong> - <span style={{ alignSelf:"flex-end" }}> {formatedDateWithHour} </span>
+        <span>  <strong>{review.User.username}</strong> -{" "}{formatedDateWithHour} </span>
+      </div>
+      <p>{review.text}</p>
+      <div style={{ alignSelf:"flex-end" }}>
+        <Rating value={review.rating} readOnly />
       </div>
     </div>
   );

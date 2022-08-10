@@ -4,6 +4,7 @@ const {
   getAllBooks,
   getBookById,
   addReview,
+  getReviews,
 } = require("../controllers/books");
 
 const router = express.Router();
@@ -32,15 +33,25 @@ router.get("/:id", (req, res) => {
 router.post("/:id/review", (req, res) => {
   const { id } = req.params;
   const { text, userId,rating } = req.body;
-  const review = {
-    text,
-    bookId: +id,
-    userId,
-    rating,
-  };
-  addReview(review)
-    .then((newReview) => res.status(200).json(newReview))
+
+  getReviews(id)
+    .then((reviews) => {
+      if(reviews.some((r) => r.userId === userId)) throw new Error("User already reviewed this book");
+
+      const review = {
+        text,
+        bookId: +id,
+        userId,
+        rating,
+      };
+
+      addReview(review)
+        .then((newReview) => res.status(200).json(newReview))
+        .catch((err) => res.status(400).json(err.message));
+    })
     .catch((err) => res.status(400).json(err.message));
 });
+
+
 
 module.exports = router;

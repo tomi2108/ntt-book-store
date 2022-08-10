@@ -10,11 +10,10 @@ const BookCard = ({ book }) => {
 
   const outOfStock = book.copiesInStock === 0;
 
-
   const navigate = useNavigate();
 
   return (
-    <Col  style={styles.bookCard.wrapper} xs={12} sm={6} md={4} lg={3}>
+    <Col style={styles.bookCard.wrapper} xs={12} sm={6} md={4} lg={3}>
       <Card className="book-card" style={styles.bookCard.container}>
         <Card.Body style={styles.bookCard.body}>
           <Row

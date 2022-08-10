@@ -5,35 +5,50 @@ import { useModal } from "hooks/useModal";
 import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 
-const BookReviews = ({ bookReviews,bookId }) => {
-  const [reviews,setReviews] = useState([]);
+const BookReviews = ({ bookReviews, bookId }) => {
+  const { user } = useContext(AppContext);
+
+  const { show, showModal, hideModal } = useModal();
+  const [reviews, setReviews] = useState([]);
+  const [reviewed,setReviewed] = useState(false);
+
 
   useEffect(() => {
     setReviews(bookReviews);
-  },[bookReviews]);
+  }, [bookReviews]);
 
 
-  const { show,showModal,hideModal } = useModal();
+  useEffect(() => {
+    if(user){
+      setReviewed(reviews.some((r) => r.User.username === user.username));
+    }
+  },[reviews,user]);
 
-  console.log(reviews);
-
-  const { user } = useContext(AppContext);
-
-
-  const sortByDate = (a,b) => {
+  const sortByDate = (a, b) => {
     return new Date(b.createdAt) - new Date(a.createdAt);
   };
 
-
   return (
     <>
-      <Button style={{ marginBlock:"10px" }} disabled={!user} onClick={showModal} >
-          Review
+      <Button
+        style={{ marginBlock: "10px" }}
+        disabled={!user || reviewed}
+        onClick={showModal}
+      >
+        Review
       </Button>
-      <BookReviewModal reviews={reviews} setReviews={setReviews} show={show} hideModal={hideModal} bookId={bookId}/>
-      { reviews &&
-        reviews.sort(sortByDate).map((r) => <Review review={r} key={r.id} />)
+      {
+        reviewed && <p>You have already reviewed this book</p>
       }
+      <BookReviewModal
+        reviews={reviews}
+        setReviews={setReviews}
+        show={show}
+        hideModal={hideModal}
+        bookId={bookId}
+      />
+      {reviews &&
+        reviews.sort(sortByDate).map((r) => <Review review={r} key={r.id} />)}
     </>
   );
 };

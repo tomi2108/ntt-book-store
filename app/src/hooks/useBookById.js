@@ -22,7 +22,5 @@ export const useBookById = (id) => {
     });
   }, [id]);
 
-
-
   return { book, outOfStock, recommendations };
 };

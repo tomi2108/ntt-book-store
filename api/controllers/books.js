@@ -15,13 +15,24 @@ const getAllBooks = async () => {
   }
 };
 
+const getReviews = async (bookId) => {
+  try{
+    await Book.findByPk(bookId);
+    return await Review.findAll({
+      include: { model: User, attributes: ["username"] },
+      where: { bookId: bookId },
+    });
+  }catch(err){
+    throw new Error("Error while getting reviews");
+  }
+};
+
+
+
 const getBookById = async (id) => {
   try {
     const book = await Book.findByPk(id, { include: Author });
-    const reviews = await Review.findAll({
-      include: { model: User, attributes: ["username"] },
-      where: { bookId: id },
-    });
+    const reviews = await getReviews(id);
     const bookWithReviews = { ...book.dataValues, reviews };
     return bookWithReviews;
   } catch (err) {
@@ -38,6 +49,7 @@ const addBook = async (book) => {
   }
 };
 
+
 const addReview = async (review) => {
   try {
     return await Review.create(review);
@@ -47,4 +59,4 @@ const addReview = async (review) => {
   }
 };
 
-module.exports = { addBook, getAllBooks, getBookById, addReview };
+module.exports = { addBook, getAllBooks, getBookById, addReview,getReviews };

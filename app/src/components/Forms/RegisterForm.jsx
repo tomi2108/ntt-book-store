@@ -10,7 +10,12 @@ import { createUser } from "services/users.js";
 const RegisterForm = ({ sendToLogin, setNotification }) => {
   const { userActions } = useContext(AppContext);
 
-  const { values, onChange } = useFields({ username: "", password: "",confirmPassword:"",dateOfBirth:"" });
+  const { values, onChange } = useFields({
+    username: "",
+    password: "",
+    confirmPassword: "",
+    dateOfBirth: "",
+  });
 
   const navigate = useNavigate();
 
@@ -19,14 +24,16 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
 
     if (!values.username) return setNotification("Enter username");
     if (!values.password) return setNotification("Enter password");
-    if (!values.confirmPassword) return setNotification("Enter confirm password");
+    if (!values.confirmPassword)
+      return setNotification("Enter confirm password");
     if (!values.dateOfBirth) return setNotification("Enter date of birth");
 
-    if (values.password !== values.confirmPassword) return setNotification("Passwords do not match");
+    if (values.password !== values.confirmPassword)
+      return setNotification("Passwords do not match");
 
-    const age = new Date().getFullYear() - new Date(values.dateOfBirth).getFullYear();
+    const age =
+      new Date().getFullYear() - new Date(values.dateOfBirth).getFullYear();
     if (age < 18) return setNotification("You must be 18 or older to register");
-
 
     const userToCreate = {
       username: values.username,
@@ -80,7 +87,11 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
           Register
         </Button>
       </Form>
-      <FormFooter onClick={sendToLogin} text="Already have an account?" linkText="Login"/>
+      <FormFooter
+        onClick={sendToLogin}
+        text="Already have an account?"
+        linkText="Login"
+      />
     </>
   );
 };

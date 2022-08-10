@@ -16,12 +16,45 @@
 }
 
 
-@media(min-width: 990px){
-  .theme-toggle{
-    animation: float 3s infinite;
-  }
+.theme-toggle-shadow{
+  display: none;
 }
 
+@media(min-width: 990px){
+  .theme-toggle{
+    animation: float 3s infinite ease-in-out;
+    position: absolute;
+    right: 1rem;
+    bottom: 0;
+  }
+
+  .theme-toggle-shadow{
+    display: block;
+    animation: enlarge 3s infinite ease-in-out;
+    background-color: rgb(97, 97, 97);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -30%;
+    width: 25px;
+    height: 10px;
+    right: 1.5rem;
+    transform: rotateX(45deg);
+    margin-inline: 10px ;
+  }
+
+}
+
+@keyframes enlarge{
+  0%{
+    transform: rotateX(45deg);
+  }
+  50%{
+    transform: rotateX(45deg) scale(1.2);
+  }
+  100%{
+    transform: rotateX(45deg);
+  }
+}
 
 @keyframes float{
   0%{

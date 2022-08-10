@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-const FormFooter = ({ onClick,text,linkText }) => {
+const FormFooter = ({ onClick, text, linkText }) => {
   return (
     <p>
       {" "}
