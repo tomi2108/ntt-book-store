@@ -7,6 +7,7 @@ import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import MoonIcon from "static/MoonIcon";
 import ShoppingCartIcon from "static/ShoppingCartIcon";
 import SunIcon from "static/SunIcon";
+import "styles/Navigation.css";
 
 const Navigation = () => {
   const { theme, styles, toggleTheme, user, userActions } =
@@ -25,10 +26,12 @@ const Navigation = () => {
           <NavDropdown
             show={user ? showCart : false}
             title={
-              <ShoppingCartIcon
-                color={shoppingCartColor}
-                onClick={() => setShowCart(!showCart)}
-              />
+              user ? (
+                <ShoppingCartIcon
+                  color={shoppingCartColor}
+                  onClick={() => setShowCart(!showCart)}
+                />
+              ) : null
             }
             menuVariant={theme}
           >
@@ -37,22 +40,22 @@ const Navigation = () => {
           <Nav.Item style={styles.nav.loggedUser}>
             {user && `Logged in as ${user.username}`}
           </Nav.Item>
-        </Navbar.Collapse>
-        {user && (
-          <Button
-            onClick={userActions.logOut}
-            size="sm"
-            variant="secondary"
-            style={{ marginLeft: "auto" }}
-          >
+          {user && (
+            <Button
+              onClick={userActions.logOut}
+              size="sm"
+              variant="secondary"
+              style={{ marginLeft: "auto" }}
+            >
             Log out
-          </Button>
-        )}
-        <Clickable onClick={toggleTheme}>
+            </Button>
+          )}
+        </Navbar.Collapse>
+        <Clickable className="theme-toggle" onClick={toggleTheme}>
           {theme === "dark" ? (
             <SunIcon color="white" />
           ) : (
-            <MoonIcon color="black" />
+            <MoonIcon  color="black" />
           )}
         </Clickable>
       </Container>

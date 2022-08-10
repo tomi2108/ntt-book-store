@@ -2,7 +2,7 @@ import { AppContext } from "App";
 import { useContext } from "react";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "styles/NavLinkHover.css";
+
 
 const NavLinks = () => {
   const { user,styles } = useContext(AppContext);

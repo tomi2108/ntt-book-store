@@ -1,8 +1,8 @@
-import "styles/clickable.css";
+import "styles/Clickable.css";
 
-const Clickable = ({ onClick,children }) => {
+const Clickable = ({ onClick,children,...otherProps }) => {
   return (
-    <button id="clickable" onClick={onClick}>{children}</button>
+    <button {...otherProps} id="clickable" onClick={onClick}>{children}</button>
   );
 };
 

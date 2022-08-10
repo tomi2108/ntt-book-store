@@ -21,9 +21,9 @@ export const getBookById = async (id) => {
   }
 };
 
-export const addComment = async (text,userId,bookId) => {
+export const addReview = async (text,userId,rating,bookId) => {
   try {
-    const res = await axios.post(`${url}/${bookId}/comment`, { text,userId });
+    const res = await axios.post(`${url}/${bookId}/review`, { text,userId,rating });
     return res.data;
   }catch(_){
     return null;

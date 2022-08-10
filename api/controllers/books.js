@@ -1,11 +1,11 @@
 const Book = require("../db/models/Book");
-const Comment = require("../db/models/Comment");
+const Review = require("../db/models/Review");
 const Author = require("../db/models/Author");
 const User = require("../db/models/User");
 
 Book.belongsTo(Author, { foreignKey: "authorId" });
-Comment.belongsTo(Book, { foreignKey: "bookId" });
-Comment.belongsTo(User, { foreignKey: "userId" });
+Review.belongsTo(Book, { foreignKey: "bookId" });
+Review.belongsTo(User, { foreignKey: "userId" });
 
 const getAllBooks = async () => {
   try {
@@ -18,12 +18,12 @@ const getAllBooks = async () => {
 const getBookById = async (id) => {
   try {
     const book = await Book.findByPk(id, { include: Author });
-    const comments = await Comment.findAll({
+    const reviews = await Review.findAll({
       include: { model: User, attributes: ["username"] },
       where: { bookId: id },
     });
-    const bookWithComments = { ...book.dataValues, comments };
-    return bookWithComments;
+    const bookWithReviews = { ...book.dataValues, reviews };
+    return bookWithReviews;
   } catch (err) {
     throw new Error("Error while getting book by id");
   }
@@ -38,13 +38,13 @@ const addBook = async (book) => {
   }
 };
 
-const addComment = async (comment) => {
+const addReview = async (review) => {
   try {
-    return await Comment.create(comment);
+    return await Review.create(review);
   } catch (err) {
     const field = err.errors[0].path;
-    throw new Error(`Error with ${field} while commenting book`);
+    throw new Error(`Error with ${field} while reviewing book`);
   }
 };
 
-module.exports = { addBook, getAllBooks, getBookById, addComment };
+module.exports = { addBook, getAllBooks, getBookById, addReview };

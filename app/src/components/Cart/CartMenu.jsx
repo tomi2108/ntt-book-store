@@ -2,7 +2,7 @@ import { AppContext } from "App";
 import CartItem from "components/Cart/CartItem";
 import { useContext, useEffect, useState } from "react";
 import { Button, Container, NavDropdown } from "react-bootstrap";
-import "styles/shoppingCart.css";
+
 
 const CartMenu = () => {
   const { styles, cart } = useContext(AppContext);

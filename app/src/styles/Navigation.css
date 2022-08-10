@@ -1,0 +1,36 @@
+.dropdown-toggle::after{
+  display: none  !important;
+}
+
+.nav-link-bt{
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 78px;
+  text-align: center;
+}
+
+.nav-link-bt:hover{
+    outline: 2px solid #0d6efd;
+    color:#0d6efd !important;
+    transition: outline,color 150ms ease-in-out;
+}
+
+
+@media(min-width: 990px){
+  .theme-toggle{
+    animation: float 3s infinite;
+  }
+}
+
+
+@keyframes float{
+  0%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-10px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}

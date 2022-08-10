@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import ErrorIcon from "static/ErrorIcon";
 import TickIcon from "static/TickIcon";
-import "styles/transactionButton.css";
+import "styles/TransactionButton.css";
 
 
 const BUTTON_STATE = {

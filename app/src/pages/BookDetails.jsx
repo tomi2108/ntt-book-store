@@ -1,7 +1,7 @@
 import { AppContext } from "App";
-import BookComments from "components/Books/BookComments";
 import BookDescription from "components/Books/BookDescription";
 import BookRecommendations from "components/Books/BookRecommendations";
+import BookReviews from "components/Books/BookReviews";
 import { useBookById } from "hooks/useBookById.js";
 import { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -40,7 +40,7 @@ const BookDetails = () => {
           </Row>
           <Row>
             <Col>
-              <BookComments bookComments={book.comments} bookId={book.id}/>
+              <BookReviews bookReviews={book.reviews} bookId={book.id}/>
             </Col>
           </Row>
         </Container>

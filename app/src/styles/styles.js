@@ -45,7 +45,7 @@ export const styledtheme = (theme) => {
       },
       loggedUser: {
         color: COLORS.text.primary,
-        marginLeft: "auto",
+        marginLeft: "50%",
         marginRight: "15px",
       },
     },
@@ -167,7 +167,7 @@ export const styledtheme = (theme) => {
       border: "none",
       borderBottom: `3px solid ${COLORS.details.primary}`,
     },
-    comment:{
+    review:{
       container:{
 
         backgroundColor: COLORS.background.secondary,
@@ -190,7 +190,8 @@ export const styledtheme = (theme) => {
     modal:{
       header:{ backgroundColor:COLORS.background.primary,borderBottom:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary },
       body:{ backgroundColor:COLORS.background.primary, color:COLORS.text.primary },
-      footer:{ backgroundColor:COLORS.background.primary,borderTop:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary }
+      footer:{ backgroundColor:COLORS.background.primary,borderTop:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary },
+      textarea:{ height:"100px",resize:"none",backgroundColor:COLORS.background.primary,color:COLORS.text.primary,marginBlock:"10px"  }
     },
     recommendations:{
       heading:{

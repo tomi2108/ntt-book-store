@@ -10,15 +10,8 @@ const BookDescription = ({ book, outOfStock }) => {
       <div style={ { lineHeight: "2rem" , marginBlock: "10px" }}>
         {book.description ? book.description : <p>No description</p>}
       </div>
-      <div>
-        US<strong>${book.price}</strong>
-      </div>
-      <div style={{ margin: "20px 0px" }}>
-        {outOfStock ? (
-          <span style={styles.bookCard.outOfStock}>Out of stock</span>
-        ) : (
-          <span>{book.copiesInStock} in stock</span>
-        )}
+      <div style={{ marginBlock:"10px", fontSize:"3rem" }}>
+          US<strong>${book.price}</strong>
       </div>
       <TransactionButton
         disabled={user ? outOfStock : true}
@@ -27,6 +20,13 @@ const BookDescription = ({ book, outOfStock }) => {
         completedText="Added"
         errorText="Not added"
       />
+      <div style={{ margin: "20px 0px" }}>
+        {outOfStock ? (
+          <span style={styles.bookCard.outOfStock}>Out of stock</span>
+        ) : (
+          <span>{book.copiesInStock} in stock</span>
+        )}
+      </div>
     </>
   );
 };

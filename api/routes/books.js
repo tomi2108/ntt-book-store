@@ -3,7 +3,7 @@ const {
   addBook,
   getAllBooks,
   getBookById,
-  addComment,
+  addReview,
 } = require("../controllers/books");
 
 const router = express.Router();
@@ -29,16 +29,17 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
-router.post("/:id/comment", (req, res) => {
+router.post("/:id/review", (req, res) => {
   const { id } = req.params;
-  const { text, userId } = req.body;
-  const comment = {
+  const { text, userId,rating } = req.body;
+  const review = {
     text,
     bookId: +id,
     userId,
+    rating,
   };
-  addComment(comment)
-    .then((newComment) => res.status(200).json(newComment))
+  addReview(review)
+    .then((newReview) => res.status(200).json(newReview))
     .catch((err) => res.status(400).json(err.message));
 });
 

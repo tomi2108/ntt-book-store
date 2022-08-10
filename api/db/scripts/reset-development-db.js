@@ -249,25 +249,27 @@ const authors = [
     booksIds: [13],
   },
 ];
-const comments = [
+const reviews = [
   {
     id: 1,
     bookId: 1,
     userId: 1,
     text: "This is a great book",
+    rating: 5,
   },
   {
     id: 2,
     bookId: 1,
     userId: 2,
     text: "Awesome book",
+    rating:3.5,
   },
 ];
 
 const Book = require("../models/Book.js");
 const Author = require("../models/Author.js");
 const User = require("../models/User.js");
-const Comment = require("../models/Comment.js");
+const Review = require("../models/Review.js");
 const sequelize = require("../index.js");
 
 const hashPasswords = async () => {
@@ -282,10 +284,10 @@ const hashPasswords = async () => {
 async function resetDb() {
   await hashPasswords();
   await sequelize.authenticate();
+  await Review.sync({ force: true });
   await Book.sync({ force: true });
   await Author.sync({ force: true });
   await User.sync({ force: true });
-  await Comment.sync({ force: true });
 
   await Promise.all(
     users.map(async (user) => {
@@ -306,8 +308,8 @@ async function resetDb() {
   );
 
   await Promise.all(
-    comments.map(async (comment) => {
-      await Comment.create(comment);
+    reviews.map(async (review) => {
+      await Review.create(review);
     })
   );
 

@@ -30,6 +30,9 @@
     ]
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/material": "^5.10.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "cross-env": "^7.0.3",

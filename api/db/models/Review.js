@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../index.js");
 
-const Comment = sequelize.define("Comment", {
+const Review = sequelize.define("Review", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -22,6 +22,10 @@ const Comment = sequelize.define("Comment", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  rating:{
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
 });
 
-module.exports = Comment;
+module.exports = Review;

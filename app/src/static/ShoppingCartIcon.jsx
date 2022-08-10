@@ -1,10 +1,10 @@
 import { useState } from "react";
-import "styles/NavLinkHover.css";
 
-const ShoppingCartIcon = ({ onClick, color }) => {
+
+const ShoppingCartIcon = ({ onClick, color, disabled }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const stroke = isHovered ? "#0d6efd" : color;
+  const stroke = !isHovered || disabled ? color : "#0d6efd";
 
   return (
     <svg
@@ -15,7 +15,6 @@ const ShoppingCartIcon = ({ onClick, color }) => {
         width: "20px",
         height: "auto",
         cursor: "pointer",
-        marginLeft: "15px",
       }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -24,7 +23,7 @@ const ShoppingCartIcon = ({ onClick, color }) => {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="feather feather-shopping-cart"
+      className="feather feather-shopping-cart cart"
     >
       <circle cx={9} cy={21} r={1} style={{ stroke }} />
       <circle cx={20} cy={21} r={1} style={{ stroke }} />
