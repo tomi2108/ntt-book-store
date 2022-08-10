@@ -1,5 +1,6 @@
 const cors = require("cors");
 const express = require("express");
+const path = require("path");
 
 const api = express();
 const bookRouter = require("./routes/books.js");
@@ -21,7 +22,7 @@ api.use("/api/users", userRouter);
 api.get("/health", (req, res) => res.send("OK"));
 
 api.get("/*", (req, res) => {
-  res.sendFile(this.path.join(__dirname, "path/to/your/index.html"), (err) => {
+  res.sendFile(path.join(__dirname, "/build/index.html"), (err) => {
     if (err) {
       res.status(500).send(err);
     }
