@@ -14,6 +14,8 @@ const BookDetails = () => {
 
   const { book,outOfStock,recommendations }= useBookById(id);
 
+  console.log(book);
+
 
   return (
     <>

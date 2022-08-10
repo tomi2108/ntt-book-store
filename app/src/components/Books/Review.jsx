@@ -14,6 +14,8 @@ const Review = ({ review }) => {
     timeZone: "America/Sao_Paulo",
   });
 
+  console.log(review);
+
 
   return (
     <div style={styles.review.container}>
