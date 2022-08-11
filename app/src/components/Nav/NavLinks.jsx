@@ -15,8 +15,8 @@ const NavLinks = () => {
       <Nav.Link className="nav-link-bt" as={Link} to="/search">
         Search
       </Nav.Link>
-      <Nav.Link className="nav-link-bt" as={Link} to={user ? "/publish" : "/login"}>
-        {user ? "Publish" : "Log in"}
+      <Nav.Link className="nav-link-bt" as={Link} to={user ? "/favorites" : "/login"}>
+        {user ? "Favorites" : "Log in"}
       </Nav.Link>
     </Nav>
   );

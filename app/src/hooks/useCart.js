@@ -8,6 +8,8 @@ export const useCart = (user) => {
   useEffect(() => {
     if (user) {
       setCart(user.cart);
+    }else{
+      setCart([]);
     }
   }, [user]);
 

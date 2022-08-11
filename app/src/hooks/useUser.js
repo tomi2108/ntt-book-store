@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { useState } from "react";
-import { getCart } from "services/users.js";
+import { getCart, getFavorites } from "services/users.js";
 
 export const useUser = () => {
   const [user, setUser] = useState(null);
@@ -20,11 +20,14 @@ export const useUser = () => {
     const user = userLocal ? JSON.parse(userLocal) : null;
     if (user) {
       const cart = await getCart(user);
-      setUser({ ...user, cart });
+      const favorites = await getFavorites(user);
+      setUser({ ...user, cart,favorites });
     } else {
       setUser(null);
     }
   };
+
+
 
   return [user, { logIn, logOut, getUser }];
 };

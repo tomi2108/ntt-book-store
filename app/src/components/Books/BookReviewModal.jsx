@@ -29,13 +29,14 @@ const BookReviewModal = ({ show, hideModal, bookId, reviews, setReviews }) => {
     }
     hideModal();
     reset();
-    return addReview(values.text, user.id, values.rating, bookId).then(
-      (comment) =>
-        setReviews([
-          ...reviews,
-          { ...comment, User: { username: user.username } },
-        ])
-    );
+    return addReview(values.text, user.id, values.rating, bookId)
+      .then(
+        (newReview) =>
+          setReviews([
+            ...reviews,
+            { ...newReview, User: { username: user.username } },
+          ])
+      );
   };
 
   return (

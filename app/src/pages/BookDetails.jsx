@@ -11,8 +11,9 @@ import BookCoverPlaceholder from "static/BookCoverPlaceholder";
 const BookDetails = () => {
   const { styles } = useContext(AppContext);
   const { id } = useParams();
-
   const { book,outOfStock,recommendations }= useBookById(id);
+
+
 
 
 

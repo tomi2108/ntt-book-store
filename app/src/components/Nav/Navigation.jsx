@@ -45,7 +45,7 @@ const Navigation = () => {
               onClick={userActions.logOut}
               size="sm"
               variant="secondary"
-              style={{ marginRight: "auto", }}
+              style={{ marginRight: "10px", }}
             >
               Log out
             </Button>

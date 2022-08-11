@@ -7,6 +7,7 @@ const users = [
     booksBoughtIds: [],
     dateOfBirth: "2000-01-01",
     cart: [],
+    favorites: [1,2,3,4]
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ const users = [
     booksBoughtIds: [],
     dateOfBirth: "2001-07-01",
     cart: [],
+    favorites:[]
   },
 ];
 const books = [

@@ -46,7 +46,7 @@ export const styledtheme = (theme) => {
       },
       loggedUser: {
         color: COLORS.text.primary,
-        marginLeft: "50%",
+        marginLeft: "40%",
         marginRight: "15px",
       },
     },
@@ -199,6 +199,20 @@ export const styledtheme = (theme) => {
       heading:{
         marginBlock:"1rem",
       }
+    },
+    heartIcon:(isFavorite) => {
+      return {
+        bottom:"15px",
+        border: `1px solid ${COLORS.details.primary}`,
+        borderRadius: "30%",
+        padding:"7px",
+        right:"15px",
+        position:"absolute",
+        width: "2.5rem",
+        height: "2.5rem",
+        fill: isFavorite ? "red" : COLORS.background.secondary,
+        enableBackground: "new 0 0 295.559 295.559",
+      };
     }
   };
 };

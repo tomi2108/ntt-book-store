@@ -26,6 +26,10 @@ const User = sequelize.define("User", {
     type: DataTypes.JSON,
     allowNull: true,
   },
+  favorites:{
+    type:DataTypes.JSON,
+    allowNull:true
+  }
 });
 
 module.exports = User;

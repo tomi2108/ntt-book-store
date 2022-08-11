@@ -1,9 +1,25 @@
 import { AppContext } from "App";
+import Clickable from "components/Utils/Clickable";
 import TransactionButton from "components/Utils/TransactionButton";
+import { useIsFavorite } from "hooks/useIsFavorite.js";
 import { useContext } from "react";
+import HeartIcon from "static/HeartIcon";
 
 const BookDescription = ({ book, outOfStock }) => {
-  const { styles, user, cartActions } = useContext(AppContext);
+  const { styles, user, cartActions,favorites,favoritesActions } = useContext(AppContext);
+
+  const isFavorite = useIsFavorite(book.id,favorites);
+
+
+  const favorite =  () => {
+    if (isFavorite) {
+      favoritesActions.removeFromFavorites(book.id);
+    } else {
+      favoritesActions.addToFavorites(book.id);
+    }
+  };
+
+
 
   return (
     <>
@@ -11,7 +27,12 @@ const BookDescription = ({ book, outOfStock }) => {
         {book.description ? book.description : <p>No description</p>}
       </div>
       <div style={{ marginBlock: "10px", fontSize: "3rem" }}>
-        US<strong>${book.price}</strong>
+        US<strong>${book.price}
+          <Clickable style={{ display:!user?"none":"" }} onClick={favorite}>
+            <HeartIcon style={{ ...styles.heartIcon(isFavorite),position:"static",marginBottom:"10px" }}/>
+          </Clickable>
+        </strong>
+
       </div>
       <TransactionButton
         disabled={user ? outOfStock : true}

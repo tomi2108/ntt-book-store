@@ -4,6 +4,9 @@ const {
   createUser,
   updateUserCart,
   getCart,
+  addFavorite,
+  removeFavorite,
+  getFavorites
 } = require("../controllers/users");
 
 const router = express.Router();
@@ -22,6 +25,9 @@ router.post("/:username", (req, res) => {
       res.status(404).json({ message: err.message });
     });
 });
+
+
+
 
 router.put("/:username/cart", (req, res) => {
   const { username } = req.params;
@@ -50,8 +56,10 @@ router.get("/:username/cart", (req, res) => {
     });
 });
 
+
 router.post("/", (req, res) => {
   const user = req.body;
+
   createUser(user)
     .then((user) => {
       res.status(200).json(user);
@@ -59,6 +67,52 @@ router.post("/", (req, res) => {
     .catch((err) => {
       res.status(400).json({ message: err.message });
     });
+
 });
+
+
+router.get("/:username/favorites",(req,res) => {
+  const { username } = req.params;
+
+  getFavorites(username)
+    .then((favorites) => {
+      res.status(200).json(favorites);
+
+    })
+    .catch((err) => {res.status(404).json({ message: err.message });});
+
+});
+
+router.put("/:username/favorites",(req,res) => {
+  const { username } = req.params;
+
+  const { bookId } = req.body;
+
+  addFavorite(username, bookId)
+    .then((favorites) => {
+      res.status(200).json(favorites);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: err.message });
+    });
+}
+);
+
+router.put("/:username/favorites/remove",(req,res) => {
+  const { username } = req.params;
+
+  const { bookId } = req.body;
+
+  removeFavorite(username, bookId)
+    .then((favorites) => {
+      res.status(200).json(favorites);
+    })
+    .catch((err) => {
+      res.status(404).json({ message: err.message });
+    }
+    );
+});
+
+
 
 module.exports = router;

@@ -3,10 +3,9 @@
 }
 
 .nav-link-bt{
-  box-sizing: border-box;
   border-radius: 10px;
   width: 78px;
-  text-align: center;
+  text-align: left;
 }
 
 .nav-link-bt:hover{
@@ -21,6 +20,10 @@
 }
 
 @media(min-width: 990px){
+  .nav-link-bt{
+    text-align: center;
+  }
+
   .theme-toggle{
     animation: float 3s infinite ease-in-out;
     position: absolute;
