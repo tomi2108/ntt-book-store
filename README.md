@@ -41,3 +41,9 @@ Se corren dentro de las carpetas app y api con el comando:
 La aplicación está pensada para ser empaquetada desde la api que luego usa la app como interfaz.
 
 Url app deployada : https://ntt-bookstore.herokuapp.com/
+
+Usuarios en la base de datos de produccion: 
+- John, password
+- Mike, secret
+
+También podes crear tu usuario mediante el register!
