@@ -31,7 +31,7 @@ const BookCard = ({ book }) => {
       <Card className="book-card" style={styles.bookCard.container}>
         <Card.Body style={styles.bookCard.body}>
           <Row
-            style={{ cursor: "pointer" }}
+            style={styles.pointer}
             onClick={() => navigate(`/book/${book.id}`)}
           >
             <Card.Title style={styles.bookCard.title}>
@@ -59,8 +59,8 @@ const BookCard = ({ book }) => {
           <Row>
             <div>
               US<strong>${book.price}</strong>
-              <Clickable style={{ display:!user?"none":"" }} onClick={favorite}>
-                <HeartIcon style={styles.heartIcon(isFavorite)} />
+              <Clickable style={styles.displayIf(user)} onClick={favorite}>
+                <HeartIcon btn style={styles.heartIcon(isFavorite)} />
               </Clickable>
             </div>
           </Row>

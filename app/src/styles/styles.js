@@ -1,7 +1,7 @@
 
 const DARK_COLORS = {
   background: {
-    primary: "rgb(36, 39, 43)",
+    primary: "#212529",
     secondary: "#303134",
   },
   text: {
@@ -13,11 +13,14 @@ const DARK_COLORS = {
     primary: "#747474",
     secondary: "#656565",
   },
+  hover: {
+    primary: "#dddddd"
+  }
 };
 
 const LIGHT_COLORS = {
   background: {
-    primary: "#FCFCFC",
+    primary: "#F8F9FA",
     secondary: "#ddd",
   },
   text: {
@@ -29,12 +32,18 @@ const LIGHT_COLORS = {
     primary: "#343434",
     secondary: "#252525",
   },
+  hover: {
+    primary: "#4b4b4b"
+  }
 };
 
 export const styledtheme = (theme) => {
   const COLORS = theme === "light" ? LIGHT_COLORS : DARK_COLORS;
   return {
     iconColor: COLORS.text.primary,
+    iconHoverColor: COLORS.hover.primary,
+    pointer : { cursor: "pointer" },
+    displayIf : (condition) => {return { display:condition?"":"none" };},
     nav: {
       navbar:{
         marginBlock: "10px",
@@ -42,12 +51,16 @@ export const styledtheme = (theme) => {
       },
       links: {
         justifyContent: "space-evenly",
-        width: "25%",
+        width: "400px",
       },
       loggedUser: {
         color: COLORS.text.primary,
-        marginLeft: "40%",
-        marginRight: "15px",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        width: "40%",
+        gap: "10px",
       },
     },
     main: {
@@ -125,7 +138,10 @@ export const styledtheme = (theme) => {
       },
       subtitle:{
         color: COLORS.text.secondary,
-      }
+      },
+      description:{ lineHeight: "2rem", marginBlock: "10px" },
+      price :{ marginBlock: "10px", fontSize: "3rem" },
+      outOfStock:{ margin: "20px 0px" }
     },
     login: {
       container: {
@@ -183,7 +199,6 @@ export const styledtheme = (theme) => {
       author:{
         color: COLORS.text.secondary,
         left: 0,
-
         marginBlock: "0.5rem",
         position:"relative",
         width:"100%"

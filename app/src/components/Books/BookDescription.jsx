@@ -23,12 +23,12 @@ const BookDescription = ({ book, outOfStock }) => {
 
   return (
     <>
-      <div style={{ lineHeight: "2rem", marginBlock: "10px" }}>
+      <div style={styles.bookDetails.description}>
         {book.description ? book.description : <p>No description</p>}
       </div>
-      <div style={{ marginBlock: "10px", fontSize: "3rem" }}>
+      <div style={styles.bookDetails.price}>
         US<strong>${book.price}
-          <Clickable style={{ display:!user?"none":"" }} onClick={favorite}>
+          <Clickable style={styles.displayIf(user)} onClick={favorite}>
             <HeartIcon style={{ ...styles.heartIcon(isFavorite),position:"static",marginBottom:"10px" }}/>
           </Clickable>
         </strong>
@@ -41,7 +41,7 @@ const BookDescription = ({ book, outOfStock }) => {
         completedText="Added"
         errorText="Not added"
       />
-      <div style={{ margin: "20px 0px" }}>
+      <div style={styles.bookDetails.outOfStock}>
         {outOfStock ? (
           <span style={styles.bookCard.outOfStock}>Out of stock</span>
         ) : (

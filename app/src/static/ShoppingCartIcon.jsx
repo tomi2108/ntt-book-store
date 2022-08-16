@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { AppContext } from "App";
+import { useContext, useState } from "react";
 
 
 const ShoppingCartIcon = ({ onClick, color, disabled }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { styles } = useContext(AppContext);
 
-  const stroke = !isHovered || disabled ? color : "#0d6efd";
+  const stroke = !isHovered || disabled ? color : styles.iconHoverColor;
 
   return (
     <svg

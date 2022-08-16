@@ -37,19 +37,20 @@ const Navigation = () => {
           >
             <CartMenu />
           </NavDropdown>
-          <Nav.Item style={styles.nav.loggedUser}>
-            {user && `Logged in as ${user.username}`}
-          </Nav.Item>
-          {user && (
-            <Button
-              onClick={userActions.logOut}
-              size="sm"
-              variant="secondary"
-              style={{ marginRight: "10px", }}
-            >
+          <div style={styles.nav.loggedUser}>
+            <Nav.Item >
+              {user && `Logged in as ${user.username}`}
+            </Nav.Item>
+            {user && (
+              <Button
+                onClick={userActions.logOut}
+                size="sm"
+                variant="secondary"
+              >
               Log out
-            </Button>
-          )}
+              </Button>
+            )}
+          </div>
         </Navbar.Collapse>
         <Clickable className="theme-toggle" onClick={toggleTheme}>
           {theme === "dark" ? (

@@ -46,4 +46,5 @@ Usuarios en la base de datos de produccion:
 - John, password
 - Mike, secret
 
-También podes crear tu usuario mediante el register!
+También podes crear tu usuario mediante el register para ver el funcionamiento completo de la aplicacion.
+Las contraseñas se guardan encriptadas por su seguridad.

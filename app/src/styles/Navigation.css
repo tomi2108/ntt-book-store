@@ -4,16 +4,17 @@
 
 .nav-link-bt{
   border-radius: 10px;
-  width: 78px;
+  width: 125px;
   text-align: left;
 }
 
-.nav-link-bt:hover{
-    outline: 2px solid #0d6efd;
-    color:#0d6efd !important;
-    transition: outline,color 150ms ease-in-out;
+.light-bt:hover{
+    background-color: #dddddd;
 }
 
+.dark-bt:hover{
+  background-color: #4b4b4b;
+}
 
 .theme-toggle-shadow{
   display: none;

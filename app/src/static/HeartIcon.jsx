@@ -1,8 +1,8 @@
 import "styles/HeartIcon.css";
 
-const HeartIcon = ({ style,...otherProps }) => (
+const HeartIcon = ({ style, btn = false , ...otherProps }) => (
   <svg
-    className="heart-icon"
+    className={btn? "heart-icon" : ""}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 295.559 295.559"
     style={style}

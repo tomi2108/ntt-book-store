@@ -2,9 +2,21 @@ import { AppContext } from "App";
 import BookCard from "components/Books/BookCard";
 import { useContext, useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Favorites = () => {
-  const { books,favorites } = useContext(AppContext);
+  const { user,books,favorites } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }
+  , [user,navigate]);
+
+
 
   const [favoritesBooks, setFavoritesBooks] = useState([]);
 

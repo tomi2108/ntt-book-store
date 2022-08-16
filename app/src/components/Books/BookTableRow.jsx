@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BookTableRow = ({ book, outOfStock }) => {
-  const { user, cartActions } = useContext(AppContext);
+  const { styles, user, cartActions } = useContext(AppContext);
 
   const navigate = useNavigate();
 
   return (
     <tr
-      style={{ cursor: "pointer" }}
+      style={styles.pointer}
       onClick={() => navigate(`/book/${book.id}`)}
       key={book.id}
     >
