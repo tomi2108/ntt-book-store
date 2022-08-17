@@ -4,6 +4,7 @@ import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import HeartIcon from "static/HeartIcon";
 import MagnifyingGlass from "static/MagnifyingGlass";
+import PowerSwitchIcon from "static/PowerSwitchIcon";
 import ShoppingBags from "static/ShoppingBags";
 
 const NavLinks = () => {
@@ -24,7 +25,8 @@ const NavLinks = () => {
         </span>
       </Nav.Link>
       <Nav.Link className={`nav-link-bt ${theme}-bt`} as={Link} to={user ? "/favorites" : "/login"}>
-        <HeartIcon style={{ width: "17px", height: "17px", fill: styles.iconColor, } }/>
+        { user? <HeartIcon style={{ width: "17px", height: "17px", fill: styles.iconColor } }/>:
+          <PowerSwitchIcon style={{ width: "17px", height: "17px", fill: styles.iconColor } }/>}
         <span style={{ marginInline:"10px" }}>
           {user ? "Favorites" : "Log in"}
         </span>
