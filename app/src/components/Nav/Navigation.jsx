@@ -1,12 +1,12 @@
 import { AppContext } from "App";
 import CartMenu from "components/Cart/CartMenu";
 import NavLinks from "components/Nav/NavLinks";
+import UserInfo from "components/Nav/UserInfo";
+import ThemeToggle from "components/Utils/ThemeToggle";
 import { useContext, useState } from "react";
 import { Container, Navbar, NavDropdown } from "react-bootstrap";
 import ShoppingCartIcon from "static/ShoppingCartIcon";
 import "styles/Navigation.css";
-import ThemeToggle from "./ThemeToggle";
-import UserInfo from "./UserInfo";
 
 const Navigation = () => {
   const { theme, styles, user } =

@@ -1,6 +1,6 @@
 import { AppContext } from "App";
 import Clickable from "components/Utils/Clickable";
-import { useIsFavorite } from "hooks/useIsFavorite";
+import { useIsFavorite } from "hooks/utils/useIsFavorite";
 import { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";

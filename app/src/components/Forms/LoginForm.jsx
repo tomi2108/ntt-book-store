@@ -1,7 +1,7 @@
 import { AppContext } from "App";
 import FormFooter from "components/Forms/FormFooter";
 import FormGroup from "components/Forms/FormGroup";
-import { useFields } from "hooks/useFields.js";
+import { useFields } from "hooks/utils/useFields.js";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";

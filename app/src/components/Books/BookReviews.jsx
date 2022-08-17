@@ -1,7 +1,7 @@
 import { AppContext } from "App";
 import BookReviewModal from "components/Books/BookReviewModal";
 import Review from "components/Books/Review";
-import { useModal } from "hooks/useModal";
+import { useModal } from "hooks/utils/useModal";
 import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 
@@ -48,7 +48,8 @@ const BookReviews = ({ bookReviews, bookId }) => {
         bookId={bookId}
       />
       {reviews &&
-        reviews.sort(sortByDate).map((r) => <Review review={r} key={r.id} />)}
+        reviews.sort(sortByDate).map((r) => <Review review={r} key={r.id} />)
+      }
     </>
   );
 };

@@ -1,15 +1,17 @@
 /* eslint-disable no-undef */
+import { useLocalStorage } from "hooks/utils/useLocalStorage.js";
 import { useEffect, useState } from "react";
 import { styledtheme } from "styles/styles.js";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState("dark");
+
+  const { theme,themeStorage } = useLocalStorage("BookstoreTheme","theme");
   const [styles, setStyle] = useState(styledtheme(theme));
 
+
   useEffect(() => {
-    localStorage.getItem("BookstoreTheme")
-      ? setTheme(localStorage.getItem("BookstoreTheme"))
-      : setTheme("dark");
+    const themeLocal = themeStorage.getItem();
+    if(!themeLocal) themeStorage.setItem("dark");
   }, []);
 
   useEffect(() => {
@@ -17,8 +19,7 @@ export const useTheme = () => {
   }, [theme]);
 
   const toggleTheme = () => {
-    localStorage.setItem("BookstoreTheme", theme === "dark" ? "light" : "dark");
-    setTheme(theme === "light" ? "dark" : "light");
+    themeStorage.setItem(theme === "dark" ? "light" : "dark");
   };
 
   return { styles, theme, toggleTheme };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getBookById } from "../services/books.js";
-import { updateCart } from "../services/users.js";
+import { getBookById } from "services/books.js";
+import { updateCart } from "services/users.js";
 
 export const useCart = (user) => {
   const [cart, setCart] = useState([]);

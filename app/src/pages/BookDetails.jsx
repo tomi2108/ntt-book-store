@@ -2,7 +2,7 @@ import { AppContext } from "App";
 import BookDescription from "components/Books/BookDescription";
 import BookRecommendations from "components/Books/BookRecommendations";
 import BookReviews from "components/Books/BookReviews";
-import { useBookById } from "hooks/useBookById.js";
+import { useBookById } from "hooks/utils/useBookById.js";
 import { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";

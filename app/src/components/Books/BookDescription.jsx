@@ -1,7 +1,7 @@
 import { AppContext } from "App";
 import Clickable from "components/Utils/Clickable";
 import TransactionButton from "components/Utils/TransactionButton";
-import { useIsFavorite } from "hooks/useIsFavorite.js";
+import { useIsFavorite } from "hooks/utils/useIsFavorite.js";
 import { useContext } from "react";
 import HeartIcon from "static/HeartIcon";
 

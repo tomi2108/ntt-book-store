@@ -1,9 +1,9 @@
 import { AppContext } from "App";
 import BookTableRow from "components/Books/BookTableRow";
 import Clickable from "components/Utils/Clickable";
-import { useBooks } from "hooks/useBooks.js";
-import { useFields } from "hooks/useFields.js";
-import { useSort } from "hooks/useSort.js";
+import { useBooks } from "hooks/appState/useBooks.js";
+import { useFields } from "hooks/utils/useFields.js";
+import { useSort } from "hooks/utils/useSort.js";
 import { useContext } from "react";
 import { Container, Row, Table } from "react-bootstrap";
 import DownIcon from "static/DownIcon";

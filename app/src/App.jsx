@@ -1,9 +1,9 @@
 import Navigation from "components/Nav/Navigation";
-import { useBooks } from "hooks/useBooks";
-import { useCart } from "hooks/useCart.js";
-import { useFavorites } from "hooks/useFavorites.js";
-import { useTheme } from "hooks/useTheme.js";
-import { useUser } from "hooks/useUser.js";
+import { useBooks } from "hooks/appState/useBooks";
+import { useCart } from "hooks/appState/useCart.js";
+import { useTheme } from "hooks/appState/useTheme.js";
+import { useUser } from "hooks/appState/useUser.js";
+import { useFavorites } from "hooks/utils/useFavorites.js";
 import BookDetails from "pages/BookDetails";
 import Favorites from "pages/Favorites";
 import Login from "pages/Login";
