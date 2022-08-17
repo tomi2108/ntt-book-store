@@ -2,16 +2,16 @@
 const DARK_COLORS = {
   background: {
     primary: "#212529",
-    secondary: "#303134",
+    secondary: "#303134"
   },
   text: {
     primary: "#fff",
     secondary: "rgb(209, 209, 209)",
-    red: "rgb(245, 106, 106)",
+    red: "rgb(245, 106, 106)"
   },
   details: {
     primary: "#747474",
-    secondary: "#656565",
+    secondary: "#656565"
   },
   hover: {
     primary: "#dddddd"
@@ -21,16 +21,16 @@ const DARK_COLORS = {
 const LIGHT_COLORS = {
   background: {
     primary: "#F8F9FA",
-    secondary: "#ddd",
+    secondary: "#ddd"
   },
   text: {
     primary: "#000",
     secondary: "#050505",
-    red: "rgb(245, 106, 106)",
+    red: "rgb(245, 106, 106)"
   },
   details: {
     primary: "#343434",
-    secondary: "#252525",
+    secondary: "#252525"
   },
   hover: {
     primary: "#4b4b4b"
@@ -40,181 +40,59 @@ const LIGHT_COLORS = {
 export const styledtheme = (theme) => {
   const COLORS = theme === "light" ? LIGHT_COLORS : DARK_COLORS;
   return {
-    iconColor: COLORS.text.primary,
-    iconHoverColor: COLORS.hover.primary,
-    pointer : { cursor: "pointer" },
-    displayIf : (condition) => {return { display:condition?"":"none" };},
-    nav: {
-      navbar:{
-        marginBlock: "10px",
-        position: "relative",
-      },
-      links: {
-        justifyContent: "space-evenly",
-        width: "400px",
-      },
-      loggedUser: {
-        color: COLORS.text.primary,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        width: "40%",
-        gap: "10px",
-      },
-    },
-    main: {
-      backgroundColor: COLORS.background.primary,
-      minHeight: "100vh",
-      color: COLORS.text.primary,
-    },
     bookCard: {
-      wrapper: {
-        margin: 3,
-        width: "20rem",
-        height: "24rem",
-        marginBottom: "1rem",
-      },
-      container: {
-        height: "100%",
-        backgroundColor: COLORS.background.primary,
-        border: `1px solid ${COLORS.details.primary}`,
-      },
       body: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "space-between"
+      },
+      container: {
+        backgroundColor: COLORS.background.primary,
+        border: `1px solid ${COLORS.details.primary}`,
+        height: "100%"
       },
       image: {
         borderRadius: "10px",
-        width: "150px",
         height: "210px",
         margin: "auto",
         marginBottom: "1rem",
+        width: "150px"
+      },
+      outOfStock: {
+        color: COLORS.text.red
       },
       title: {
         height: "45px",
-        marginBottom: "15px",
+        marginBottom: "15px"
       },
-      outOfStock: {
-        color: COLORS.text.red,
-      },
-    },
-    shoppingCart: {
-      dropdown: {
-        backgroundColor: COLORS.background.secondary,
-        color: COLORS.text.primary,
-      },
-      item: {
-        color: COLORS.text.primary,
-        fontSize: "small",
-        borderBottom: `3px solid ${COLORS.details.primary}`,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-      },
-      menu: {
-        width: "20rem",
-      },
-      checkOutButton: {
-        fontSize: "1rem",
-        padding: 0,
-        width: "50%",
-        height: "35px",
-        marginLeft: "50%",
-        marginTop: "1rem",
-      },
-    },
-    link: {
-      color: "inherit",
-      textDecoration: "none",
-    },
-    bookDetails: {
-      image: {
-        border: `1px solid ${COLORS.details.secondary}`,
-        width: "350px",
-        height: "550px",
-        margin: "auto",
-      },
-      subtitle:{
-        color: COLORS.text.secondary,
-      },
-      description:{ lineHeight: "2rem", marginBlock: "10px" },
-      price :{ marginBlock: "10px", fontSize: "3rem" },
-      outOfStock:{ margin: "20px 0px" }
-    },
-    login: {
-      container: {
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        color: COLORS.text.primary,
-        justifyContent: "center",
-        alignItems: "center",
-      },
-      form: {
-        backgroundColor: COLORS.background.secondary,
-        padding: "30px",
-        borderRadius: "3%",
-        width: "50%",
-        minWidth: "340px",
-      },
-    },
-    notification: (notification) => {
-      return {
-        visibility: notification ? "" : "hidden",
-        color: COLORS.text.red,
-        border: `2px solid ${COLORS.text.red}`,
-        padding: "5px 10px",
-        borderRadius: "5%",
-        margin: "10px",
-      };
-    },
-    input: {
-      backgroundColor: COLORS.background.secondary,
-      color: COLORS.text.primary,
-      border: `1px solid ${COLORS.details.primary}`,
-    },
-    search: {
-      marginBlock: "10%",
-      width: "50%",
-      height: "2.5rem",
-      background: "inherit",
-      color: COLORS.text.primary,
-      border: "none",
-      borderBottom: `3px solid ${COLORS.details.primary}`,
-    },
-    review:{
-      container:{
-
-        backgroundColor: COLORS.background.secondary,
-        borderRadius:"10px",
-        padding:"10px",
-        marginBlock:"5px",
-        display:"flex",
-        flexDirection:"column",
-        alignItems:"flex-start",
-        justifyContent:"flex-start"
-      },
-      author:{
-        color: COLORS.text.secondary,
-        left: 0,
-        marginBlock: "0.5rem",
-        position:"relative",
-        width:"100%"
-      },
-    },
-    modal:{
-      header:{ backgroundColor:COLORS.background.primary,borderBottom:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary },
-      body:{ backgroundColor:COLORS.background.primary, color:COLORS.text.primary },
-      footer:{ backgroundColor:COLORS.background.primary,borderTop:`1px solid ${COLORS.details.primary}`,color:COLORS.text.primary },
-      textarea:{ height:"100px",resize:"none",backgroundColor:COLORS.background.primary,color:COLORS.text.primary,marginBlock:"10px"  }
-    },
-    recommendations:{
-      heading:{
-        marginBlock:"1rem",
+      wrapper: {
+        height: "24rem",
+        margin: 3,
+        marginBottom: "1rem",
+        width: "20rem"
       }
     },
+    bookDetails: {
+      description:{
+        lineHeight: "2rem",
+        marginBlock: "10px"
+      },
+      image: {
+        border: `1px solid ${COLORS.details.secondary}`,
+        height: "550px",
+        margin: "auto",
+        width: "350px"
+      },
+      outOfStock:{ margin: "20px 0px" },
+      price :{
+        marginBlock: "10px",
+        fontSize: "3rem"
+      },
+      subtitle:{
+        color: COLORS.text.secondary
+      }
+    },
+    displayIf : (condition) => {return { display:condition?"":"none" };},
     heartIcon:(isFavorite) => {
       return {
         bottom:"15px",
@@ -226,8 +104,167 @@ export const styledtheme = (theme) => {
         width: "2.5rem",
         height: "2.5rem",
         fill: isFavorite ? "red" : COLORS.background.secondary,
-        enableBackground: "new 0 0 295.559 295.559",
+        enableBackground: "new 0 0 295.559 295.559"
       };
+    },
+    iconColor: COLORS.text.primary,
+    iconHoverColor: COLORS.hover.primary,
+    input: {
+      backgroundColor: COLORS.background.secondary,
+      border: `1px solid ${COLORS.details.primary}`,
+      color: COLORS.text.primary
+    },
+    link: {
+      color: "inherit",
+      textDecoration: "none"
+    },
+    login: {
+      button:{ marginTop: "30px" },
+      container: {
+        alignItems: "center",
+        color: COLORS.text.primary,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        width: "100%"
+      },
+      form: {
+        backgroundColor: COLORS.background.secondary,
+        borderRadius: "3%",
+        minWidth: "340px",
+        padding: "30px",
+        width: "50%"
+      }
+    },
+    main: {
+      backgroundColor: COLORS.background.primary,
+      color: COLORS.text.primary,
+      minHeight: "100vh"
+    },
+    modal:{
+      body:{
+        backgroundColor:COLORS.background.primary,
+        color:COLORS.text.primary
+      },
+      footer:{
+        backgroundColor:COLORS.background.primary,
+        borderTop:`1px solid ${COLORS.details.primary}`,
+        color:COLORS.text.primary
+      },
+      header:{
+        backgroundColor:COLORS.background.primary,
+        borderBottom:`1px solid ${COLORS.details.primary}`,
+        color:COLORS.text.primary
+      },
+      textarea:{
+        backgroundColor:COLORS.background.primary,
+        color:COLORS.text.primary,marginBlock:"10px",
+        height:"100px",
+        resize:"none"
+      }
+    },
+    nav: {
+      buttons: {
+        justifyContent: "space-evenly",
+        width: "400px"
+      },
+      icon:{
+        fill: COLORS.text.primary,
+        height: "17px",
+        width: "17px"
+      },
+      link:{ marginInline:"10px" },
+      loggedUser: {
+        alignItems: "center",
+        color: COLORS.text.primary,
+        display: "flex",
+        flexDirection: "row",
+        gap: "10px",
+        justifyContent: "flex-end",
+        width: "40%"
+      },
+      navbar:{
+        marginBlock: "10px",
+        position: "relative"
+      }
+    },
+    notification: (notification) => {
+      return {
+        visibility: notification ? "" : "hidden",
+        color: COLORS.text.red,
+        border: `2px solid ${COLORS.text.red}`,
+        padding: "5px 10px",
+        borderRadius: "5%",
+        margin: "10px"
+      };
+    },
+    pointer : { cursor: "pointer" },
+    recommendations:{
+      heading:{
+        marginBlock:"1rem"
+      }
+    },
+    review:{
+      addButton:{ marginBlock:"10px" },
+      author:{
+        color: COLORS.text.secondary,
+        left: 0,
+        marginBlock: "0.5rem",
+        position:"relative",
+        width:"100%"
+      },
+      container:{
+        alignItems:"flex-start",
+        backgroundColor: COLORS.background.secondary,
+        borderRadius:"10px",
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:"flex-start",
+        marginBlock:"5px",
+        padding:"10px"
+      },
+      rating:{ alignSelf:"flex-end" }
+    },
+    search: {
+      container:{ justifyContent: "center" },
+      input:{
+        background: "inherit",
+        border: "none",
+        borderBottom: `3px solid ${COLORS.details.primary}`,
+        color: COLORS.text.primary,
+        height: "2.5rem",
+        marginBlock: "10%",
+        width: "50%"
+      },
+      table:{
+        button:{ textAlign:"center" }
+      }
+    },
+    shoppingCart: {
+      checkOutButton: {
+        fontSize: "1rem",
+        height: "35px",
+        marginLeft: "50%",
+        marginTop: "1rem",
+        padding: 0,
+        width: "50%"
+      },
+      dropdown: {
+        backgroundColor: COLORS.background.secondary,
+        color: COLORS.text.primary
+      },
+      item: {
+        borderBottom: `3px solid ${COLORS.details.primary}`,
+        color: COLORS.text.primary,
+        display: "flex",
+        flexDirection: "row",
+        fontSize: "small",
+        justifyContent: "space-between"
+      },
+      itemDetails: { alignSelf: "center" },
+      menu: {
+        width: "20rem"
+      }
     }
   };
 };

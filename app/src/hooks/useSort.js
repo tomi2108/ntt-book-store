@@ -3,7 +3,7 @@ import { useState } from "react";
 const SORT_OPTIONS = {
   ascending: 1,
   notSorted: 0,
-  descending: -1,
+  descending: -1
 };
 
 export const useSort = () => {
@@ -11,7 +11,7 @@ export const useSort = () => {
     value: null,
     titleOrder: SORT_OPTIONS.notSorted,
     authorOrder: SORT_OPTIONS.notSorted,
-    priceOrder: SORT_OPTIONS.notSorted,
+    priceOrder: SORT_OPTIONS.notSorted
   });
 
   const nextTitleOrder =
@@ -40,7 +40,7 @@ export const useSort = () => {
       value: "title",
       titleOrder: nextTitleOrder,
       authorOrder: SORT_OPTIONS.notSorted,
-      priceOrder: SORT_OPTIONS.notSorted,
+      priceOrder: SORT_OPTIONS.notSorted
     });
 
   const sortByAuthor = () =>
@@ -48,7 +48,7 @@ export const useSort = () => {
       value: "author",
       authorOrder: nextAuthorOrder,
       titleOrder: SORT_OPTIONS.notSorted,
-      priceOrder: SORT_OPTIONS.notSorted,
+      priceOrder: SORT_OPTIONS.notSorted
     });
 
   const sortByPrice = () =>
@@ -56,7 +56,7 @@ export const useSort = () => {
       value: "price",
       priceOrder: nextPriceOrder,
       titleOrder: SORT_OPTIONS.notSorted,
-      authorOrder: SORT_OPTIONS.notSorted,
+      authorOrder: SORT_OPTIONS.notSorted
     });
 
   const handleTitleSort = (a, b) =>
@@ -102,6 +102,6 @@ export const useSort = () => {
     sortByAuthor,
     sortByPrice,
     sortValue: sort.value,
-    sortOrder,
+    sortOrder
   };
 };

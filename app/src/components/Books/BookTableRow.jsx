@@ -19,7 +19,7 @@ const BookTableRow = ({ book, outOfStock }) => {
       <td>
         US<strong>${book.price}</strong>
       </td>
-      <td style={{ textAlign: "center" }}>
+      <td style={styles.search.table.button}>
         <TransactionButton
           disabled={user ? outOfStock : true}
           onClick={(e) => {

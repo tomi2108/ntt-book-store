@@ -13,7 +13,7 @@ const Review = ({ review }) => {
       hour: "numeric",
       minute: "numeric",
       hour12: true,
-      timeZone: "America/Sao_Paulo",
+      timeZone: "America/Sao_Paulo"
     }
   );
 
@@ -23,7 +23,7 @@ const Review = ({ review }) => {
         <span>  <strong>{review.User.username}</strong> -{" "}{formatedDateWithHour} </span>
       </div>
       <p>{review.text}</p>
-      <div style={{ alignSelf:"flex-end" }}>
+      <div style={styles.review.rating}>
         <Rating value={review.rating} readOnly />
       </div>
     </div>

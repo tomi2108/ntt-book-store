@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { createUser } from "services/users.js";
 
 const RegisterForm = ({ sendToLogin, setNotification }) => {
-  const { userActions } = useContext(AppContext);
+  const { styles, userActions } = useContext(AppContext);
 
   const { values, onChange } = useFields({
     username: "",
     password: "",
     confirmPassword: "",
-    dateOfBirth: "",
+    dateOfBirth: ""
   });
 
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
     const userToCreate = {
       username: values.username,
       password: values.password,
-      dateOfBirth: values.dateOfBirth,
+      dateOfBirth: values.dateOfBirth
     };
 
     createUser(userToCreate)
@@ -83,7 +83,7 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
           value={values.confirmPassword}
           onChange={onChange}
         />
-        <Button style={{ marginTop: "30px" }} type="submit">
+        <Button style={styles.login.button} type="submit">
           Register
         </Button>
       </Form>

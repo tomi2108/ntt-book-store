@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 
 const BookReviews = ({ bookReviews, bookId }) => {
-  const { user } = useContext(AppContext);
+  const { styles, user } = useContext(AppContext);
 
   const { show, showModal, hideModal } = useModal();
   const [reviews, setReviews] = useState([]);
@@ -31,7 +31,7 @@ const BookReviews = ({ bookReviews, bookId }) => {
   return (
     <>
       <Button
-        style={{ marginBlock: "10px" }}
+        style={styles.review.addButton}
         disabled={!user || reviewed}
         onClick={showModal}
       >

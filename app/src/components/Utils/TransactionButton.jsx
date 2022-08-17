@@ -8,7 +8,7 @@ const BUTTON_STATE = {
   loading: 0,
   ready: 1,
   error: 2,
-  completed: 3,
+  completed: 3
 };
 
 const TransactionButton = ({

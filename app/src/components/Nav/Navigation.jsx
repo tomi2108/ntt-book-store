@@ -1,16 +1,15 @@
 import { AppContext } from "App";
 import CartMenu from "components/Cart/CartMenu";
 import NavLinks from "components/Nav/NavLinks";
-import Clickable from "components/Utils/Clickable";
 import { useContext, useState } from "react";
-import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import MoonIcon from "static/MoonIcon";
+import { Container, Navbar, NavDropdown } from "react-bootstrap";
 import ShoppingCartIcon from "static/ShoppingCartIcon";
-import SunIcon from "static/SunIcon";
 import "styles/Navigation.css";
+import ThemeToggle from "./ThemeToggle";
+import UserInfo from "./UserInfo";
 
 const Navigation = () => {
-  const { theme, styles, toggleTheme, user, userActions } =
+  const { theme, styles, user } =
     useContext(AppContext);
   const [showCart, setShowCart] = useState(false);
 
@@ -37,29 +36,9 @@ const Navigation = () => {
           >
             <CartMenu />
           </NavDropdown>
-          <div style={styles.nav.loggedUser}>
-            <Nav.Item >
-              {user && `Logged in as ${user.username}`}
-            </Nav.Item>
-            {user && (
-              <Button
-                onClick={userActions.logOut}
-                size="sm"
-                variant="secondary"
-              >
-              Log out
-              </Button>
-            )}
-          </div>
+          <UserInfo/>
         </Navbar.Collapse>
-        <Clickable className="theme-toggle" onClick={toggleTheme}>
-          {theme === "dark" ? (
-            <SunIcon color="white" />
-          ) : (
-            <MoonIcon color="black" />
-          )}
-        </Clickable>
-        <div className="theme-toggle-shadow"></div>
+        <ThemeToggle />
       </Container>
     </Navbar>
   );

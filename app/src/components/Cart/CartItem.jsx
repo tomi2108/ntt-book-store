@@ -43,7 +43,7 @@ const CartItem = ({ item }) => {
               : item.book.title.substring(0, 20) + "..."}
           </p>
         </div>
-        <div style={{ justifySelf: "flex-end", alignSelf: "center" }}>
+        <div style={styles.shoppingCart.itemDetails}>
           <Clickable onClick={handleIncrease}>
             <PlusIcon color="rgb(106, 245, 106)" />
           </Clickable>
@@ -51,7 +51,7 @@ const CartItem = ({ item }) => {
           <Clickable onClick={handleDecrease}>
             <MinusIcon width="20px" height="auto" color="rgb(245, 106, 106)" />
           </Clickable>
-          <span style={{ marginLeft: "3px" }}>US${totalPrice}</span>
+          <span>US${totalPrice}</span>
         </div>
       </div>
     </NavDropdown.Item>

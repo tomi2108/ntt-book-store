@@ -35,10 +35,10 @@ const Search = () => {
 
   return (
     <Container>
-      <Row style={{ justifyContent: "center" }}>
+      <Row style={styles.search.container}>
         <input
           id="search"
-          style={styles.search}
+          style={styles.search.input}
           placeholder="🔍 Search..."
           type="text"
           onChange={onChange}

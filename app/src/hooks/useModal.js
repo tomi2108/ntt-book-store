@@ -9,6 +9,6 @@ export const useModal = () => {
   return {
     show,
     hideModal,
-    showModal,
+    showModal
   };
 };

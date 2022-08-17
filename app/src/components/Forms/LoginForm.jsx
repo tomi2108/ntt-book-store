@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getUser } from "services/users.js";
 
 const LoginForm = ({ setNotification, sendToRegister }) => {
-  const { userActions } = useContext(AppContext);
+  const { styles, userActions } = useContext(AppContext);
 
   const { values, onChange } = useFields({ username: "", password: "" });
 
@@ -48,7 +48,7 @@ const LoginForm = ({ setNotification, sendToRegister }) => {
           value={values.password}
           onChange={onChange}
         />
-        <Button style={{ marginTop: "30px" }} type="submit">
+        <Button style={styles.login.button} type="submit">
           Log In
         </Button>
       </Form>
