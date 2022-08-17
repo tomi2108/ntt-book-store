@@ -8,7 +8,7 @@ const PlusIcon = ({ color }) => (
       height: "auto",
       cursor: "pointer",
       marginLeft: "15px",
-      enableBackground: "new 0 0 60.364 60.364",
+      enableBackground: "new 0 0 60.364 60.364"
     }}
     xmlSpace="preserve"
 

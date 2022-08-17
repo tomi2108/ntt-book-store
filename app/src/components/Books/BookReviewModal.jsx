@@ -34,7 +34,7 @@ const BookReviewModal = ({ show, hideModal, bookId, reviews, setReviews }) => {
         (newReview) =>
           setReviews([
             ...reviews,
-            { ...newReview, User: { username: user.username } },
+            { ...newReview, User: { username: user.username } }
           ])
       );
   };

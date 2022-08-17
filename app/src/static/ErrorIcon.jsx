@@ -9,7 +9,7 @@ const ErrorIcon = ({ color }) => (
       marginRight: "10px",
       width: "15px",
       height: "15px",
-      enableBackground: "new 0 0 80.588 61.158",
+      enableBackground: "new 0 0 80.588 61.158"
     }}
   >
     <path

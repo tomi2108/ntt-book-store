@@ -7,7 +7,7 @@ const MinusIcon = ({ color,width,height }) => (
       width: width,
       height: height,
       cursor: "pointer",
-      enableBackground: "new 0 0 42 42",
+      enableBackground: "new 0 0 42 42"
     }}
     xmlSpace="preserve"
   >

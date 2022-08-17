@@ -5,7 +5,7 @@ const ShoppingBags = ({ style, ...other }) => (
     viewBox="0 0 512 512"
     style={{
       ...style,
-      enableBackground: "new 0 0 512 512",
+      enableBackground: "new 0 0 512 512"
     }}
     xmlSpace="preserve"
     {...other}

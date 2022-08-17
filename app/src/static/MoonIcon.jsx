@@ -6,7 +6,7 @@ const MoonIcon = ({ color }) => (
     fill={color}
     strokeWidth="0"
     style={{
-      marginInline: "10px",
+      marginInline: "10px"
     }}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg">
