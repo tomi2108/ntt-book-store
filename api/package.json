@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "initializeProdDb": "cross-env NODE_ENV=production node db/scripts/reset-development-db.js",
-    "start": "cross-env NODE_ENV=production node index.js",
+    "start": "cross-env NODE_ENV=production node src/index.js",
     "test": "npm run resetDevDb && cross-env NODE_ENV=test jest --verbose",
-    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "build": "rm -r build && cd ../app && npm run build && cp -r build ../api && rm -r build",
     "eslint": "eslint .",
     "resetDevDb": "cross-env NODE_ENV=development node db/scripts/reset-development-db.js"

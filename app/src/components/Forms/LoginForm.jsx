@@ -5,7 +5,7 @@ import { useFields } from "hooks/utils/useFields.js";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { getUser } from "services/users.js";
+
 
 const LoginForm = ({ setNotification, sendToRegister }) => {
   const { styles, userActions } = useContext(AppContext);
@@ -20,9 +20,8 @@ const LoginForm = ({ setNotification, sendToRegister }) => {
     if (!values.username) return setNotification("Enter username");
     if (!values.password) return setNotification("Enter password");
 
-    getUser(values.username, values.password)
-      .then((user) => {
-        userActions.logIn(user);
+    userActions.logIn(values.username, values.password)
+      .then(() => {
         navigate("/");
       })
       .catch((error) => {

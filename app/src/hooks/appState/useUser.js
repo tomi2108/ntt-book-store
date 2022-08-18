@@ -1,12 +1,18 @@
 /* eslint-disable no-undef */
 import { useLocalStorage } from "hooks/utils/useLocalStorage.js";
+import { logIn as serviceLogin } from "services/login.js";
 import { getCart, getFavorites } from "services/users.js";
 
 export const useUser = () => {
   const { user , userStorage } = useLocalStorage("BookstoreUser","user","object");
 
-  const logIn = (user) => {
-    userStorage.setItem(user);
+  const logIn = async (username,password) => {
+    try {
+      const loggedUser = await serviceLogin(username,password);
+      userStorage.setItem(loggedUser);
+    }catch(err){
+      throw new Error(err);
+    }
   };
 
   const logOut = () => {

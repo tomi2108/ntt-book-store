@@ -42,9 +42,10 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
     };
 
     createUser(userToCreate)
-      .then((user) => {
-        userActions.logIn(user);
-        navigate("/");
+      .then(() => {
+        userActions.logIn(values.username,values.password).then(() => {
+          navigate("/");
+        });
       })
       .catch((error) => {
         const { message } = error;

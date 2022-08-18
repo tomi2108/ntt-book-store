@@ -1,20 +1,6 @@
 const User = require("../db/models/User");
 const bcrypt = require("bcrypt");
 
-const getUser = async (username, password) => {
-  const user = await User.findOne({ where: { username } });
-  if (user) {
-    if (await bcrypt.compare(password, user.password)) {
-      delete user.dataValues.password;
-      return user;
-    } else {
-      return null;
-    }
-  } else {
-    throw new Error("User not found");
-  }
-};
-
 const createUser = async (user) => {
   const userRegistered = await User.findOne({
     where: { username: user.username },
@@ -103,4 +89,4 @@ const removeFavorite = async (username, bookId) => {
 };
 
 
-module.exports = { getUser, createUser, updateUserCart, getCart,getFavorites,addFavorite,removeFavorite };
+module.exports = {  createUser, updateUserCart, getCart,getFavorites,addFavorite,removeFavorite };

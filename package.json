@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomi2108/e-Commerce-Talent-Camp.git"
+    "url": "git+https://github.com/tomi2108/ntt-book-store.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tomi2108/e-Commerce-Talent-Camp/issues"
+    "url": "https://github.com/tomi2108/ntt-book-store/issues"
   },
-  "homepage": "https://github.com/tomi2108/e-Commerce-Talent-Camp#readme",
+  "homepage": "https://github.com/tomi2108/ntt-book-store#readme",
   "devDependencies": {
     "eslint": "8.20.0",
     "lint-staged": "^13.0.3",
