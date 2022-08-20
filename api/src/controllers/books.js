@@ -59,4 +59,15 @@ const addReview = async (review) => {
   }
 };
 
-module.exports = { addBook, getAllBooks, getBookById, addReview,getReviews };
+const deleteReview = async (reviewId) => {
+  try {
+    return await Review.destroy({ where: { id: reviewId } });
+  } catch (err) {
+    throw new Error("Error while deleting review");
+  }
+};
+
+
+
+
+module.exports = { addBook, getAllBooks, getBookById, addReview,getReviews,deleteReview };

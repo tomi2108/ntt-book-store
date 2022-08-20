@@ -14,10 +14,10 @@ const Search = () => {
   const { styles, theme } = useContext(AppContext);
   const sort = useSort();
   const [books] = useBooks();
-  const { values,onChange } = useFields({ searchField: "" });
+  const { fields,onChange } = useFields({ searchField: { value:"",order:1 } });
 
   const booksFiltered = books?.filter((book) =>
-    book.title.toLowerCase().includes(values.searchField.toLowerCase())
+    book.title.toLowerCase().includes(fields.searchField.value.toLowerCase())
   );
 
   const renderIcon = (value) =>
@@ -43,7 +43,7 @@ const Search = () => {
           type="text"
           onChange={onChange}
           name="searchField"
-          value={values.searchField}
+          value={fields.searchField.value}
         />
       </Row>
       <Row>

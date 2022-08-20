@@ -6,6 +6,11 @@ const {
   addReview,
   getReviews,
 } = require("../controllers/books");
+const { getUserById } = require("../controllers/users");
+const { tokenExtractor } = require("../utils/middleware");
+
+
+
 
 const router = express.Router();
 
@@ -30,9 +35,12 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(400).json(err.message));
 });
 
-router.post("/:id/review", (req, res) => {
+router.post("/:id/review",tokenExtractor, async (req, res) => {
   const { id } = req.params;
   const { text, userId,rating } = req.body;
+  const decodedToken = req.token;
+  console.log(decodedToken);
+  await getUserById(decodedToken.id);
 
   getReviews(id)
     .then((reviews) => {

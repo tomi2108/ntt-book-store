@@ -24,7 +24,7 @@ const Review = ({ review }) => {
       </div>
       <p>{review.text}</p>
       <div style={styles.review.rating}>
-        <Rating value={review.rating} readOnly />
+        <Rating value={+review.rating} readOnly />
       </div>
     </div>
   );

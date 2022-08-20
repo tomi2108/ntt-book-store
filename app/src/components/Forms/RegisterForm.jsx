@@ -10,11 +10,11 @@ import { createUser } from "services/users.js";
 const RegisterForm = ({ sendToLogin, setNotification }) => {
   const { styles, userActions } = useContext(AppContext);
 
-  const { values, onChange } = useFields({
-    username: "",
-    password: "",
-    confirmPassword: "",
-    dateOfBirth: ""
+  const { fields, onChange,validateComplete } = useFields({
+    username: { value: "", order:1 },
+    password: { value: "", order:2 },
+    confirmPassword: { value: "", order:3 },
+    dateOfBirth: { value: "", order:4 }
   });
 
   const navigate = useNavigate();
@@ -22,28 +22,24 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
   const handleRegister = (e) => {
     e.preventDefault();
 
-    if (!values.username) return setNotification("Enter username");
-    if (!values.password) return setNotification("Enter password");
-    if (!values.confirmPassword)
-      return setNotification("Enter confirm password");
-    if (!values.dateOfBirth) return setNotification("Enter date of birth");
+    if(!validateComplete(setNotification)) return;
 
-    if (values.password !== values.confirmPassword)
+    if (fields.password.value !== fields.confirmPassword.value)
       return setNotification("Passwords do not match");
 
     const age =
-      new Date().getFullYear() - new Date(values.dateOfBirth).getFullYear();
+      new Date().getFullYear() - new Date(fields.dateOfBirth.value).getFullYear();
     if (age < 18) return setNotification("You must be 18 or older to register");
 
     const userToCreate = {
-      username: values.username,
-      password: values.password,
-      dateOfBirth: values.dateOfBirth
+      username: fields.username.value,
+      password: fields.password.value,
+      dateOfBirth: fields.dateOfBirth.value
     };
 
     createUser(userToCreate)
       .then(() => {
-        userActions.logIn(values.username,values.password).then(() => {
+        userActions.logIn(fields.username.value,fields.password.value).then(() => {
           navigate("/");
         });
       })
@@ -60,28 +56,28 @@ const RegisterForm = ({ sendToLogin, setNotification }) => {
           label="Username"
           type="text"
           name="username"
-          value={values.username}
+          value={fields.username.value}
           onChange={onChange}
         />
         <FormGroup
           label="Date of birth"
           type="date"
           name="dateOfBirth"
-          value={values.dateOfBirth}
+          value={fields.dateOfBirth.value}
           onChange={onChange}
         />
         <FormGroup
           label="Password"
           type="password"
           name="password"
-          value={values.password}
+          value={fields.password.value}
           onChange={onChange}
         />
         <FormGroup
           label="Confirm password"
           type="password"
           name="confirmPassword"
-          value={values.confirmPassword}
+          value={fields.confirmPassword.value}
           onChange={onChange}
         />
         <Button style={styles.login.button} type="submit">

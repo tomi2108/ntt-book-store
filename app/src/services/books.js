@@ -1,5 +1,5 @@
 import axios from "axios";
-import host from "services/controller.js";
+import { host, token } from "services/controller.js";
 
 const url = `${host}/api/books`;
 
@@ -22,8 +22,11 @@ export const getBookById = async (id) => {
 };
 
 export const addReview = async (text,userId,rating,bookId) => {
+  const config = {
+    headers: { Authorization: token }
+  };
   try {
-    const res = await axios.post(`${url}/${bookId}/review`, { text,userId,rating });
+    const res = await axios.post(`${url}/${bookId}/review`, { text,userId,rating },config);
     return res.data;
   }catch(_){
     return null;

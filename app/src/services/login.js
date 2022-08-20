@@ -1,5 +1,7 @@
 import axios from "axios";
-import host from "services/controller.js";
+import { host } from "services/controller.js";
+
+
 
 const url = `${host}/api/login`;
 

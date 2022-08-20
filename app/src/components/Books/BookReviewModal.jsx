@@ -14,22 +14,22 @@ const BookReviewModal = ({ show, hideModal, bookId, reviews, setReviews }) => {
 
   const [notification, setNotification] = useNotification(null);
 
-  const { values, onChange, reset } = useFields({ text: "", rating: 0 });
+  const { fields, onChange, reset } = useFields({ text: { value:"",order:1 }, rating: { value:0,order:1 } });
 
   const review = async (e) => {
     e.preventDefault();
     if (!user) return;
-    if (!values.text) {
+    if (!fields.text.value) {
       setNotification("Please enter a comment");
       throw new Error("Comment cannot be empty");
     }
-    if (values.rating < 0 || values.rating > 5) {
+    if (fields.rating.value < 0 || fields.rating.value > 5) {
       setNotification("Rating must be between 0 and 5");
       throw new Error("Rating must be between 0 and 5");
     }
     hideModal();
     reset();
-    return addReview(values.text, user.id, values.rating, bookId)
+    return addReview(fields.text.value, user.id, fields.rating.value, bookId)
       .then(
         (newReview) =>
           setReviews([
@@ -56,10 +56,10 @@ const BookReviewModal = ({ show, hideModal, bookId, reviews, setReviews }) => {
             placeholder="Write your review..."
             autoFocus
             name="text"
-            value={values.text}
+            value={fields.text.value}
             onChange={onChange}
           />
-          <Rating name="rating" onChange={onChange} value={values.rating} />
+          <Rating name="rating" onChange={onChange} value={+fields.rating.value} />
         </Form>
       </Modal.Body>
       <Modal.Footer style={styles.modal.footer}>

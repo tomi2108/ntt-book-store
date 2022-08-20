@@ -13,10 +13,6 @@ const BookDetails = () => {
   const { id } = useParams();
   const { book,outOfStock,recommendations }= useBookById(id);
 
-
-
-
-
   return (
     <>
       {book ? (

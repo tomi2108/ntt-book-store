@@ -14,6 +14,12 @@ const createUser = async (user) => {
   }
 };
 
+const getUserById = async (id) => {
+  const user = await User.findByPk(id);
+  return user;
+};
+
+
 const updateUserCart = async (username, newCart) => {
   newCart?.forEach((item) => {
     delete item.book.Author;
@@ -89,4 +95,4 @@ const removeFavorite = async (username, bookId) => {
 };
 
 
-module.exports = {  createUser, updateUserCart, getCart,getFavorites,addFavorite,removeFavorite };
+module.exports = {  createUser,getUserById, updateUserCart, getCart,getFavorites,addFavorite,removeFavorite };
