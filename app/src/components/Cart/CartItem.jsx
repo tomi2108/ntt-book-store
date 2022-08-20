@@ -1,6 +1,6 @@
 import { AppContext } from "App";
 import Clickable from "components/Utils/Clickable";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ErrorIcon from "static/ErrorIcon";
@@ -9,6 +9,7 @@ import PlusIcon from "static/PlusIcon";
 
 const CartItem = ({ item }) => {
   const { styles, cartActions } = useContext(AppContext);
+  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
   const totalPrice = (
@@ -31,10 +32,10 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <NavDropdown.Item onClick={() => navigate(`/book/${item.book.id}`)} key={item.book.id}>
+    <NavDropdown.Item  onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => navigate(`/book/${item.book.id}`)} key={item.book.id}>
       <div style={styles.shoppingCart.item}>
         <div>
-          <Clickable onClick={handleRemove}>
+          <Clickable style={styles.displayIf(isHovered)}  onClick={handleRemove}>
             <ErrorIcon color="rgb(245, 106, 106)" />
           </Clickable>
           <p>

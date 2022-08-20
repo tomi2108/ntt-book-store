@@ -5,11 +5,10 @@ const {
   getBookById,
   addReview,
   getReviews,
+  deleteReview,
 } = require("../controllers/books");
 const { getUserById } = require("../controllers/users");
 const { tokenExtractor } = require("../utils/middleware");
-
-
 
 
 const router = express.Router();
@@ -39,7 +38,6 @@ router.post("/:id/review",tokenExtractor, async (req, res) => {
   const { id } = req.params;
   const { text, userId,rating } = req.body;
   const decodedToken = req.token;
-  console.log(decodedToken);
   await getUserById(decodedToken.id);
 
   getReviews(id)
@@ -59,6 +57,28 @@ router.post("/:id/review",tokenExtractor, async (req, res) => {
     })
     .catch((err) => res.status(400).json(err.message));
 });
+
+router.delete("/:bookId/review/:reviewId",tokenExtractor, async (req, res) => {
+  const { bookId, reviewId } = req.params;
+
+  const decodedToken = req.token;
+  await getUserById(decodedToken.id);
+
+  getReviews(bookId)
+    .then((reviews) => {
+      const review = reviews.find((r) => r.id === +reviewId);
+
+      if(!review) throw new Error("Review not found");
+      if(review.userId !== decodedToken.id) throw new Error("Unauthorized");
+
+
+      deleteReview(reviewId)
+        .then((deletedReview) => res.status(200).json(deletedReview))
+        .catch((err) => res.status(400).json(err.message));
+
+
+    }).catch((err) => res.status(400).json(err.message));
+} );
 
 
 

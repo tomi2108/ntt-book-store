@@ -32,3 +32,15 @@ export const addReview = async (text,userId,rating,bookId) => {
     return null;
   }
 };
+
+export const deleteReview = async (id,bookId) => {
+  const config = {
+    headers: { Authorization: token }
+  };
+  try {
+    const res = await axios.delete(`${url}/${bookId}/review/${id}`,config);
+    return res.data;
+  }catch(_){
+    return null;
+  }
+};

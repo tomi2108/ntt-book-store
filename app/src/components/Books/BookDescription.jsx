@@ -28,7 +28,7 @@ const BookDescription = ({ book, outOfStock }) => {
       </div>
       <div style={styles.bookDetails.price}>
         US<strong>${book.price}
-          <Clickable style={styles.displayIf(user)} onClick={favorite}>
+          <Clickable className="heart-icon" style={styles.displayIf(user)} onClick={favorite}>
             <HeartIcon style={{ ...styles.heartIcon(isFavorite),position:"static",marginBottom:"10px" }}/>
           </Clickable>
         </strong>

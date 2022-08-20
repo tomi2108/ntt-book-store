@@ -1,9 +1,13 @@
 import { Rating } from "@mui/material";
 import { AppContext } from "App";
-import { useContext } from "react";
+import Clickable from "components/Utils/Clickable";
+import { useContext, useState } from "react";
+import { deleteReview } from "services/books";
+import CrossIcon from "static/CrossIcon";
 
-const Review = ({ review }) => {
-  const { styles } = useContext(AppContext);
+const Review = ({ review,setReviews }) => {
+  const { user,styles } = useContext(AppContext);
+  const [isHovered,setIsHovered] = useState(false);
 
   const formatedDateWithHour = new Date(review.createdAt).toLocaleString(
     "en-US",
@@ -17,8 +21,19 @@ const Review = ({ review }) => {
     }
   );
 
+  const handleDelete = () => {
+    deleteReview(review.id,review.bookId);
+    setReviews(reviews => reviews.filter(r => r.id !== review.id));
+  };
+
+
   return (
-    <div style={styles.review.container}>
+    <div style={styles.review.container} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
+      <span style={styles.review.delete}>
+        <Clickable onClick={handleDelete}>
+          <CrossIcon color={styles.iconColor} style={styles.displayIf(isHovered && user.username === review.User.username )}  />
+        </Clickable>
+      </span>
       <div style={styles.review.author}>
         <span>  <strong>{review.User.username}</strong> -{" "}{formatedDateWithHour} </span>
       </div>

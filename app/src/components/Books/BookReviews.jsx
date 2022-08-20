@@ -20,7 +20,7 @@ const BookReviews = ({ bookReviews, bookId }) => {
 
   useEffect(() => {
     if(user){
-      setReviewed(reviews.some((r) => r.User.username === user.username));
+      setReviewed(reviews?.some((r) => r.User.username === user.username));
     }
   },[reviews,user]);
 
@@ -48,7 +48,7 @@ const BookReviews = ({ bookReviews, bookId }) => {
         bookId={bookId}
       />
       {reviews &&
-        reviews.sort(sortByDate).map((r) => <Review review={r} key={r.id} />)
+        reviews.sort(sortByDate).map((r) => <Review review={r} key={r.id} setReviews={setReviews} />)
       }
     </>
   );

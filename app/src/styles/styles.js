@@ -92,7 +92,7 @@ export const styledtheme = (theme) => {
         color: COLORS.text.secondary
       }
     },
-    displayIf : (condition) => {return { display:condition?"":"none" };},
+    displayIf : (condition) => {return { visibility:condition?"":"hidden" };},
     heartIcon:(isFavorite) => {
       return {
         bottom:"15px",
@@ -222,6 +222,9 @@ export const styledtheme = (theme) => {
         justifyContent:"flex-start",
         marginBlock:"5px",
         padding:"10px"
+      },
+      delete:{
+        alignSelf:"flex-end"
       },
       rating:{ alignSelf:"flex-end" }
     },
