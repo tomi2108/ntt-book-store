@@ -2,7 +2,7 @@
   "name": "e-commerce-talent-camp",
   "version": "0.0.5",
   "scripts": {
-    "prepare": "cd api && npm install && cd ../app && npm install",
+    "prepare": "npm install && cd api && npm install && cd ../app && npm install",
     "build": "cd api && npm run build",
     "start": "cd api && npm run start"
   },
