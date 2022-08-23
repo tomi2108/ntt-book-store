@@ -1,8 +1,8 @@
 {
-  "name": "e-commerce-talent-camp",
-  "version": "0.0.5",
+  "name": "ntt-bookstore",
+  "version": "1.0.0",
   "scripts": {
-    "prepare": "npm install && cd api && npm install && cd ../app && npm install",
+    "prepare": "cd api && npm install && cd ../app && npm install",
     "build": "cd api && npm run build",
     "start": "cd api && npm run start"
   },

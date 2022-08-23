@@ -1,6 +1,6 @@
 {
-  "name": "e-commerce-front-end",
-  "version": "0.1.0",
+  "name": "ntt-bookstore-front-end",
+  "version": "1.0.0",
   "main": "index.js",
   "private": true,
   "type": "module",
