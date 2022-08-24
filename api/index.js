@@ -6,10 +6,8 @@ const api = require("./api.js");
 
 const  connectToDb = require("./src/db/connect.js");
 
-
 const server = http.createServer(api);
 const PORT = process.env.PORT || 3001;
-
 
 connectToDb().then(() => {
   server.listen(PORT, () => {
