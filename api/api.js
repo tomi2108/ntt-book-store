@@ -4,11 +4,11 @@ const path = require("path");
 
 const api = express();
 
-const bookRouter = require("./routes/books.js");
-const userRouter = require("./routes/users.js");
-const loginRouter = require("./routes/login.js");
+const bookRouter = require("./src/routes/books.js");
+const userRouter = require("./src/routes/users.js");
+const loginRouter = require("./src/routes/login.js");
 
-const { unknownEndpoint } = require("./utils/middleware.js");
+const { unknownEndpoint } = require("./src/utils/middleware.js");
 
 api.use(cors());
 
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "development") {
   api.use(morgan("tiny"));
 }
 
-if (process.env.NODE_ENV === "production") api.use(express.static("build"));
+if (process.env.NODE_ENV === "development") api.use(express.static("build"));
 
 api.use(express.json());
 
