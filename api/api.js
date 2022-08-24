@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "development") {
   api.use(morgan("tiny"));
 }
 
-if (process.env.NODE_ENV === "development") api.use(express.static("build"));
+if (process.env.NODE_ENV === "production") api.use(express.static("build"));
 
 api.use(express.json());
 
