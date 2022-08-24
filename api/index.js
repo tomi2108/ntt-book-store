@@ -1,10 +1,10 @@
 require("dotenv").config();
-require("./src/db/index.js");
+require("./db/index.js");
 
 const http = require("http");
 const api = require("./api.js");
 
-const  connectToDb = require("./src/db/connect.js");
+const  connectToDb = require("./db/connect.js");
 
 const server = http.createServer(api);
 const PORT = process.env.PORT || 3001;
