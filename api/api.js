@@ -4,11 +4,11 @@ const path = require("path");
 
 const api = express();
 
-const bookRouter = require("./src/routes/books.js");
-const userRouter = require("./src/routes/users.js");
-const loginRouter = require("./src/routes/login.js");
+const bookRouter = require("./routes/books.js");
+const userRouter = require("./routes/users.js");
+const loginRouter = require("./routes/login.js");
 
-const { unknownEndpoint } = require("./src/utils/middleware.js");
+const { unknownEndpoint } = require("./utils/middleware.js");
 
 api.use(cors());
 
