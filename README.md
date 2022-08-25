@@ -1,8 +1,26 @@
 # ntt-bookstore
 
+
+## Info
+
+La aplicación está pensada para ser empaquetada desde la api que luego usa la app como interfaz.
+
+Url app : https://ntt-bookstore.herokuapp.com/
+
+Usuarios en la base de datos de producción: 
+- John, password
+- Mike, secret
+
+También podes crear tu usuario mediante el register para ver el funcionamiento completo de la aplicación.
+Las contraseñas se guardan encriptadas por su seguridad.
+
+**Importante** Si se quiere correr la aplicación en local además de instalar las dependencias con `npm run prepare` se deben configurar las variables de entorno requeridas para la conexión a la base de datos deseada. La aplicación posee un script detallado mas adelante para inicializar la base de datos dependiendo del entorno de ejecución deseado.
+
+---
+
 ## Scripts
 
-Se corren dentro de las carpetas app y api con el comando:
+Se corren dentro de las carpetas raíz, app y api con el comando:
 
 `npm run [SCRIPT]`
 
@@ -20,7 +38,7 @@ Se corren dentro de las carpetas app y api con el comando:
 
 ### Api ( servidor )
 
-**Build** - Empaqueta la app (servidor y cliente).
+**Build** - Empaqueta la aplicación (servidor y cliente).
 
 **Start** - Ejecuta la aplicación con interfaz (servidor y cliente).
 
@@ -32,7 +50,7 @@ Se corren dentro de las carpetas app y api con el comando:
 
 **ResetDevDb** - Reinicia la base de datos de desarrollo con datos de prueba.
 
-**initializeProdDb** - Inicializa la base de datos con los mismos datos que el comando anterior. No se recomienda.
+**InitializeProdDb** - Inicializa la base de datos con los mismos datos que el comando anterior. No se recomienda.
 
 ---
 
@@ -48,26 +66,12 @@ Se corren dentro de las carpetas app y api con el comando:
 
 **Test** - Corre los tests.
 
----
-
-## Info
-
-La aplicación está pensada para ser empaquetada desde la api que luego usa la app como interfaz.
-
-Url app : https://ntt-bookstore.herokuapp.com/
-
-Usuarios en la base de datos de producción: 
-- John, password
-- Mike, secret
-
-También podes crear tu usuario mediante el register para ver el funcionamiento completo de la aplicación.
-Las contraseñas se guardan encriptadas por su seguridad.
 
 ---
 
 ## Variables de entorno
 
-Las siguientes variables de entorno deben ser definidas en un archivo `.env` en la carpeta `api`.
+Las siguientes variables de entorno **deben** ser definidas en un archivo `.env` en la carpeta `api`.
 
 **MYSQL_PRODUCTION_USER**: Usuario de la base de datos de producción.
 
@@ -122,3 +126,15 @@ La aplicación fue desarrollada con el uso de las siguiente tecnologías y bibli
 - React para el desarrollo y funcionamiento de la aplicación.
 
 - Heroku para el hosting de la aplicación y de la base de datos
+
+---
+
+## Pasos para correr la aplicación en local
+
+- Clonar el repositorio
+- Dentro la carpeta raíz correr `npm run prepare`
+- Configurar las variables de entorno para la base de datos deseada como se detalla mas arriba.
+- Si se desea correr la aplicación en modo desarrollo correr `npm run dev` dentro de la carpeta raíz. Esto reiniciara la base de datos antes de correr la aplicación.
+- Si se desea correr la aplicación en modo producción correr `npm run start` dentro de la carpeta raíz. Si se desea reiniciar la base de datos de producción debe hacerse manualmente (NO ES RECOMENDADO).
+
+En modo producción la app corre arriba de la api. En modo desarrollo corren como dos aplicaciones distintas en puertos distintos. Es importante correr la app y la api en el mismo entorno de ejecución (producción o desarrollo).
