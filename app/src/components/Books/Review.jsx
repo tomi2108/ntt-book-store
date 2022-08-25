@@ -22,6 +22,7 @@ const Review = ({ review,setReviews }) => {
   );
 
   const handleDelete = () => {
+    if(user?.username !== review.User.username) return;
     deleteReview(review.id,review.bookId);
     setReviews(reviews => reviews.filter(r => r.id !== review.id));
   };
@@ -31,7 +32,7 @@ const Review = ({ review,setReviews }) => {
     <div style={styles.review.container} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
       <span style={styles.review.delete}>
         <Clickable onClick={handleDelete}>
-          <CrossIcon color={styles.iconColor} style={styles.displayIf(isHovered && user?.username === review.User.username )}  />
+          <CrossIcon color={styles.iconColor} style={{ ...styles.displayIf(isHovered && user?.username === review.User.username ),cursor:user?.username === review.User.username? "pointer":"none" }}  />
         </Clickable>
       </span>
       <div style={styles.review.author}>
