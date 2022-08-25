@@ -31,7 +31,7 @@ const Review = ({ review,setReviews }) => {
     <div style={styles.review.container} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
       <span style={styles.review.delete}>
         <Clickable onClick={handleDelete}>
-          <CrossIcon color={styles.iconColor} style={styles.displayIf(isHovered && user.username === review.User.username )}  />
+          <CrossIcon color={styles.iconColor} style={styles.displayIf(isHovered && user?.username === review.User.username )}  />
         </Clickable>
       </span>
       <div style={styles.review.author}>
