@@ -32,7 +32,9 @@ Se corren dentro de las carpetas raíz, app y api con el comando:
 
 **Build** - Empaqueta la app (servidor y cliente).
 
-**Start** - Ejecuta la aplicación con interfaz (servidor y cliente).
+**Start** - Ejecuta la aplicación en modo producción (servidor y cliente).
+
+**Dev** - Ejecuta la aplicación en modo desarrollo. (servidor y cliente).
 
 ---
 
@@ -137,4 +139,4 @@ La aplicación fue desarrollada con el uso de las siguiente tecnologías y bibli
 - Si se desea correr la aplicación en modo desarrollo correr `npm run dev` dentro de la carpeta raíz. Esto reiniciara la base de datos antes de correr la aplicación.
 - Si se desea correr la aplicación en modo producción correr `npm run start` dentro de la carpeta raíz. Si se desea reiniciar la base de datos de producción debe hacerse manualmente (NO ES RECOMENDADO).
 
-En modo producción la app corre arriba de la api. En modo desarrollo corren como dos aplicaciones distintas en puertos distintos. Es importante correr la app y la api en el mismo entorno de ejecución (producción o desarrollo).
+En modo producción la app corre arriba de la api. En modo desarrollo corren como dos aplicaciones distintas en puertos distintos. Es importante correr la app y la api en el mismo entorno de ejecución (producción o desarrollo). Para esto sirven los comandos de la carpeta raíz.
