@@ -23,6 +23,7 @@ const App = () => {
   const { theme, styles, toggleTheme } = useTheme();
   const [cart, cartActions] = useCart(user);
   const [favorites,favoritesActions] = useFavorites(user);
+
   const context = { theme, styles, toggleTheme, user, userActions, cart, cartActions, favorites, favoritesActions, books };
 
   useEffect(() => {
