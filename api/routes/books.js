@@ -38,6 +38,7 @@ router.post("/:id/review",tokenExtractor, async (req, res) => {
   const { id } = req.params;
   const { text, userId,rating } = req.body;
   const decodedToken = req.token;
+  if(!decodedToken) throw new Error("Invalid token");
   await getUserById(decodedToken.id);
 
   getReviews(id)
@@ -62,6 +63,7 @@ router.delete("/:bookId/review/:reviewId",tokenExtractor, async (req, res) => {
   const { bookId, reviewId } = req.params;
 
   const decodedToken = req.token;
+  if(!decodedToken) throw new Error("Invalid token");
   await getUserById(decodedToken.id);
 
   getReviews(bookId)
